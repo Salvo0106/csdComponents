@@ -1,0 +1,148 @@
+// Checkbox Variables
+:root {
+    // Size and spacing
+    --csd-checkbox-size: 18px;
+    --csd-checkbox-border-width: 1px;
+    --csd-checkbox-border-radius: 4px;
+    --csd-checkbox-gap: 0.5rem;
+    
+    // Colors
+    --csd-checkbox-bg: var(--bg-input);
+    --csd-checkbox-border-color: var(--bc-input);
+    --csd-checkbox-checked-bg: var(--text-color);
+    --csd-checkbox-checked-color: var(--white);
+    --csd-checkbox-focus-color: var(--text-color);
+    
+    // Disabled state
+    --csd-checkbox-disabled-bg: var(--bg-input-disabled);
+    --csd-checkbox-disabled-border: var(--bc-input);
+    --csd-checkbox-disabled-color: var(--text-color-disabled);
+    
+    // Icon
+    --csd-checkbox-icon-size: 14px;
+    --csd-checkbox-icon-color: var(--white);
+}
+
+// Checkbox Component
+.csd-checkbox {
+    position: relative;
+    display: inline-block;
+    width: var(--csd-checkbox-size);
+    height: var(--csd-checkbox-size);
+    margin: 0;
+    cursor: pointer;
+
+    &-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--csd-checkbox-gap);
+
+        &:has(.csd-checkbox-input:disabled) {
+            .csd-checkbox-label {
+                color: var(--csd-checkbox-disabled-color);
+                cursor: default;
+            }
+        }
+    }
+
+    &-input {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        cursor: pointer;
+        z-index: 1;
+
+        &:checked + .csd-checkbox-box {
+            background-color: var(--csd-checkbox-checked-bg);
+            border-color: var(--csd-checkbox-checked-bg);
+
+            ion-icon {
+                opacity: 1;
+                transform: scale(1);
+                color: var(--csd-checkbox-checked-color) !important;
+            }
+        }
+
+        &:focus + .csd-checkbox-box {
+            border-color: var(--csd-checkbox-focus-color);
+            box-shadow: var(--shadow);
+        }
+
+        &:disabled {
+            cursor: default;
+
+            & + .csd-checkbox-box {
+                background-color: var(--csd-checkbox-disabled-bg);
+                border-color: var(--csd-checkbox-disabled-border);
+                cursor: default;
+
+                ion-icon {
+                    color: var(--csd-checkbox-disabled-color) !important;
+                }
+            }
+
+            & ~ .csd-checkbox-label {
+                color: var(--csd-checkbox-disabled-color);
+                cursor: default;
+            }
+        }
+
+        &:indeterminate + .csd-checkbox-box {
+            background-color: var(--csd-checkbox-checked-bg);
+            border-color: var(--csd-checkbox-checked-bg);
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 8px;
+                height: 2px;
+                background-color: var(--csd-checkbox-checked-color);
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 50%;
+            }
+        }
+    }
+
+    &-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--csd-checkbox-bg);
+        border: var(--csd-checkbox-border-width) solid var(--csd-checkbox-border-color);
+        border-radius: var(--csd-checkbox-border-radius);
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        ion-icon {
+            font-size: var(--csd-checkbox-icon-size);
+            color: var(--csd-checkbox-icon-color) !important;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: var(--transition);
+        }
+    }
+
+    &-label {
+        font-size: var(--font-size);
+        cursor: pointer;
+        user-select: none;
+    }
+}
+
+// Checkbox Group
+.csd-checkbox-group {
+    display: flex;
+    gap: var(--csd-checkbox-gap);
+
+    &.vertical {
+        flex-direction: column;
+    }
+}

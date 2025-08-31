@@ -1,0 +1,269 @@
+:root {
+    // Input Group Container
+    --csd-input-group-position: relative;
+    --csd-input-group-display: flex;
+    --csd-input-group-align: stretch;
+    --csd-input-group-width: 100%;
+    
+    // Input Group Input
+    --csd-input-group-input-flex: 1 1 auto;
+    --csd-input-group-input-width: 1%;
+    --csd-input-group-input-min-width: 0;
+    --csd-input-group-input-number-padding-right: 2rem;
+    
+    // Input Group Text
+    --csd-input-group-text-padding: 0.375rem 0.75rem;
+    --csd-input-group-text-font-size: 1rem;
+    --csd-input-group-text-font-weight: 400;
+    --csd-input-group-text-line-height: 1.5;
+    --csd-input-group-text-color: var(--text-color);
+    --csd-input-group-text-bg: var(--bg-input-disabled);
+    --csd-input-group-text-border: 1px solid var(--bc-input);
+    
+    // Input Group Icon
+    --csd-input-group-icon-min-width: 40px;
+    --csd-input-group-icon-padding: 0 0.5rem;
+    --csd-input-group-icon-bg: var(--bg-input);
+    --csd-input-group-icon-border: 1px solid var(--bc-input);
+    --csd-input-group-icon-color: var(--text-color);
+    --csd-input-group-icon-transition: var(--transition);
+    --csd-input-group-icon-font-size: 18px;
+    --csd-input-group-icon-focus-border: var(--text-color);
+    
+    // Input Group Icon Disabled
+    --csd-input-group-icon-disabled-bg: var(--bg-input-disabled);
+    --csd-input-group-icon-disabled-border: var(--bc-input);
+    --csd-input-group-icon-disabled-color: var(--text-color-disabled);
+    
+    // Input Group Feedback
+    --csd-input-group-feedback-position: absolute;
+    --csd-input-group-feedback-bottom: -20px;
+    --csd-input-group-feedback-left: 0;
+    --csd-input-group-feedback-font-size: 0.875em;
+    --csd-input-group-invalid-color: var(--csd-color-danger);
+    --csd-input-group-valid-color: var(--csd-color-success);
+    
+    // Input Arrows
+    --csd-input-arrows-width: 2.5rem;
+    --csd-input-arrows-border-left: 1px solid var(--bc-card);
+    --csd-input-arrows-margin-block: 1px;
+    
+    // Arrow Button
+    --csd-arrow-btn-color: var(--csd-text-color);
+    --csd-arrow-btn-hover-color: var(--dark);
+    --csd-arrow-btn-active-color: var(--dark);
+    --csd-arrow-btn-transition: all 0.2s ease;
+    --csd-arrow-btn-font-size: 1rem;
+    --csd-arrow-btn-stroke-width: 48px;
+    --csd-arrow-btn-border-color: var(--bc-card);
+    --csd-arrow-btn-up-radius: 0 1rem 0 0;
+    --csd-arrow-btn-down-radius: 0 0 1rem 0;
+}
+
+.csd-input-group {
+    position: var(--csd-input-group-position);
+    display: var(--csd-input-group-display);
+    align-items: var(--csd-input-group-align);
+    width: var(--csd-input-group-width);
+
+    // Input styling within group
+    .csd-input {
+        flex: 1;
+
+        &:not(.csd-number) {
+            position: relative;
+            flex: var(--csd-input-group-input-flex);
+            width: var(--csd-input-group-input-width);
+            min-width: var(--csd-input-group-input-min-width);
+        }
+
+        &:not(.csd-number):not(:first-child) {
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+            box-shadow: none;
+        }
+
+        &:not(.csd-number):not(:last-child) {
+            border-top-right-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+            border-right: none;
+            box-shadow: none;
+        }
+
+        &.csd-number {
+            padding-right: var(--csd-input-group-input-number-padding-right) !important;
+        }
+    }
+
+    // Text element styling
+    .csd-input-group-text {
+        display: flex;
+        align-items: center;
+        padding: var(--csd-input-group-text-padding);
+        font-size: var(--csd-input-group-text-font-size);
+        font-weight: var(--csd-input-group-text-font-weight);
+        line-height: var(--csd-input-group-text-line-height);
+        color: var(--csd-input-group-text-color);
+        text-align: center;
+        white-space: nowrap;
+        background-color: var(--csd-input-group-text-bg);
+        border: var(--csd-input-group-text-border);
+
+        &:first-child {
+            border-top-left-radius: var(--br-field);
+            border-bottom-left-radius: var(--br-field);
+        }
+
+        &:last-child {
+            border-top-right-radius: var(--br-field);
+            border-bottom-right-radius: var(--br-field);
+        }
+    }
+
+    // Icon element styling
+    &-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: var(--csd-input-group-icon-min-width);
+        height: 100%;
+        padding: var(--csd-input-group-icon-padding);
+        background: var(--csd-input-group-icon-bg);
+        border: var(--csd-input-group-icon-border);
+        color: var(--csd-input-group-icon-color);
+        transition: var(--csd-input-group-icon-transition);
+
+        &:first-child {
+            border-right: 0;
+            border-top-left-radius: var(--br-input);
+            border-bottom-left-radius: var(--br-input);
+        }
+
+        &:last-child {
+            border-left: 0;
+            border-top-right-radius: var(--br-input);
+            border-bottom-right-radius: var(--br-input);
+        }
+
+        ion-icon {
+            font-size: var(--csd-input-group-icon-font-size);
+        }
+    }
+
+    // Button styling
+    .csd-btn {
+        position: relative;
+        z-index: 2;
+
+        &:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+    }
+
+    // State: Focus
+    &:focus-within {
+        .csd-input-group-icon {
+            border-color: var(--csd-input-group-icon-focus-border);
+        }
+    }
+
+    // State: Disabled
+    &.disabled {
+        .csd-input-group-icon {
+            background-color: var(--csd-input-group-icon-disabled-bg);
+            border-color: var(--csd-input-group-icon-disabled-border);
+            color: var(--csd-input-group-icon-disabled-color);
+            cursor: default;
+        }
+    }
+
+    // Validation styles
+    &.has-validation {
+        > :nth-last-child(n + 3):not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    // Feedback messages
+    .invalid-feedback,
+    .valid-feedback {
+        position: var(--csd-input-group-feedback-position);
+        bottom: var(--csd-input-group-feedback-bottom);
+        left: var(--csd-input-group-feedback-left);
+        font-size: var(--csd-input-group-feedback-font-size);
+    }
+
+    .invalid-feedback {
+        color: var(--csd-input-group-invalid-color);
+    }
+
+    .valid-feedback {
+        color: var(--csd-input-group-valid-color);
+    }
+
+    // Number input arrows
+    .csd-input-arrows {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        width: var(--csd-input-arrows-width);
+        border-left: var(--csd-input-arrows-border-left);
+        margin-block: var(--csd-input-arrows-margin-block);
+
+        .csd-arrow-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            border: none;
+            background: transparent;
+            color: var(--csd-arrow-btn-color);
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            transition: var(--csd-arrow-btn-transition);
+
+            &:hover {
+                color: var(--csd-arrow-btn-hover-color);
+            }
+
+            &:active {
+                color: var(--csd-arrow-btn-active-color);
+            }
+
+            ion-icon {
+                font-size: var(--csd-arrow-btn-font-size);
+                --ionicon-stroke-width: var(--csd-arrow-btn-stroke-width);
+            }
+
+            &.up {
+                border-bottom: 1px solid var(--csd-arrow-btn-border-color);
+                border-radius: var(--csd-arrow-btn-up-radius);
+            }
+
+            &.down {
+                border-top: 1px solid var(--csd-arrow-btn-border-color);
+                border-radius: var(--csd-arrow-btn-down-radius);
+            }
+        }
+    }
+
+    .csd-input-arrows:hover, .csd-number:focus + .csd-input-arrows {
+        display: flex;
+    }
+}

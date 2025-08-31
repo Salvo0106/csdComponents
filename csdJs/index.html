@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSD Solutions Library Test</title>
+</head>
+<body>
+    <!-- Test della libreria -->
+    <div id="test-container">
+        <!-- Form components -->
+        <input type="text" class="csd-input" placeholder="Input di test">
+        <input type="number" class="csd-number" value="0">
+        <select class="csd-select">
+            <option value="1">Opzione 1</option>
+            <option value="2">Opzione 2</option>
+        </select>
+        <input type="text" class="csd-datepicker">
+
+        <!-- Buttons -->
+        <button class="csd-btn">Button di test</button>
+
+        <!-- Navigation -->
+        <nav class="csd-navigation">
+            <a href="#" class="nav-link">Link 1</a>
+            <a href="#" class="nav-link">Link 2</a>
+        </nav>
+
+        <!-- Layout components -->
+        <div class="csd-modal" id="testModal">
+            <div class="modal-content">
+                <h2>Test Modal</h2>
+                <p>Contenuto del modal</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carica il bundle -->
+    <script src="dist/csd-bundle.min.js"></script>
+</body>
+</html>

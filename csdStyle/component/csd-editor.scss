@@ -1,0 +1,1301 @@
+// Editor Component Variables
+:root {
+    // Base Editor
+    --csd-editor-border: 1px solid var(--bc-card);
+    --csd-editor-border-radius: var(--br-card);
+    --csd-editor-bg: var(--bg-light);
+    
+    // Editor Toolbar
+    --csd-editor-toolbar-gap: 0.5rem;
+    --csd-editor-toolbar-padding: 0.5rem;
+    --csd-editor-toolbar-border: 1px solid var(--bc-card);
+    --csd-editor-toolbar-bg: var(--bg-input);
+    --csd-editor-toolbar-group-gap: 0.25rem;
+    
+    // Editor Button
+    --csd-editor-button-padding: 0.5rem;
+    --csd-editor-button-color: var(--text-color-secondary);
+    --csd-editor-button-border-radius: var(--br-field);
+    --csd-editor-button-hover-color: var(--text-color);
+    --csd-editor-button-hover-bg: var(--bg-highlight);
+    --csd-editor-button-active-color: var(--accent-color);
+    --csd-editor-button-active-bg: var(--secondary-color);
+    --csd-editor-button-icon-size: 1.25rem;
+    
+    // Editor Select
+    --csd-editor-select-padding: 0.25rem 0.5rem;
+    --csd-editor-select-border: 1px solid var(--bc-card);
+    --csd-editor-select-border-radius: var(--br-field);
+    --csd-editor-select-bg: var(--bg-light);
+    --csd-editor-select-color: var(--text-color);
+    --csd-editor-select-font-size: 0.875rem;
+    
+    // Color Picker
+    --csd-editor-color-picker-size: 24px;
+    --csd-editor-color-picker-border: 1px solid var(--bc-card);
+    --csd-editor-color-picker-border-radius: var(--br-field);
+    
+    // Editor Content
+    --csd-editor-content-min-height: 200px;
+    --csd-editor-content-padding: 1rem;
+    --csd-editor-content-bg: var(--bg-input);
+    
+    // Editor Statusbar
+    --csd-editor-statusbar-padding: 0.5rem;
+    --csd-editor-statusbar-border: 1px solid var(--bc-card);
+    --csd-editor-statusbar-bg: var(--bg-input);
+    --csd-editor-statusbar-font-size: 0.875rem;
+    --csd-editor-statusbar-color: var(--text-color-secondary);
+    
+    // Typography
+    --csd-editor-headings-margin: 1rem 0 0.5rem;
+    --csd-editor-headings-color: var(--text-color);
+    --csd-editor-paragraph-margin: 0 0 1rem;
+    --csd-editor-paragraph-line-height: 1.5;
+    
+    // Lists
+    --csd-editor-list-margin: 0 0 1rem 1.5rem;
+    --csd-editor-list-item-margin: 0 0 0.5rem;
+    
+    // Links
+    --csd-editor-link-color: var(--accent-color);
+    
+    // Tables
+    --csd-editor-table-margin: 1rem 0;
+    --csd-editor-table-cell-padding: 0.5rem;
+    --csd-editor-table-border: 1px solid var(--bc-card);
+    --csd-editor-table-header-bg: var(--bg-highlight);
+    
+    // Code blocks
+    --csd-editor-code-bg: var(--bg-highlight);
+    --csd-editor-code-padding: 1rem;
+    --csd-editor-code-border-radius: var(--br-field);
+    --csd-editor-code-margin: 1rem 0;
+    --csd-editor-code-color: var(--text-color);
+    
+    // Blockquotes
+    --csd-editor-blockquote-margin: 1rem 0;
+    --csd-editor-blockquote-padding: 0.5rem 1rem;
+    --csd-editor-blockquote-border: 4px solid var(--accent-color);
+    --csd-editor-blockquote-bg: var(--bg-highlight);
+    --csd-editor-blockquote-color: var(--text-color-secondary);
+    
+    // Images
+    --csd-editor-image-max-width: 100%;
+    --csd-editor-image-margin: 1rem 0;
+    
+    // Media Breakpoints
+    --csd-editor-mobile-breakpoint: 768px;
+    
+    // Modern Editor Container
+    --csd-editor-container-border: 1px solid var(--bc-input);
+    --csd-editor-container-radius: var(--br-input);
+    --csd-editor-container-bg: var(--bg-light);
+    --csd-editor-container-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    // Editor Menubar
+    --csd-editor-menubar-gap: 0.5rem;
+    --csd-editor-menubar-padding: 0.5rem;
+    --csd-editor-menubar-bg: var(--bg-light);
+    --csd-editor-menubar-border: 1px solid var(--bc-input);
+    --csd-editor-menubar-item-padding: 0.25rem 0.5rem;
+    --csd-editor-menubar-item-radius: var(--br-btn);
+    --csd-editor-menubar-item-hover-bg: #edf1f5;
+    
+    // Editor Menu Dropdown
+    --csd-editor-menu-dropdown-bg: var(--bg-light);
+    --csd-editor-menu-dropdown-border: 1px solid var(--bc-input);
+    --csd-editor-menu-dropdown-radius: var(--br-input);
+    --csd-editor-menu-dropdown-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --csd-editor-menu-dropdown-item-gap: 0.5rem;
+    --csd-editor-menu-dropdown-item-padding: 0.5rem;
+    --csd-editor-menu-dropdown-item-color: var(--text-color);
+    --csd-editor-menu-dropdown-item-font-size: 0.875rem;
+    --csd-editor-menu-dropdown-item-hover-bg: #edf1f5;
+    --csd-editor-menu-dropdown-item-icon-size: 1.25rem;
+    
+    // Editor Toolbar
+    --csd-editor-toolbar-group-border: 1px solid var(--bc-input);
+    --csd-editor-toolbar-group-padding: 0.5rem;
+    --csd-editor-toolbar-group-margin: 0.5rem;
+    --csd-editor-toolbar-dropdown-padding: 0.5rem;
+    --csd-editor-toolbar-dropdown-bg: var(--bg-light);
+    --csd-editor-toolbar-dropdown-border: 1px solid var(--bc-input);
+    --csd-editor-toolbar-dropdown-radius: var(--br-input);
+    --csd-editor-toolbar-dropdown-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --csd-editor-toolbar-dropdown-item-gap: 0.5rem;
+    --csd-editor-toolbar-dropdown-item-padding: 0.5rem;
+    --csd-editor-toolbar-dropdown-item-hover-bg: #edf1f5;
+    
+    // Mobile Toolbar
+    --csd-editor-mobile-toolbar-padding: 0.25rem;
+    --csd-editor-mobile-toolbar-height: 3.5rem;
+    --csd-editor-mobile-toolbar-bg: #fff;
+    --csd-editor-mobile-toolbar-border: 1px solid var(--bc-input);
+    --csd-editor-mobile-tool-min-size: 3rem;
+    --csd-editor-mobile-tool-icon-size: 1.35rem;
+    --csd-editor-mobile-tool-radius: 0.25rem;
+    --csd-editor-mobile-tool-hover-bg: var(--bg-highlight);
+    --csd-editor-mobile-tool-active-color: var(--csd-color-primary);
+    --csd-editor-mobile-tool-active-bg-alpha: 0.1;
+    --csd-editor-mobile-dropdown-min-width: 160px;
+    --csd-editor-mobile-dropdown-bg: var(--bg-light);
+    --csd-editor-mobile-dropdown-margin: 0.5rem;
+    --csd-editor-mobile-dropdown-padding: 0.25rem;
+    --csd-editor-mobile-dropdown-border: 1px solid var(--bc-input);
+    --csd-editor-mobile-dropdown-radius: var(--br-input);
+    --csd-editor-mobile-dropdown-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --csd-editor-mobile-dropdown-item-padding: 0.5rem;
+    --csd-editor-mobile-dropdown-item-hover-bg: var(--bg-highlight);
+    --csd-editor-mobile-dropdown-item-font-size: 0.875rem;
+    --csd-editor-mobile-dropdown-item-icon-width: 1.5rem;
+    --csd-editor-mobile-dropdown-item-icon-size: 1rem;
+    --csd-editor-mobile-dropdown-item-icon-margin: 0.5rem;
+    
+    // Editor Tooltip
+    --csd-editor-tooltip-padding: 0.25rem 0.5rem;
+    --csd-editor-tooltip-bg: var(--text-color);
+    --csd-editor-tooltip-color: var(--bg-light);
+    --csd-editor-tooltip-font-size: 0.75rem;
+    --csd-editor-tooltip-radius: 0.5rem;
+    --csd-editor-tooltip-margin: 0.5rem;
+    --csd-editor-tooltip-arrow-size: 4px;
+    --csd-editor-tooltip-transition: opacity 0.2s ease, visibility 0.2s ease;
+    
+    // Editor Dropdown
+    --csd-editor-dropdown-bg: var(--bg-light);
+    --csd-editor-dropdown-border: 1px solid var(--border-color);
+    --csd-editor-dropdown-radius: 0.5rem;
+    --csd-editor-dropdown-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --csd-editor-dropdown-min-width: 160px;
+    --csd-editor-dropdown-padding-y: 0.5rem;
+    --csd-editor-dropdown-margin-top: 0.25rem;
+    --csd-editor-dropdown-item-padding: 0.5rem 1rem;
+    --csd-editor-dropdown-item-gap: 0.5rem;
+    --csd-editor-dropdown-item-font-size: 0.875rem;
+    --csd-editor-dropdown-item-hover-bg: var(--hover-color);
+    --csd-editor-dropdown-item-icon-width: 1rem;
+    --csd-editor-dropdown-item-transition: background-color 0.2s ease;
+    
+    // Color Picker Component
+    --csd-editor-color-picker-component-bg: var(--bg-light);
+    --csd-editor-color-picker-component-border: 1px solid var(--border-color);
+    --csd-editor-color-picker-component-radius: 0.5rem;
+    --csd-editor-color-picker-component-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --csd-editor-color-picker-component-padding: 0.5rem;
+    --csd-editor-color-picker-component-margin: 0.25rem;
+    --csd-editor-color-grid-gap: 0.25rem;
+    --csd-editor-color-item-size: 1.5rem;
+    --csd-editor-color-item-border: 1px solid var(--border-color);
+    --csd-editor-color-item-radius: 0.25rem;
+    --csd-editor-color-item-transition: transform 0.2s ease;
+    --csd-editor-color-item-hover-scale: 1.1;
+    
+    // Special Characters
+    --csd-editor-special-chars-bg: var(--bg-light);
+    --csd-editor-special-chars-border: 1px solid var(--border-color);
+    --csd-editor-special-chars-radius: 0.5rem;
+    --csd-editor-special-chars-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --csd-editor-special-chars-padding: 0.5rem;
+    --csd-editor-special-chars-margin: 0.25rem;
+    --csd-editor-special-chars-gap: 0.25rem;
+    --csd-editor-special-char-item-size: 2rem;
+    --csd-editor-special-char-item-border: 1px solid var(--border-color);
+    --csd-editor-special-char-item-radius: 0.25rem;
+    --csd-editor-special-char-item-color: var(--text-color);
+    --csd-editor-special-char-item-font-size: 1rem;
+    --csd-editor-special-char-item-transition: all 0.2s ease;
+    --csd-editor-special-char-item-hover-bg: var(--hover-color);
+    --csd-editor-special-char-item-hover-scale: 1.1;
+    
+    // Source Mode
+    --csd-editor-source-mode-font-family: monospace;
+}
+
+.csd-editor {
+    position: relative;
+    border: var(--csd-editor-border);
+    border-radius: var(--csd-editor-border-radius);
+    background-color: var(--csd-editor-bg);
+
+    .editor-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--csd-editor-toolbar-gap);
+        padding: var(--csd-editor-toolbar-padding);
+        border-bottom: var(--csd-editor-toolbar-border);
+        background-color: var(--csd-editor-toolbar-bg);
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: var(--csd-editor-toolbar-group-gap);
+
+            &:not(:last-child) {
+                border-right: var(--csd-editor-toolbar-border);
+                padding-right: var(--csd-editor-toolbar-padding);
+            }
+        }
+
+        .editor-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--csd-editor-button-padding);
+            color: var(--csd-editor-button-color);
+            background: none;
+            border: none;
+            border-radius: var(--csd-editor-button-border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+
+            &:hover {
+                color: var(--csd-editor-button-hover-color);
+                background-color: var(--csd-editor-button-hover-bg);
+            }
+
+            &.active {
+                color: var(--csd-editor-button-active-color);
+                background-color: var(--csd-editor-button-active-bg);
+            }
+
+            ion-icon {
+                font-size: var(--csd-editor-button-icon-size);
+                color: inherit;
+            }
+        }
+
+        .editor-select {
+            padding: var(--csd-editor-select-padding);
+            border: var(--csd-editor-select-border);
+            border-radius: var(--csd-editor-select-border-radius);
+            background-color: var(--csd-editor-select-bg);
+            color: var(--csd-editor-select-color);
+            font-size: var(--csd-editor-select-font-size);
+        }
+
+        .color-picker {
+            width: var(--csd-editor-color-picker-size);
+            height: var(--csd-editor-color-picker-size);
+            padding: 0;
+            border: var(--csd-editor-color-picker-border);
+            border-radius: var(--csd-editor-color-picker-border-radius);
+            cursor: pointer;
+        }
+    }
+
+    .editor-content {
+        min-height: var(--csd-editor-content-min-height);
+        padding: var(--csd-editor-content-padding);
+        outline: none;
+        overflow-y: auto;
+
+        &[contenteditable="true"] {
+            background-color: var(--csd-editor-content-bg);
+        }
+
+        // Typography styles
+        h1, h2, h3, h4, h5, h6 {
+            margin: var(--csd-editor-headings-margin);
+            color: var(--csd-editor-headings-color);
+        }
+
+        p {
+            margin: var(--csd-editor-paragraph-margin);
+            line-height: var(--csd-editor-paragraph-line-height);
+        }
+
+        // Lists
+        ul, ol {
+            margin: var(--csd-editor-list-margin);
+            
+            li {
+                margin-bottom: var(--csd-editor-list-item-margin);
+            }
+        }
+
+        // Links
+        a {
+            color: var(--csd-editor-link-color);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        // Tables
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--csd-editor-table-margin);
+
+            th, td {
+                padding: var(--csd-editor-table-cell-padding);
+                border: var(--csd-editor-table-border);
+                text-align: left;
+            }
+
+            th {
+                background-color: var(--csd-editor-table-header-bg);
+                font-weight: 600;
+            }
+        }
+
+        // Code blocks
+        pre {
+            background-color: var(--csd-editor-code-bg);
+            padding: var(--csd-editor-code-padding);
+            border-radius: var(--csd-editor-code-border-radius);
+            margin: var(--csd-editor-code-margin);
+            overflow-x: auto;
+
+            code {
+                font-family: monospace;
+                color: var(--csd-editor-code-color);
+            }
+        }
+
+        // Blockquotes
+        blockquote {
+            margin: var(--csd-editor-blockquote-margin);
+            padding: var(--csd-editor-blockquote-padding);
+            border-left: var(--csd-editor-blockquote-border);
+            background-color: var(--csd-editor-blockquote-bg);
+            color: var(--csd-editor-blockquote-color);
+        }
+
+        // Images
+        img {
+            max-width: var(--csd-editor-image-max-width);
+            height: auto;
+            margin: var(--csd-editor-image-margin);
+        }
+    }
+
+    .editor-statusbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--csd-editor-statusbar-padding);
+        border-top: var(--csd-editor-statusbar-border);
+        background-color: var(--csd-editor-statusbar-bg);
+        font-size: var(--csd-editor-statusbar-font-size);
+        color: var(--csd-editor-statusbar-color);
+        border-bottom-left-radius: inherit;
+        border-bottom-right-radius: inherit;
+
+        .word-count {
+            margin-right: 1rem;
+        }
+    }
+
+    // Read-only state
+    &.readonly {
+        .editor-toolbar,
+        .editor-statusbar {
+            display: none;
+        }
+
+        .editor-content {
+            background-color: var(--csd-editor-bg);
+        }
+    }
+
+    // Mobile responsive
+    @media (max-width: var(--csd-editor-mobile-breakpoint)) {
+        .editor-toolbar {
+            .toolbar-group {
+                flex-wrap: wrap;
+            }
+        }
+
+        .editor-statusbar {
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+    }
+}
+
+// Editor Styles
+.csd-editor-container {
+    position: relative;
+    overflow: visible;
+    border: var(--csd-editor-container-border);
+    border-radius: var(--csd-editor-container-radius);
+    background-color: var(--csd-editor-container-bg);
+    box-shadow: var(--csd-editor-container-shadow);
+
+    .csd-editor-menubar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        gap: var(--csd-editor-menubar-gap);
+        padding: var(--csd-editor-menubar-padding);
+        background-color: var(--csd-editor-menubar-bg);
+        border-bottom: var(--csd-editor-menubar-border);
+        border-radius: var(--csd-editor-container-radius) var(--csd-editor-container-radius) 0 0;
+
+        .csd-editor-menu-item {
+            position: relative;
+            border-radius: .5rem;
+            > span {
+                padding: var(--csd-editor-menubar-item-padding);
+                cursor: pointer;
+                border-radius: var(--csd-editor-menubar-item-radius);
+                
+                &:hover {
+                    background-color: var(--csd-editor-menubar-item-hover-bg);
+                }
+            }
+            
+            .csd-editor-menu-dropdown {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--csd-editor-menu-dropdown-bg);
+                border: var(--csd-editor-menu-dropdown-border);
+                border-radius: var(--csd-editor-menu-dropdown-radius);
+                box-shadow: var(--csd-editor-menu-dropdown-shadow);
+                z-index: 1000;
+                
+                button {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--csd-editor-menu-dropdown-item-gap);
+                    width: max-content;
+                    padding: var(--csd-editor-menu-dropdown-item-padding);
+                    border: none;
+                    background: none;
+                    color: var(--csd-editor-menu-dropdown-item-color);
+                    font-size: var(--csd-editor-menu-dropdown-item-font-size);
+                    text-align: left;
+                    cursor: pointer;
+                    
+                    &:hover {
+                        background-color: var(--csd-editor-menu-dropdown-item-hover-bg);
+                    }
+                    
+                    ion-icon {
+                        font-size: var(--csd-editor-menu-dropdown-item-icon-size);
+                    }
+                }
+            }
+            
+            &:hover .csd-editor-menu-dropdown {
+                display: block;
+            }
+        }
+    }
+
+    .csd-editor-toolbars {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 38px;
+        z-index: 1000;
+    }
+
+    .csd-editor-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        padding: 0.5rem;
+        background-color: var(--bg-light);
+        border-bottom: 1px solid var(--bc-input);
+
+        .csd-editor-toolbar-group {
+            display: flex;
+            gap: 0.25rem;
+            padding-right: var(--csd-editor-toolbar-group-padding);
+            margin-right: var(--csd-editor-toolbar-group-margin);
+            border-right: var(--csd-editor-toolbar-group-border);
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+
+        .csd-editor-toolbar-dropdown {
+            position: relative;
+
+            .csd-editor-tool {
+                padding: var(--csd-editor-toolbar-dropdown-padding);
+                border: none;
+                background: none;
+                color: var(--text-color);
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--csd-editor-toolbar-dropdown-item-hover-bg);
+                }
+            }
+
+            .csd-editor-toolbar-dropdown-menu {
+                display: none;
+                position: absolute;
+                bottom: 100%;
+                right: 0;
+                background-color: var(--csd-editor-toolbar-dropdown-bg);
+                border: var(--csd-editor-toolbar-dropdown-border);
+                border-radius: var(--csd-editor-toolbar-dropdown-radius);
+                box-shadow: var(--csd-editor-toolbar-dropdown-shadow);
+                padding: var(--csd-editor-toolbar-dropdown-padding);
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--csd-editor-toolbar-dropdown-item-gap);
+                    padding: var(--csd-editor-toolbar-dropdown-item-padding);
+                    border: none;
+                    background: none;
+                    color: var(--text-color);
+                    cursor: pointer;
+                    width: 100%;
+                    text-align: left;
+
+                    &:hover {
+                        background-color: var(--csd-editor-toolbar-dropdown-item-hover-bg);
+                    }
+                }
+            }
+
+            &.active .csd-editor-toolbar-dropdown-menu {
+                display: block;
+            }
+        }
+    }
+
+    .csd-editor-content {
+        min-height: 300px;
+        padding: 1.5rem;
+        outline: none;
+        overflow-y: auto;
+
+        &[placeholder]:empty:before {
+            content: attr(placeholder);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        // Typography styles
+        h1, h2, h3 {
+            margin: 1rem 0;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.25rem; }
+
+        p {
+            margin: 0.5rem 0;
+            line-height: 1.5;
+        }
+
+        ul, ol {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            line-height: 1.5;
+        }
+
+        blockquote {
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid var(--csd-color-primary);
+            background-color: var(--bg-light);
+            font-style: italic;
+        }
+
+        code {
+            padding: 0.2em 0.4em;
+            background-color: var(--bg-light);
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+
+            td, th {
+                padding: 0.5rem;
+                border: 1px solid var(--bc-input);
+            }
+
+            th {
+                background-color: var(--bg-light);
+                font-weight: 600;
+            }
+
+            tr:nth-child(even) {
+                background-color: var(--bg-light);
+            }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--br-input);
+        }
+
+        a {
+            color: var(--csd-color-primary);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        ::selection {
+            background: #ACCEF7;
+            color: inherit!important;
+            text-shadow: none!important;
+        }
+        
+        ::-moz-selection {
+            background: #ACCEF7;
+            color: inherit!important;
+            text-shadow: none!important;
+        }
+    }
+
+    .csd-editor-statusbar {
+        display: flex;
+        gap: 1rem;
+        padding: 0.5rem;
+        background-color: var(--bg-light);
+        border-top: 1px solid var(--bc-input);
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        border-radius: 0 0 var(--br-input) var(--br-input);
+    }
+}
+
+@media (max-width: 768px) {
+    .csd-editor-container {
+        .csd-editor-toolbar {
+            display: none;
+        }
+        .csd-editor-content {
+            padding: 1rem;
+        }
+    }
+
+}
+
+// Editor tooltip styles
+.csd-editor-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--csd-editor-tooltip-padding);
+    background-color: var(--csd-editor-tooltip-bg);
+    color: var(--csd-editor-tooltip-color);
+    font-size: var(--csd-editor-tooltip-font-size);
+    border-radius: var(--csd-editor-tooltip-radius);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--csd-editor-tooltip-transition);
+    z-index: 1000;
+    margin-bottom: var(--csd-editor-tooltip-margin);
+    user-select: none;
+    pointer-events: none;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: var(--csd-editor-tooltip-arrow-size);
+        border-style: solid;
+        border-color: var(--csd-editor-tooltip-bg) transparent transparent transparent;
+    }
+}
+
+.csd-editor-tool {
+    position: relative;
+
+    &:hover .csd-editor-tooltip {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+// Editor dropdowns
+.csd-editor-dropdown {
+    position: absolute;
+    background: var(--csd-editor-dropdown-bg);
+    border: var(--csd-editor-dropdown-border);
+    border-radius: var(--csd-editor-dropdown-radius);
+    box-shadow: var(--csd-editor-dropdown-shadow);
+    z-index: 1000;
+    min-width: var(--csd-editor-dropdown-min-width);
+    padding: var(--csd-editor-dropdown-padding-y) 0;
+    margin-top: var(--csd-editor-dropdown-margin-top);
+
+    .csd-editor-dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: var(--csd-editor-dropdown-item-gap);
+        width: 100%;
+        padding: var(--csd-editor-dropdown-item-padding);
+        border: none;
+        background: none;
+        color: var(--text-color);
+        font-size: var(--csd-editor-dropdown-item-font-size);
+        text-align: left;
+        cursor: pointer;
+        transition: var(--csd-editor-dropdown-item-transition);
+
+        &:hover {
+            background-color: var(--csd-editor-dropdown-item-hover-bg);
+        }
+
+        i {
+            width: var(--csd-editor-dropdown-item-icon-width);
+            text-align: center;
+        }
+    }
+}
+
+// Color picker
+.csd-editor-color-picker {
+    position: absolute;
+    background: var(--csd-editor-color-picker-component-bg);
+    border: var(--csd-editor-color-picker-component-border);
+    border-radius: var(--csd-editor-color-picker-component-radius);
+    box-shadow: var(--csd-editor-color-picker-component-shadow);
+    z-index: 1000;
+    padding: var(--csd-editor-color-picker-component-padding);
+    margin-top: var(--csd-editor-color-picker-component-margin);
+
+    .color-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: var(--csd-editor-color-grid-gap);
+    }
+
+    .color-item {
+        width: var(--csd-editor-color-item-size);
+        height: var(--csd-editor-color-item-size);
+        border: var(--csd-editor-color-item-border);
+        border-radius: var(--csd-editor-color-item-radius);
+        cursor: pointer;
+        transition: var(--csd-editor-color-item-transition);
+
+        &:hover {
+            transform: scale(var(--csd-editor-color-item-hover-scale));
+        }
+    }
+}
+
+// Special characters picker
+.csd-editor-special-chars {
+    position: absolute;
+    background: var(--csd-editor-special-chars-bg);
+    border: var(--csd-editor-special-chars-border);
+    border-radius: var(--csd-editor-special-chars-radius);
+    box-shadow: var(--csd-editor-special-chars-shadow);
+    z-index: 1000;
+    padding: var(--csd-editor-special-chars-padding);
+    margin-top: var(--csd-editor-special-chars-margin);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--csd-editor-special-chars-gap);
+
+    .special-char-item {
+        width: var(--csd-editor-special-char-item-size);
+        height: var(--csd-editor-special-char-item-size);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: var(--csd-editor-special-char-item-border);
+        border-radius: var(--csd-editor-special-char-item-radius);
+        background: none;
+        color: var(--csd-editor-special-char-item-color);
+        font-size: var(--csd-editor-special-char-item-font-size);
+        cursor: pointer;
+        transition: var(--csd-editor-special-char-item-transition);
+
+        &:hover {
+            background-color: var(--csd-editor-special-char-item-hover-bg);
+            transform: scale(var(--csd-editor-special-char-item-hover-scale));
+        }
+    }
+}
+
+// Source mode
+.csd-editor-container.source-mode {
+    .csd-editor {
+        font-family: var(--csd-editor-source-mode-font-family);
+        white-space: pre-wrap;
+    }
+}
+
+.csd-editor-toolbar-mobile {
+    display: none;  // Hidden by default
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    background-color: var(--bg-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .csd-editor-toolbar-mobile-top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        border-bottom: 1px solid var(--bc-input);
+        background-color: var(--bg-light);
+    }
+
+    .csd-editor-toolbar-mobile-bottom {
+        position: fixed;
+        bottom: 0;  // Will be adjusted when keyboard is visible
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        border-top: 1px solid var(--bc-input);
+        background-color: var(--bg-light);
+    }
+
+    .csd-editor-toolbar-group {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .csd-editor-toolbar-dropdown {
+        position: relative;
+
+        .csd-editor-tool {
+            padding: 0.5rem;
+            border: none;
+            background: none;
+            color: var(--text-color);
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.05);
+                border-radius: var(--br-btn);
+            }
+        }
+
+        .csd-editor-toolbar-dropdown-menu {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background-color: var(--bg-light);
+            border: 1px solid var(--bc-input);
+            border-radius: var(--br-input);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem;
+
+            button {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem;
+                border: none;
+                background: none;
+                color: var(--text-color);
+                cursor: pointer;
+                width: 100%;
+                text-align: left;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.05);
+                    border-radius: var(--br-btn);
+                }
+            }
+        }
+
+        &.active .csd-editor-toolbar-dropdown-menu {
+            display: block;
+        }
+    }
+}
+
+// Show mobile toolbar only on mobile devices when editor is focused
+@media (max-width: 768px) {
+    .csd-editor-container:focus-within .csd-editor-toolbar-mobile {
+        display: block;
+    }
+}
+
+// Page break
+hr.page-break {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 1rem 0;
+    page-break-after: always;
+}
+
+// editor
+.csd-editor-link-popover {
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 12px;
+    z-index: 1000;
+    border-radius: var(--br-input);
+}
+
+.csd-editor-link-popover .form-buttons {
+    margin-top: 12px;
+    text-align: right;
+}
+
+
+.csd-editor-link-popover .btn-insert {
+    background: #007bff;
+    color: white;
+}
+
+.csd-editor-link-popover .btn-cancel {
+    background: #6c757d;
+    color: white;
+}
+
+.csd-editor-table-picker {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 8px;
+    z-index: 1000;
+}
+
+.csd-editor-table-picker .table-grid {
+    display: inline-block;
+}
+
+.csd-editor-table-picker .table-row {
+    display: flex;
+}
+
+.csd-editor-table-picker .table-cell {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ddd;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.csd-editor-table-picker .table-cell.selected {
+    background: #007bff;
+}
+
+.csd-editor-table-picker .table-size {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #666;
+}
+
+.csd-editor a {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.csd-editor a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.csd-table-context-menu {
+    position: fixed;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1000;
+    min-width: 160px;
+
+    .menu-item {
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        user-select: none;
+
+        &:hover {
+            background-color: #f5f5f5;
+        }
+
+        &:active {
+            background-color: #e8e8e8;
+        }
+    }
+}
+
+.csd-editor {
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 8px 0;
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            position: relative;
+            min-width: 30px;
+            
+            &:focus {
+                outline: 2px solid #0066cc;
+                outline-offset: -2px;
+            }
+        }
+
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        // Stile per celle unite
+        [colspan], [rowspan] {
+            background-color: #fafafa;
+        }
+    }
+}
+
+// Toolbar button styles with more refined borders, colors, and hover states
+.csd-editor-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border: none;
+    background: none;
+    border-radius: var(--br-btn);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    i {
+        font-size: 0.875rem;
+    }
+
+    &:hover {
+        background-color: #f8f8f8;
+        border-color: #d0d0d0;
+    }
+
+    &:active {
+        background-color: #f0f0f0;
+        border-color: #ccc;
+    }
+
+    &.active {
+        color: var(--csd-color-primary);
+        background-color: rgba(var(--csd-color-primary-rgb), 0.08);
+        border-color: var(--csd-color-primary);
+    }
+}
+
+.csd-editor-toolbar-mobile {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  
+  .csd-editor-toolbar-mobile-top {
+    top: 0;
+    border-bottom: 1px solid var(--bc-input);
+    position: fixed;
+    width: 100%;
+    background: #fff;
+  }
+  
+  .csd-editor-toolbar-mobile-bottom {
+    bottom: 0;
+    border-top: 1px solid var(--bc-input);
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    transition: bottom 0.3s ease;
+    
+    &.keyboard-open {
+      bottom: var(--keyboard-height, 0px);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .csd-editor-container {
+  }
+}
+
+.csd-editor-toolbar-mobile {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1050;
+  
+    .csd-editor-toolbar-mobile-top {
+        top: 0;
+        border-bottom: 1px solid var(--bc-input);
+        position: fixed;
+        width: 100%;
+        background: #fff;
+        padding: 0.25rem;
+        height: 3.5rem;
+    }
+  
+    .csd-editor-toolbar-mobile-bottom {
+        bottom: 0;
+        border-top: 1px solid var(--bc-input);
+        position: fixed;
+        width: 100%;
+        background: #fff;
+        padding: 0.25rem;
+        height: 3.5rem;
+        transform: translateY(0);
+        transition: transform 0.2s ease;
+        will-change: transform;
+        
+        &.keyboard-open {
+            transform: translateY(calc(-1 * var(--keyboard-height, 0px)));
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .csd-editor-toolbar {
+        display: none;
+    }
+}
+
+.csd-editor-toolbar-mobile {
+    .csd-editor-toolbar-mobile-top,
+    .csd-editor-toolbar-mobile-bottom {
+        .csd-editor-tool {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 3rem;
+            min-height: 3rem;
+            width: 100%;
+            height: 100%;
+            padding: 0rem;
+            border: none;
+            background: none;
+            color: var(--text-color);
+            cursor: pointer;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+
+            i {
+                font-size: 1.35rem;
+            }
+
+            &:hover {
+                background-color: var(--bg-highlight);
+            }
+
+            &.active {
+                color: var(--csd-color-primary);
+                background-color: rgba(var(--csd-color-primary-rgb), 0.1);
+            }
+        }
+
+        .csd-editor-toolbar-dropdown {
+            position: relative;
+
+            > button.csd-editor-tool {
+                padding: 0 0.5rem;
+            }
+
+            .csd-editor-toolbar-dropdown-menu {
+                position: absolute;
+                bottom: 100%;
+                right: 0;
+                min-width: 160px;
+                background: var(--bg-light);
+                border: 1px solid var(--bc-input);
+                border-radius: var(--br-input);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                margin-bottom: 0.5rem;
+                padding: 0.25rem;
+                display: none;
+                height: fit-content;
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    padding: 0.5rem;
+                    border: none;
+                    background: none;
+                    color: var(--text-color);
+                    cursor: pointer;
+                    border-radius: 0.25rem;
+                    font-size: 0.875rem;
+                    text-align: left;
+
+                    i {
+                        width: 1.5rem;
+                        font-size: 1rem;
+                        margin-right: 0.5rem;
+                    }
+
+                    &:hover {
+                        background-color: var(--bg-highlight);
+                    }
+                }
+            }
+
+            &.active .csd-editor-toolbar-dropdown-menu {
+                display: block;
+            }
+        }
+    }
+
+    .csd-editor-toolbar-mobile-top {
+        padding: 0.5rem;
+        gap: 0.25rem;
+
+        .csd-editor-toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .csd-editor-toolbar-dropdown-menu{
+            top: 0!important;
+            bottom: auto!important;
+        }
+    }
+
+    .csd-editor-toolbar-mobile-bottom {
+        padding: 0.5rem;
+        gap: 0.25rem;
+
+        .csd-editor-toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+    }
+}

@@ -1,0 +1,386 @@
+/* Floating Action Button Component */
+:root {
+    // Base Layout
+    --csd-fab-position: relative;
+    --csd-fab-display: inline-block;
+    --csd-fab-z-index: 1000;
+    
+    // Main FAB Button
+    --csd-fab-button-width: 56px;
+    --csd-fab-button-height: 56px;
+    --csd-fab-button-border-radius: 50%;
+    --csd-fab-button-bg: var(--accent-color);
+    --csd-fab-button-color: white;
+    --csd-fab-button-border: none;
+    --csd-fab-button-cursor: pointer;
+    --csd-fab-button-display: flex;
+    --csd-fab-button-align: center;
+    --csd-fab-button-justify: center;
+    --csd-fab-button-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --csd-fab-button-transition: var(--transition, all 0.3s);
+    --csd-fab-button-user-select: none;
+    --csd-fab-button-tap-highlight: transparent;
+    
+    // Button States
+    --csd-fab-button-hover-bg: var(--accent-color-hover);
+    --csd-fab-button-hover-transform: translateY(-2px);
+    --csd-fab-button-hover-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    
+    // FAB Icon
+    --csd-fab-icon-size: 24px;
+    --csd-fab-icon-transition: transform 0.3s ease;
+    --csd-fab-icon-active-transform: rotate(45deg);
+    --csd-fab-icon-color: inherit;
+    --csd-fab-icon-pointer-events: none;
+    --csd-fab-icon-stroke-width: 36px;
+    
+    // FAB Menu
+    --csd-fab-menu-position: absolute;
+    --csd-fab-menu-display: flex;
+    --csd-fab-menu-direction: column;
+    --csd-fab-menu-gap: 16px;
+    --csd-fab-menu-bottom: 100%;
+    --csd-fab-menu-right: 0;
+    --csd-fab-menu-margin-bottom: 16px;
+    --csd-fab-menu-visibility: hidden;
+    --csd-fab-menu-opacity: 0;
+    --csd-fab-menu-transform: translateY(10px);
+    --csd-fab-menu-transition: all 0.3s ease;
+    
+    // Menu Visible State
+    --csd-fab-menu-visible-visibility: visible;
+    --csd-fab-menu-visible-opacity: 1;
+    --csd-fab-menu-visible-transform: translateY(0);
+    
+    // FAB Menu Item
+    --csd-fab-item-display: flex;
+    --csd-fab-item-align: center;
+    --csd-fab-item-gap: 12px;
+    --csd-fab-item-padding: 8px 16px;
+    --csd-fab-item-bg: var(--bg-light);
+    --csd-fab-item-border: 1px solid var(--bc-card);
+    --csd-fab-item-border-radius: var(--br-card);
+    --csd-fab-item-color: var(--text-color);
+    --csd-fab-item-text-decoration: none;
+    --csd-fab-item-font-size: 0.9375rem;
+    --csd-fab-item-white-space: nowrap;
+    --csd-fab-item-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --csd-fab-item-transition: var(--transition);
+    
+    // Item States
+    --csd-fab-item-hover-bg: var(--secondary-color);
+    --csd-fab-item-hover-transform-right: translateX(-4px);
+    --csd-fab-item-hover-transform-left: translateX(4px);
+    
+    // Item Icon
+    --csd-fab-item-icon-width: 20px;
+    --csd-fab-item-icon-height: 20px;
+    --csd-fab-item-icon-flex-shrink: 0;
+    
+    // Size Variants
+    --csd-fab-sm-button-width: 40px;
+    --csd-fab-sm-button-height: 40px;
+    --csd-fab-sm-icon-size: 20px;
+    --csd-fab-sm-menu-margin-bottom: 12px;
+    --csd-fab-sm-menu-gap: 12px;
+    --csd-fab-sm-item-padding: 6px 12px;
+    --csd-fab-sm-item-font-size: 0.875rem;
+    --csd-fab-sm-item-icon-width: 16px;
+    --csd-fab-sm-item-icon-height: 16px;
+    
+    --csd-fab-lg-button-width: 64px;
+    --csd-fab-lg-button-height: 64px;
+    --csd-fab-lg-icon-size: 28px;
+    
+    // Position Variants
+    --csd-fab-fixed-position: fixed;
+    --csd-fab-position-edge: 24px;
+    
+    // Second Implementation Specific
+    --csd-fab-alt-button-width: 2.5rem;
+    --csd-fab-alt-button-height: 2.5rem;
+    --csd-fab-alt-button-bg: var(--text-color);
+    --csd-fab-alt-icon-size: 1.5rem;
+    
+    --csd-fab-list-position: absolute;
+    --csd-fab-list-left: -1.25rem;
+    --csd-fab-list-top: -1.25rem;
+    --csd-fab-list-width: 100%;
+    --csd-fab-list-height: 100%;
+    --csd-fab-list-pointer-events: none;
+    --csd-fab-list-color: #475569;
+    
+    --csd-fab-alt-item-width: 2.5rem;
+    --csd-fab-alt-item-height: 2.5rem;
+    --csd-fab-alt-item-left: 50%;
+    --csd-fab-alt-item-top: 50%;
+    --csd-fab-alt-item-transform: translate(-50%, -50%);
+    --csd-fab-alt-item-opacity: 0;
+    --csd-fab-alt-item-visibility: hidden;
+    --csd-fab-alt-item-transition: all 0.3s;
+    --csd-fab-alt-item-pointer-events: auto;
+    --csd-fab-alt-item-bg: #edf1f9;
+    --csd-fab-alt-item-hover-bg: #e2e8f0;
+    --csd-fab-alt-item-icon-size: 1rem;
+}
+
+.csd-fab {
+    position: var(--csd-fab-position);
+    display: var(--csd-fab-display);
+    z-index: var(--csd-fab-z-index);
+
+    /* Original Implementation */
+    .fab-button {
+        width: var(--csd-fab-button-width);
+        height: var(--csd-fab-button-height);
+        border-radius: var(--csd-fab-button-border-radius);
+        background-color: var(--csd-fab-button-bg);
+        color: var(--csd-fab-button-color);
+        border: var(--csd-fab-button-border);
+        cursor: var(--csd-fab-button-cursor);
+        display: var(--csd-fab-button-display);
+        align-items: var(--csd-fab-button-align);
+        justify-content: var(--csd-fab-button-justify);
+        box-shadow: var(--csd-fab-button-box-shadow);
+        transition: var(--csd-fab-button-transition);
+
+        &:hover {
+            background-color: var(--csd-fab-button-hover-bg);
+            transform: var(--csd-fab-button-hover-transform);
+            box-shadow: var(--csd-fab-button-hover-box-shadow);
+        }
+
+        .fab-icon {
+            font-size: var(--csd-fab-icon-size);
+            transition: var(--csd-fab-icon-transition);
+        }
+
+        &.active .fab-icon {
+            transform: var(--csd-fab-icon-active-transform);
+        }
+    }
+
+    .fab-menu {
+        position: var(--csd-fab-menu-position);
+        display: var(--csd-fab-menu-display);
+        flex-direction: var(--csd-fab-menu-direction);
+        gap: var(--csd-fab-menu-gap);
+        bottom: var(--csd-fab-menu-bottom);
+        right: var(--csd-fab-menu-right);
+        margin-bottom: var(--csd-fab-menu-margin-bottom);
+        visibility: var(--csd-fab-menu-visibility);
+        opacity: var(--csd-fab-menu-opacity);
+        transform: var(--csd-fab-menu-transform);
+        transition: var(--csd-fab-menu-transition);
+
+        &.show {
+            visibility: var(--csd-fab-menu-visible-visibility);
+            opacity: var(--csd-fab-menu-visible-opacity);
+            transform: var(--csd-fab-menu-visible-transform);
+        }
+
+        .fab-item {
+            display: var(--csd-fab-item-display);
+            align-items: var(--csd-fab-item-align);
+            gap: var(--csd-fab-item-gap);
+            padding: var(--csd-fab-item-padding);
+            background-color: var(--csd-fab-item-bg);
+            border: var(--csd-fab-item-border);
+            border-radius: var(--csd-fab-item-border-radius);
+            color: var(--csd-fab-item-color);
+            text-decoration: var(--csd-fab-item-text-decoration);
+            font-size: var(--csd-fab-item-font-size);
+            white-space: var(--csd-fab-item-white-space);
+            box-shadow: var(--csd-fab-item-box-shadow);
+            transition: var(--csd-fab-item-transition);
+
+            &:hover {
+                background-color: var(--csd-fab-item-hover-bg);
+                transform: var(--csd-fab-item-hover-transform-right);
+            }
+
+            .item-icon {
+                width: var(--csd-fab-item-icon-width);
+                height: var(--csd-fab-item-icon-height);
+                flex-shrink: var(--csd-fab-item-icon-flex-shrink);
+            }
+        }
+    }
+
+    /* Size Variants */
+    &.fab-sm {
+        .fab-button {
+            width: var(--csd-fab-sm-button-width);
+            height: var(--csd-fab-sm-button-height);
+
+            .fab-icon {
+                font-size: var(--csd-fab-sm-icon-size);
+            }
+        }
+
+        .fab-menu {
+            margin-bottom: var(--csd-fab-sm-menu-margin-bottom);
+            gap: var(--csd-fab-sm-menu-gap);
+
+            .fab-item {
+                padding: var(--csd-fab-sm-item-padding);
+                font-size: var(--csd-fab-sm-item-font-size);
+
+                .item-icon {
+                    width: var(--csd-fab-sm-item-icon-width);
+                    height: var(--csd-fab-sm-item-icon-height);
+                }
+            }
+        }
+    }
+
+    &.fab-lg {
+        .fab-button {
+            width: var(--csd-fab-lg-button-width);
+            height: var(--csd-fab-lg-button-height);
+
+            .fab-icon {
+                font-size: var(--csd-fab-lg-icon-size);
+            }
+        }
+    }
+
+    /* Position Variants */
+    &.fab-top-right {
+        position: var(--csd-fab-fixed-position);
+        top: var(--csd-fab-position-edge);
+        right: var(--csd-fab-position-edge);
+
+        .fab-menu {
+            bottom: auto;
+            top: 100%;
+            margin-top: var(--csd-fab-menu-margin-bottom);
+            margin-bottom: 0;
+        }
+    }
+
+    &.fab-bottom-right {
+        position: var(--csd-fab-fixed-position);
+        bottom: var(--csd-fab-position-edge);
+        right: var(--csd-fab-position-edge);
+    }
+
+    &.fab-bottom-left {
+        position: var(--csd-fab-fixed-position);
+        bottom: var(--csd-fab-position-edge);
+        left: var(--csd-fab-position-edge);
+
+        .fab-menu {
+            right: auto;
+            left: 0;
+
+            .fab-item:hover {
+                transform: var(--csd-fab-item-hover-transform-left);
+            }
+        }
+    }
+
+    &.fab-top-left {
+        position: var(--csd-fab-fixed-position);
+        top: var(--csd-fab-position-edge);
+        left: var(--csd-fab-position-edge);
+
+        .fab-menu {
+            bottom: auto;
+            top: 100%;
+            right: auto;
+            left: 0;
+            margin-top: var(--csd-fab-menu-margin-bottom);
+            margin-bottom: 0;
+
+            .fab-item:hover {
+                transform: var(--csd-fab-item-hover-transform-left);
+            }
+        }
+    }
+
+    /* Second Implementation */
+    .csd-fab-button {
+        position: relative;
+        width: var(--csd-fab-alt-button-width);
+        height: var(--csd-fab-alt-button-height);
+        border-radius: var(--csd-fab-button-border-radius);
+        background-color: var(--csd-fab-alt-button-bg);
+        color: var(--csd-fab-button-color);
+        border: var(--csd-fab-button-border);
+        cursor: var(--csd-fab-button-cursor);
+        transition: var(--csd-fab-button-transition);
+        user-select: var(--csd-fab-button-user-select);
+        -webkit-tap-highlight-color: var(--csd-fab-button-tap-highlight);
+        display: var(--csd-fab-button-display);
+        align-items: var(--csd-fab-button-align);
+        justify-content: var(--csd-fab-button-justify);
+
+        ion-icon {
+            font-size: var(--csd-fab-alt-icon-size);
+            color: var(--csd-fab-icon-color);
+            pointer-events: var(--csd-fab-icon-pointer-events);
+            transition: var(--csd-fab-button-transition);
+            --ionicon-stroke-width: var(--csd-fab-icon-stroke-width);
+        }
+    }
+
+    .csd-fab-list {
+        position: var(--csd-fab-list-position);
+        left: var(--csd-fab-list-left);
+        top: var(--csd-fab-list-top);
+        width: var(--csd-fab-list-width);
+        height: var(--csd-fab-list-height);
+        pointer-events: var(--csd-fab-list-pointer-events);
+        color: var(--csd-fab-list-color);
+
+        .csd-fab-button {
+            position: absolute;
+            width: var(--csd-fab-alt-item-width);
+            height: var(--csd-fab-alt-item-height);
+            left: var(--csd-fab-alt-item-left);
+            top: var(--csd-fab-alt-item-top);
+            transform: var(--csd-fab-alt-item-transform);
+            opacity: var(--csd-fab-alt-item-opacity);
+            visibility: var(--csd-fab-alt-item-visibility);
+            transition: var(--csd-fab-alt-item-transition);
+            pointer-events: var(--csd-fab-alt-item-pointer-events);
+            background-color: var(--csd-fab-alt-item-bg);
+            color: inherit;
+            display: var(--csd-fab-button-display);
+            align-items: var(--csd-fab-button-align);
+            justify-content: var(--csd-fab-button-justify);
+
+            ion-icon {
+                color: inherit;
+                font-size: var(--csd-fab-alt-item-icon-size);
+                --ionicon-stroke-width: var(--csd-fab-icon-stroke-width);
+            }
+
+            &:hover {
+                background-color: var(--csd-fab-alt-item-hover-bg);
+            }
+        }
+    }
+
+    &.open {
+        > .csd-fab-button {
+            ion-icon {
+                transform: var(--csd-fab-icon-active-transform);
+            }
+        }
+
+        .csd-fab-list {
+            pointer-events: auto;
+            
+            .csd-fab-button {
+                opacity: 1;
+                visibility: visible;
+
+                &:hover {
+                    transform: translate(var(--x, -50%), var(--y, -50%)) scale(1);
+                }
+            }
+        }
+    }
+}

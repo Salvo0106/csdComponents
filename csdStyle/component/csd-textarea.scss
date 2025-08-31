@@ -1,0 +1,208 @@
+// Textarea Component Variables
+:root {
+    // Base Textarea
+    --csd-textarea-width: 100%;
+    --csd-textarea-min-height: 100px;
+    --csd-textarea-resize: vertical; /* Only vertical resize */
+    --csd-textarea-font-family: inherit;
+    --csd-textarea-line-height: 1.5;
+    --csd-textarea-padding: var(--p-input);
+    --csd-textarea-border: 1px solid var(--bc-input);
+    --csd-textarea-border-radius: var(--br-input);
+    
+    // Disabled State
+    --csd-textarea-disabled-bg: var(--bg-input-disabled);
+    --csd-textarea-disabled-cursor: not-allowed;
+    
+    // Character Counter
+    --csd-textarea-counter-position-bottom: 8px;
+    --csd-textarea-counter-position-right: 8px;
+    --csd-textarea-counter-font-size: 0.875rem;
+    --csd-textarea-counter-color: var(--text-color-secondary);
+    --csd-textarea-counter-bg: var(--bg-input);
+    --csd-textarea-counter-padding: 0 4px;
+    --csd-textarea-counter-error-color: var(--csd-color-danger);
+    
+    // Simple Counter
+    --csd-textarea-counter-simple-font-size: 0.85em;
+    --csd-textarea-counter-simple-color: var(--text-color-light);
+    --csd-textarea-counter-simple-margin-top: 4px;
+    
+    // Error State
+    --csd-textarea-error-border-color: var(--csd-color-danger);
+    --csd-textarea-error-shadow-color: rgba(var(--csd-color-danger-rgb), 0.2);
+    --csd-textarea-error-message-color: var(--csd-color-danger);
+    --csd-textarea-error-message-font-size: 0.875rem;
+    --csd-textarea-error-message-margin-top: 4px;
+    
+    // Variants
+    // Filled
+    --csd-textarea-filled-border: none;
+    --csd-textarea-filled-border-bottom: 2px solid var(--bc-input);
+    --csd-textarea-filled-border-radius: var(--br-field) var(--br-field) 0 0;
+    --csd-textarea-filled-padding: 16px;
+    --csd-textarea-filled-bg: var(--secondary-color);
+    --csd-textarea-filled-focus-border: var(--accent-color);
+    --csd-textarea-filled-focus-bg: var(--bg-input);
+    
+    // Outlined
+    --csd-textarea-outlined-border: 2px solid var(--bc-input);
+    --csd-textarea-outlined-focus-border: var(--accent-color);
+    
+    // Sizes
+    --csd-textarea-sm-padding: 8px;
+    --csd-textarea-sm-font-size: 0.875rem;
+    --csd-textarea-lg-padding: 16px;
+    --csd-textarea-lg-font-size: 1.125rem;
+    
+    // Simple Textarea (Old Implementation)
+    --csd-textarea-simple-min-height: 60px;
+}
+
+// Main Textarea Component
+.csd-textarea {
+    position: relative;
+    width: var(--csd-textarea-width);
+    min-height: var(--csd-textarea-min-height);
+    resize: var(--csd-textarea-resize) !important; /* Force vertical resize only */
+    font-family: var(--csd-textarea-font-family);
+    line-height: var(--csd-textarea-line-height);
+    padding: var(--csd-textarea-padding);
+    border: var(--csd-textarea-border);
+    border-radius: var(--csd-textarea-border-radius);
+    box-sizing: border-box;
+
+    &:disabled {
+        background-color: var(--csd-textarea-disabled-bg);
+        cursor: var(--csd-textarea-disabled-cursor);
+        resize: none !important;
+    }
+
+    &::placeholder {
+        color: var(--csd-input-color);
+        font-weight: normal;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--csd-input-focus-color);
+    }
+
+    // When used inside .csd-field-inline
+    .csd-field-inline & {
+        min-width: calc(100% - var(--csd-field-inline-label-width));
+    }
+}
+
+// Container Variant for Complex Styling
+.csd-textarea-container {
+    position: relative;
+    width: var(--csd-textarea-width);
+
+    textarea {
+        width: var(--csd-textarea-width);
+        min-height: var(--csd-textarea-min-height);
+        resize: var(--csd-textarea-resize) !important; /* Force vertical resize only */
+        font-family: var(--csd-textarea-font-family);
+        line-height: var(--csd-textarea-line-height);
+        padding: var(--csd-textarea-padding);
+        border: var(--csd-textarea-border);
+        border-radius: var(--csd-textarea-border-radius);
+        box-sizing: border-box;
+
+        &.auto-resize {
+            resize: none !important;
+            overflow-y: hidden;
+        }
+
+        &.no-resize {
+            resize: none !important;
+        }
+
+        &:disabled {
+            background-color: var(--csd-textarea-disabled-bg);
+            cursor: var(--csd-textarea-disabled-cursor);
+            resize: none !important;
+        }
+    }
+
+    .char-counter {
+        position: absolute;
+        bottom: var(--csd-textarea-counter-position-bottom);
+        right: var(--csd-textarea-counter-position-right);
+        font-size: var(--csd-textarea-counter-font-size);
+        color: var(--csd-textarea-counter-color);
+        pointer-events: none;
+        background-color: var(--csd-textarea-counter-bg);
+        padding: var(--csd-textarea-counter-padding);
+
+        &.limit-reached {
+            color: var(--csd-textarea-counter-error-color);
+        }
+    }
+
+    &.has-error {
+        textarea {
+            border-color: var(--csd-textarea-error-border-color);
+
+            &:focus {
+                box-shadow: 0 0 0 2px var(--csd-textarea-error-shadow-color);
+            }
+        }
+
+        .error-message {
+            color: var(--csd-textarea-error-message-color);
+            font-size: var(--csd-textarea-error-message-font-size);
+            margin-top: var(--csd-textarea-error-message-margin-top);
+        }
+    }
+
+    // Variants
+    &.filled {
+        textarea {
+            border: var(--csd-textarea-filled-border);
+            border-bottom: var(--csd-textarea-filled-border-bottom);
+            border-radius: var(--csd-textarea-filled-border-radius);
+            padding: var(--csd-textarea-filled-padding);
+            background-color: var(--csd-textarea-filled-bg);
+
+            &:focus {
+                border-color: var(--csd-textarea-filled-focus-border);
+                background-color: var(--csd-textarea-filled-focus-bg);
+            }
+        }
+    }
+
+    &.outlined {
+        textarea {
+            border: var(--csd-textarea-outlined-border);
+            
+            &:focus {
+                border-color: var(--csd-textarea-outlined-focus-border);
+            }
+        }
+    }
+
+    // Sizes
+    &.sm {
+        textarea {
+            padding: var(--csd-textarea-sm-padding);
+            font-size: var(--csd-textarea-sm-font-size);
+        }
+    }
+
+    &.lg {
+        textarea {
+            padding: var(--csd-textarea-lg-padding);
+            font-size: var(--csd-textarea-lg-font-size);
+        }
+    }
+}
+
+// Counter Component
+.csd-textarea-counter {
+    font-size: var(--csd-textarea-counter-simple-font-size);
+    color: var(--csd-textarea-counter-simple-color) !important;
+    text-align: right;
+    margin-top: var(--csd-textarea-counter-simple-margin-top);
+}

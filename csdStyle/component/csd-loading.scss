@@ -1,0 +1,70 @@
+
+// Loading component variables
+:root {
+    // Base loading variables
+    --csd-loading-display: inline-flex;
+    --csd-loading-align: center;
+    --csd-loading-justify: center;
+    
+    // Spinner variables
+    --csd-spinner-size: 40px;
+    --csd-spinner-border-width: 3px;
+    --csd-spinner-border-color: rgba(0, 0, 0, 0.1);
+    --csd-spinner-border-radius: 50%;
+    --csd-spinner-active-color: var(--primary-color);
+    
+    // Animation variables
+    --csd-spinner-animation-name: spin;
+    --csd-spinner-animation-duration: 1s;
+    --csd-spinner-animation-timing: ease-in-out;
+    --csd-spinner-animation-iteration: infinite;
+    
+    // Color variants
+    --csd-spinner-primary-color: var(--csd-color-primary);
+    --csd-spinner-secondary-color: var(--csd-color-secondary);
+    --csd-spinner-warning-color: var(--csd-color-warning);
+    --csd-spinner-danger-color: var(--csd-color-danger);
+}
+
+// Loading Spinner
+.csd-loading {
+    display: var(--csd-loading-display);
+    align-items: var(--csd-loading-align);
+    justify-content: var(--csd-loading-justify);
+
+    .spinner {
+        width: var(--csd-spinner-size);
+        height: var(--csd-spinner-size);
+        border: var(--csd-spinner-border-width) solid var(--csd-spinner-border-color);
+        border-radius: var(--csd-spinner-border-radius);
+        border-top-color: var(--csd-spinner-active-color);
+        animation: var(--csd-spinner-animation-name) var(--csd-spinner-animation-duration) var(--csd-spinner-animation-timing) var(--csd-spinner-animation-iteration);
+
+        @media (max-width: 768px) {
+            width: calc(var(--csd-spinner-size) / 1.5);
+            height: calc(var(--csd-spinner-size) / 1.5);
+        }
+    }
+
+    &.primary .spinner {
+        border-top-color: var(--csd-spinner-primary-color);
+    }
+
+    &.secondary .spinner {
+        border-top-color: var(--csd-spinner-secondary-color);
+    }
+
+    &.warning .spinner {
+        border-top-color: var(--csd-spinner-warning-color);
+    }
+
+    &.danger .spinner {
+        border-top-color: var(--csd-spinner-danger-color);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

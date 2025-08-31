@@ -1,0 +1,365 @@
+/* Reorder Component */
+:root {
+    /* Base Variables */
+    --csd-reorder-width: 100%;
+    
+    /* List Variables */
+    --csd-reorder-list-style: none;
+    --csd-reorder-list-padding: 0;
+    --csd-reorder-list-margin: 0;
+    
+    /* Item Variables */
+    --csd-reorder-item-display: flex;
+    --csd-reorder-item-align: center;
+    --csd-reorder-item-padding: 1rem;
+    --csd-reorder-item-bg: var(--bg-light);
+    --csd-reorder-item-border: 1px solid var(--bc-card);
+    --csd-reorder-item-margin-bottom: 0.5rem;
+    --csd-reorder-item-border-radius: var(--br-field);
+    --csd-reorder-item-cursor: move;
+    --csd-reorder-item-user-select: none;
+    --csd-reorder-item-transition: var(--transition);
+    
+    /* Item States */
+    --csd-reorder-item-dragging-opacity: 0.5;
+    --csd-reorder-item-dragging-bg: var(--bg-highlight);
+    --csd-reorder-item-drag-over-border: var(--accent-color);
+    
+    /* Handle Variables */
+    --csd-reorder-handle-color: var(--text-color-secondary);
+    --csd-reorder-handle-margin: 0 1rem 0 0;
+    --csd-reorder-handle-cursor: grab;
+    --csd-reorder-handle-active-cursor: grabbing;
+    
+    /* Content Variables */
+    --csd-reorder-content-flex: 1;
+    --csd-reorder-content-gap: 1rem;
+    
+    /* Actions Variables */
+    --csd-reorder-actions-gap: 0.5rem;
+    
+    /* Grid Layout Variables */
+    --csd-reorder-grid-columns: repeat(auto-fill, minmax(200px, 1fr));
+    --csd-reorder-grid-gap: 1rem;
+    
+    /* Compact Variables */
+    --csd-reorder-compact-padding: 0.5rem;
+    --csd-reorder-compact-margin: 0.25rem;
+    --csd-reorder-compact-handle-margin: 0 0.5rem 0 0;
+    
+    /* Nested List Variables */
+    --csd-reorder-nested-padding-left: 2rem;
+    --csd-reorder-nested-margin-top: 0.5rem;
+    --csd-reorder-nested-bg: var(--bg-input);
+    
+    /* Placeholder Variables */
+    --csd-reorder-placeholder-border: 2px dashed var(--bc-input);
+    --csd-reorder-placeholder-bg: var(--bg-highlight);
+    --csd-reorder-placeholder-height: 60px;
+    --csd-reorder-placeholder-margin: 0 0 0.5rem 0;
+    
+    /* Group Variables */
+    --csd-reorder-group-bg: var(--bg-light);
+    --csd-reorder-group-border: 1px solid var(--bc-card);
+    --csd-reorder-group-border-radius: var(--br-card);
+    --csd-reorder-group-padding: 1rem;
+    --csd-reorder-group-gap: 0.5rem;
+    
+    /* Group Header Variables */
+    --csd-reorder-group-header-padding: 0.75rem 1rem;
+    --csd-reorder-group-header-font-size: 0.875rem;
+    --csd-reorder-group-header-font-weight: 600;
+    --csd-reorder-group-header-color: var(--text-muted);
+    --csd-reorder-group-header-bg: var(--bg-highlight);
+    --csd-reorder-group-header-text-transform: uppercase;
+    --csd-reorder-group-header-letter-spacing: 0.5px;
+    --csd-reorder-group-header-border-radius: 1rem;
+    --csd-reorder-group-header-margin: 0 0 0.5rem 0;
+}
+
+.csd-reorder {
+    width: var(--csd-reorder-width);
+    
+    .reorder-list {
+        list-style: var(--csd-reorder-list-style);
+        padding: var(--csd-reorder-list-padding);
+        margin: var(--csd-reorder-list-margin);
+
+        .reorder-item {
+            display: var(--csd-reorder-item-display);
+            align-items: var(--csd-reorder-item-align);
+            padding: var(--csd-reorder-item-padding);
+            background-color: var(--csd-reorder-item-bg);
+            border: var(--csd-reorder-item-border);
+            margin-bottom: var(--csd-reorder-item-margin-bottom);
+            border-radius: var(--csd-reorder-item-border-radius);
+            cursor: var(--csd-reorder-item-cursor);
+            user-select: var(--csd-reorder-item-user-select);
+            transition: var(--csd-reorder-item-transition);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &.dragging {
+                opacity: var(--csd-reorder-item-dragging-opacity);
+                background-color: var(--csd-reorder-item-dragging-bg);
+            }
+
+            &.drag-over {
+                border-color: var(--csd-reorder-item-drag-over-border);
+            }
+
+            .handle {
+                color: var(--csd-reorder-handle-color);
+                margin: var(--csd-reorder-handle-margin);
+                cursor: var(--csd-reorder-handle-cursor);
+
+                &:active {
+                    cursor: var(--csd-reorder-handle-active-cursor);
+                }
+            }
+
+            .content {
+                flex: var(--csd-reorder-content-flex);
+                display: var(--csd-reorder-item-display);
+                align-items: var(--csd-reorder-item-align);
+                gap: var(--csd-reorder-content-gap);
+            }
+
+            .actions {
+                display: var(--csd-reorder-item-display);
+                align-items: var(--csd-reorder-item-align);
+                gap: var(--csd-reorder-actions-gap);
+            }
+        }
+    }
+
+    // Grid layout
+    &.grid {
+        .reorder-list {
+            display: grid;
+            grid-template-columns: var(--csd-reorder-grid-columns);
+            gap: var(--csd-reorder-grid-gap);
+
+            .reorder-item {
+                margin: 0;
+                flex-direction: column;
+                text-align: center;
+
+                .handle {
+                    margin: 0 0 0.5rem 0;
+                }
+
+                .content {
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+
+    // Compact variant
+    &.compact {
+        .reorder-item {
+            padding: var(--csd-reorder-compact-padding);
+            margin-bottom: var(--csd-reorder-compact-margin);
+
+            .handle {
+                margin: var(--csd-reorder-compact-handle-margin);
+            }
+        }
+    }
+
+    // Nested lists
+    .nested-list {
+        width: var(--csd-reorder-width);
+        padding-left: var(--csd-reorder-nested-padding-left);
+        margin-top: var(--csd-reorder-nested-margin-top);
+
+        .reorder-item {
+            background-color: var(--csd-reorder-nested-bg);
+        }
+    }
+
+    // Placeholder styles
+    .placeholder {
+        border: var(--csd-reorder-placeholder-border);
+        background-color: var(--csd-reorder-placeholder-bg);
+        height: var(--csd-reorder-placeholder-height);
+        margin: var(--csd-reorder-placeholder-margin);
+        border-radius: var(--csd-reorder-item-border-radius);
+    }
+}
+
+
+
+
+/* Reorder Group Component */
+.csd-reorder-group {
+    background-color: var(--csd-reorder-group-bg);
+    border: var(--csd-reorder-group-border);
+    border-radius: var(--csd-reorder-group-border-radius);
+    overflow: hidden;
+    padding: var(--csd-reorder-group-padding);
+    display: var(--csd-reorder-item-display);
+    flex-direction: column;
+    gap: var(--csd-reorder-group-gap);
+
+    &.reordering {
+        .csd-item:not(.csd-reorder-chosen) {
+            transition: transform 0.2s ease;
+        }
+    }
+
+    .csd-reorder {
+        margin: 0;
+        padding: 0;
+        
+        .csd-item {
+            display: var(--csd-reorder-item-display);
+            align-items: var(--csd-reorder-item-align);
+            padding: var(--csd-reorder-item-padding);
+            gap: var(--csd-reorder-content-gap);
+            margin: 0;
+            color: var(--text-color);
+            background-color: var(--csd-reorder-item-bg);
+            border-radius: var(--csd-reorder-item-border-radius);
+            border: var(--csd-reorder-item-border);
+            transition: var(--csd-reorder-item-transition);
+
+            .handle {
+                cursor: var(--csd-reorder-item-cursor);
+                font-size: var(--csd-list-item-icon-size);
+                color: var(--csd-list-item-icon-color);
+                flex-shrink: 0;
+            }
+
+            span {
+                flex: var(--csd-reorder-content-flex);
+            }
+
+            &:hover {
+                background-color: var(--csd-reorder-item-dragging-bg);
+            }
+        }
+    }
+
+    .csd-group-item {
+        display: var(--csd-reorder-item-display);
+        flex-direction: column;
+        gap: var(--csd-reorder-group-gap);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .csd-group-header {
+            padding: var(--csd-reorder-group-header-padding);
+            font-size: var(--csd-reorder-group-header-font-size);
+            font-weight: var(--csd-reorder-group-header-font-weight);
+            color: var(--csd-reorder-group-header-color);
+            background-color: var(--csd-reorder-group-header-bg);
+            text-transform: var(--csd-reorder-group-header-text-transform);
+            letter-spacing: var(--csd-reorder-group-header-letter-spacing);
+            border-radius: var(--csd-reorder-group-header-border-radius);
+        }
+
+        .csd-reorder .csd-item {
+            padding-left: var(--csd-reorder-nested-padding-left);
+        }
+    }
+
+    &.reordering,
+    .csd-group-item.reordering {
+        .csd-reorder:not(.csd-reorder-drag) {
+            .csd-item {
+                transform: scale(1);
+                transition: transform 0.2s ease;
+            }
+        }
+    }
+}
+
+/* Second Reorder Group Implementation */
+.csd-reorder-group {
+    background-color: var(--csd-reorder-group-bg);
+    border: var(--csd-reorder-group-border);
+    border-radius: var(--csd-reorder-group-border-radius);
+    overflow: hidden;
+    padding: var(--csd-reorder-group-padding);
+    display: var(--csd-reorder-item-display);
+    flex-direction: column;
+    gap: var(--csd-reorder-group-gap);
+
+    .csd-group-item {
+        margin: 0;
+        padding: 0;
+        
+        .csd-group-header {
+            padding: var(--csd-reorder-group-header-padding);
+            font-size: var(--csd-reorder-group-header-font-size);
+            font-weight: var(--csd-reorder-group-header-font-weight);
+            color: var(--csd-reorder-group-header-color);
+            background-color: var(--csd-reorder-group-header-bg);
+            text-transform: var(--csd-reorder-group-header-text-transform);
+            letter-spacing: var(--csd-reorder-group-header-letter-spacing);
+            border-radius: var(--csd-reorder-item-border-radius);
+            margin: var(--csd-reorder-group-header-margin);
+        }
+    }
+
+    .csd-reorder {
+        margin: 0;
+        padding: 0;
+        cursor: default;
+        
+        .csd-item {
+            display: var(--csd-reorder-item-display);
+            align-items: var(--csd-reorder-item-align);
+            padding: var(--csd-reorder-compact-padding);
+            gap: var(--csd-reorder-content-gap);
+            margin: 0;
+            color: var(--text-color);
+            background-color: var(--csd-reorder-item-bg);
+            border-radius: var(--csd-reorder-item-border-radius);
+            border: var(--csd-reorder-item-border);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+            .handle {
+                cursor: var(--csd-reorder-item-cursor);
+                font-size: var(--csd-list-item-icon-size);
+                color: var(--csd-list-item-icon-color);
+                flex-shrink: 0;
+                display: var(--csd-reorder-item-display);
+                align-items: var(--csd-reorder-item-align);
+            }
+
+            span {
+                flex: var(--csd-reorder-content-flex);
+            }
+
+            &:hover {
+                background-color: var(--csd-reorder-item-dragging-bg);
+            }
+        }
+
+        &.csd-reorder-drag {
+            .csd-item {
+                box-shadow: var(--shadow-lg);
+                background-color: var(--csd-reorder-item-dragging-bg);
+                border-color: var(--text-color);
+                opacity: var(--csd-reorder-item-dragging-opacity);
+            }
+        }
+    }
+
+    &.reordering,
+    .csd-group-item.reordering {
+        .csd-reorder:not(.csd-reorder-drag) {
+            .csd-item {
+                transform: scale(1);
+                transition: transform 0.2s ease;
+            }
+        }
+    }
+}

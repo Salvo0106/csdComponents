@@ -1,0 +1,267 @@
+// Popover Component Variables
+:root {
+    // Base popover variables
+    --popover-z-index: 1000;
+    --popover-min-width: 200px;
+    --popover-max-width: 300px;
+    --popover-padding: 0.75rem 1rem;
+    --popover-scale: 0.95;
+    --popover-transition: all 0.2s ease-in-out;
+    
+    // Arrow variables - Type 1 (triangle)
+    --popover-arrow-outer-width: 8px;
+    --popover-arrow-inner-width: 7px;
+    --popover-arrow-offset: 8px;
+    
+    // Arrow variables - Type 2 (square)
+    --popover-square-arrow-size: 12px;
+    --popover-square-margin: 12px;
+    --popover-square-border-radius: 0.5rem;
+    --popover-square-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --popover-square-shadow: 2px 2px 3px rgba(0,0,0,0.05);
+    
+    // Confirm popover
+    --popover-confirm-min-width: 240px;
+}
+
+.csd-popover {
+    position: absolute;
+    background: var(--bg-light);
+    border: 1px solid var(--bc-card);
+    border-radius: var(--br-card);
+    box-shadow: var(--shadow-lg);
+    z-index: var(--popover-z-index);
+    min-width: var(--popover-min-width);
+    max-width: var(--popover-max-width);
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: top center;
+    transform: scale(var(--popover-scale));
+    transition: var(--popover-transition);
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+    }
+
+    .popover-header {
+        padding: var(--popover-padding);
+        border-bottom: 1px solid var(--bc-card);
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    .popover-body {
+        padding: var(--popover-padding);
+        color: var(--text-color-secondary);
+    }
+
+    .popover-footer {
+        padding: var(--popover-padding);
+        border-top: 1px solid var(--bc-card);
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+    }
+
+    // Arrow
+    &::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+    }
+
+    &::before {
+        border-width: var(--popover-arrow-outer-width);
+    }
+
+    &::after {
+        border-width: var(--popover-arrow-inner-width);
+    }
+
+    // Positions
+    &[data-position="top"] {
+        margin-bottom: var(--popover-arrow-offset);
+
+        &::before {
+            bottom: calc(-1 * var(--popover-arrow-outer-width));
+            left: 50%;
+            transform: translateX(-50%);
+            border-color: var(--bc-card) transparent transparent;
+        }
+
+        &::after {
+            bottom: calc(-1 * var(--popover-arrow-inner-width));
+            left: 50%;
+            transform: translateX(-50%);
+            border-color: var(--bg-light) transparent transparent;
+        }
+    }
+
+    &[data-position="bottom"] {
+        margin-top: var(--popover-arrow-offset);
+
+        &::before {
+            top: calc(-1 * var(--popover-arrow-outer-width));
+            left: 50%;
+            transform: translateX(-50%);
+            border-color: transparent transparent var(--bc-card);
+        }
+
+        &::after {
+            top: calc(-1 * var(--popover-arrow-inner-width));
+            left: 50%;
+            transform: translateX(-50%);
+            border-color: transparent transparent var(--bg-light);
+        }
+    }
+
+    &[data-position="left"] {
+        margin-right: var(--popover-arrow-offset);
+
+        &::before {
+            right: calc(-1 * var(--popover-arrow-outer-width));
+            top: 50%;
+            transform: translateY(-50%);
+            border-color: transparent transparent transparent var(--bc-card);
+        }
+
+        &::after {
+            right: calc(-1 * var(--popover-arrow-inner-width));
+            top: 50%;
+            transform: translateY(-50%);
+            border-color: transparent transparent transparent var(--bg-light);
+        }
+    }
+
+    &[data-position="right"] {
+        margin-left: var(--popover-arrow-offset);
+
+        &::before {
+            left: calc(-1 * var(--popover-arrow-outer-width));
+            top: 50%;
+            transform: translateY(-50%);
+            border-color: transparent var(--bc-card) transparent transparent;
+        }
+
+        &::after {
+            left: calc(-1 * var(--popover-arrow-inner-width));
+            top: 50%;
+            transform: translateY(-50%);
+            border-color: transparent var(--bg-light) transparent transparent;
+        }
+    }
+}
+
+
+
+// Popover - Tipo 2 (freccia quadrata)
+.csd-popover {
+    position: absolute;
+    z-index: var(--popover-z-index);
+    background: var(--bg-light);
+    border: 1px solid var(--bc-card);
+    border-radius: var(--popover-square-border-radius);
+    box-shadow: var(--popover-square-box-shadow);
+    padding: 0.75rem;
+    max-width: var(--popover-max-width);
+    opacity: 0;
+    transform: scale(var(--popover-scale));
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+
+    &.show {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        width: var(--popover-square-arrow-size);
+        height: var(--popover-square-arrow-size);
+        background-color: var(--bg-light);
+        transform: rotate(45deg);
+        z-index: -1;
+        border: 1px solid var(--bc-card);
+    }
+
+    &[data-placement="top"] {
+        transform-origin: bottom center;
+        margin-bottom: var(--popover-square-margin);
+        &:after {
+            bottom: -7px;
+            left: 50%;
+            border-top: 0;
+            border-left: 0;
+            box-shadow: var(--popover-square-shadow);
+        }
+    }
+
+    &[data-placement="bottom"] {
+        transform-origin: top center;
+        margin-top: var(--popover-square-margin);
+        &:after {
+            top: -7px;
+            left: 50%;
+            border-bottom: 0;
+            border-right: 0;
+            box-shadow: -2px -2px 3px rgba(0,0,0,0.05);
+        }
+    }
+
+    &[data-placement="left"] {
+        transform-origin: center right;
+        margin-right: var(--popover-square-margin);
+        &:after {
+            right: -7px;
+            top: 50%;
+            margin-top: -6px;
+            border-left: 0;
+            border-bottom: 0;
+            box-shadow: 2px -2px 3px rgba(0,0,0,0.05);
+        }
+    }
+
+    &[data-placement="right"] {
+        transform-origin: center left;
+        &:after {
+            left: -7px;
+            top: 50%;
+            margin-top: -6px;
+            border-right: 0;
+            border-top: 0;
+            box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+        }
+    }
+
+    .csd-popover-content {
+        position: relative;
+        z-index: 1;
+
+        p {
+            margin: 0;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+    }
+}
+
+// Confirm Popover
+.csd-popover-confirm {
+    .csd-popover-content {
+        min-width: var(--popover-confirm-min-width);
+    }
+
+    p {
+        color: var(--text-color);
+    }
+
+    ion-icon {
+        color: var(--csd-color-warning);
+    }
+}

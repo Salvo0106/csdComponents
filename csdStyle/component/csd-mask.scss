@@ -1,0 +1,93 @@
+:root {
+    // Mask Container
+    --csd-mask-width: 100%;
+    --csd-mask-position: relative;
+    
+    // Mask Input
+    --csd-mask-input-width: 100%;
+    --csd-mask-input-padding-right: 2rem;
+    
+    // Mask Placeholder
+    --csd-mask-placeholder-position: absolute;
+    --csd-mask-placeholder-left: var(--px-input);
+    --csd-mask-placeholder-top: 50%;
+    --csd-mask-placeholder-transform: translateY(-50%);
+    --csd-mask-placeholder-color: var(--text-color-secondary);
+    --csd-mask-placeholder-opacity: 0.6;
+    --csd-mask-placeholder-transition: var(--transition);
+    --csd-mask-placeholder-disabled-color: var(--text-color-disabled);
+    
+    // Mask Clear Button
+    --csd-mask-clear-position: absolute;
+    --csd-mask-clear-right: var(--px-input);
+    --csd-mask-clear-top: 50%;
+    --csd-mask-clear-transform: translateY(-50%);
+    --csd-mask-clear-opacity: 0.6;
+    --csd-mask-clear-hover-opacity: 1;
+    --csd-mask-clear-transition: var(--transition);
+    
+    // Mask Error
+    --csd-mask-error-border-color: var(--csd-color-danger);
+    --csd-mask-error-focus-shadow: 0 0 0 2px rgba(var(--csd-color-danger-rgb), 0.2);
+}
+
+.csd-mask {
+    position: var(--csd-mask-position);
+    width: var(--csd-mask-width);
+
+    input {
+        width: var(--csd-mask-input-width);
+        padding-right: var(--csd-mask-input-padding-right);
+    }
+
+    .mask-placeholder {
+        position: var(--csd-mask-placeholder-position);
+        top: var(--csd-mask-placeholder-top);
+        left: var(--csd-mask-placeholder-left);
+        transform: var(--csd-mask-placeholder-transform);
+        color: var(--csd-mask-placeholder-color);
+        pointer-events: none;
+        transition: var(--csd-mask-placeholder-transition);
+        opacity: var(--csd-mask-placeholder-opacity);
+    }
+
+    input:focus + .mask-placeholder,
+    input:not(:placeholder-shown) + .mask-placeholder {
+        display: none;
+    }
+
+    &.disabled {
+        .mask-placeholder {
+            color: var(--csd-mask-placeholder-disabled-color);
+        }
+    }
+
+    .mask-clear {
+        position: var(--csd-mask-clear-position);
+        right: var(--csd-mask-clear-right);
+        top: var(--csd-mask-clear-top);
+        transform: var(--csd-mask-clear-transform);
+        cursor: pointer;
+        display: none;
+        opacity: var(--csd-mask-clear-opacity);
+        transition: var(--csd-mask-clear-transition);
+
+        &:hover {
+            opacity: var(--csd-mask-clear-hover-opacity);
+        }
+    }
+
+    input:not(:placeholder-shown) ~ .mask-clear {
+        display: block;
+    }
+
+    &.has-error {
+        input {
+            border-color: var(--csd-mask-error-border-color);
+            
+            &:focus {
+                box-shadow: var(--csd-mask-error-focus-shadow);
+            }
+        }
+    }
+}

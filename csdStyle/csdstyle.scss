@@ -1,0 +1,374 @@
+:root {
+    /* Base Colors */
+    --white: #FFFFFF;
+    --black: #000000;
+    --transparent: rgba(255, 255, 255, 0);
+
+    /* Gray (Light Mode) */
+    --gray-25: #FDFDFD;
+    --gray-50: #FAFAFA;
+    --gray-100: #F5F5F5;
+    --gray-200: #EDEDED;
+    --gray-300: #D5D7DA;
+    --gray-400: #A4A7AE;
+    --gray-500: #717680;
+    --gray-600: #535862;
+    --gray-700: #414651;
+    --gray-800: #252B37;
+    --gray-900: #181D27;
+    --gray-950: #0A0D12;
+
+    /* Gray (Dark Mode) */
+    --gray-dark-25: #FAFAFA;
+    --gray-dark-50: #F7F7F7;
+    --gray-dark-100: #F0F0F1;
+    --gray-dark-200: #ECECEC;
+    --gray-dark-300: #CECFD2;
+    --gray-dark-400: #94979C;
+    --gray-dark-500: #85888E;
+    --gray-dark-600: #61656C;
+    --gray-dark-700: #373A41;
+    --gray-dark-800: #22262F;
+    --gray-dark-900: #13161B;
+    --gray-dark-950: #0D0E12;
+
+    /* Primary (Gray Modern) Colors */
+    --primary-25: #FCFDFD;
+    --primary-50: #F8FAFC;
+    --primary-100: #EEF2F6;
+    --primary-200: #E3E8EF;
+    --primary-300: #CDD5DF;
+    --primary-400: #9AA4B2;
+    --primary-500: #697586;
+    --primary-600: #4B5565;
+    --primary-700: #364152;
+    --primary-800: #202939;
+    --primary-900: #121926;
+    --primary-950: #0D121C;
+
+    /* Error Colors */
+    --error-25: #FFF8FA;
+    --error-50: #FEE3E2;
+    --error-100: #FEE4E2;
+    --error-200: #FEC6CA;
+    --error-300: #FDA29B;
+    --error-400: #F97066;
+    --error-500: #F04438;
+    --error-600: #D92D20;
+    --error-700: #B42318;
+    --error-800: #912018;
+    --error-900: #7A271A;
+    --error-950: #55160C;
+
+    /* Warning Colors */
+    --warning-25: #FFFCF5;
+    --warning-50: #FFF4E5;
+    --warning-100: #FEEFC7;
+    --warning-200: #FDEFB9;
+    --warning-300: #FEC84B;
+    --warning-400: #FDB022;
+    --warning-500: #F79009;
+    --warning-600: #DC6803;
+    --warning-700: #B54708;
+    --warning-800: #93370D;
+    --warning-900: #7A2E0E;
+    --warning-950: #4E1D09;
+
+    /* Success Colors */
+    --success-25: #F6FEF9;
+    --success-50: #EDFCF2;
+    --success-100: #D3F8DF;
+    --success-200: #AAF0C4;
+    --success-300: #73E2A3;
+    --success-400: #3CCB7F;
+    --success-500: #16B364;
+    --success-600: #099250;
+    --success-700: #087443;
+    --success-800: #095C37;
+    --success-900: #084C2E;
+    --success-950: #052E1C;
+
+    /* Info (Cyan) Colors */
+    --info-25: #F5FEFF;
+    --info-50: #ECF9FF;
+    --info-100: #CFF9FE;
+    --info-200: #A5F0FC;
+    --info-300: #67E3F9;
+    --info-400: #22CCEE;
+    --info-500: #0BAED4;
+    --info-600: #088AB2;
+    --info-700: #0E7080;
+    --info-800: #155B75;
+    --info-900: #165C83;
+    --info-950: #0D2D3A;
+}
+
+:root {
+    // Colors
+    --primary-color: var(--primary-950);
+    --primary-color-hover: var(--primary-800);
+    --primary-color-active: var(--primary-700);
+    --secondary-color: var(--primary-100);
+    --secondary-color-hover: var(--primary-200);
+    --secondary-color-active: var(--primary-300);
+    --accent-color: var(--primary-900);
+    --accent-color-hover: var(--primary-950);
+    --contrast-color: #333333;
+
+    --csd-color-primary-rgb: 18, 25, 38;
+
+    // Dark Theme Colors
+    --dark: #000000;
+    --light: #ffffff;
+
+    // Button Colors
+    --csd-color-primary: var(--primary-color);
+    --csd-color-primary-hover: var(--primary-color-hover);
+    --csd-color-primary-active: var(--primary-color-active);
+    --csd-color-secondary: var(--secondary-color);
+    --csd-color-secondary-hover: var(--secondary-color-hover);
+    --csd-color-secondary-active: var(--secondary-color-active);
+    --csd-color-info: var(--info-500);
+    --csd-color-info-hover: var(--info-600);
+    --csd-color-info-active: var(--info-400);
+    --csd-color-success: var(--success-500);
+    --csd-color-success-hover: var(--success-600);
+    --csd-color-success-active: var(--success-500);
+    --csd-color-warning: var(--warning-400);
+    --csd-color-warning-hover: var(--warning-500);
+    --csd-color-warning-active: var(--warning-400);
+    --csd-color-danger: var(--error-600);
+    --csd-color-danger-hover: var(--error-700);
+    --csd-color-danger-active: var(--error-600);
+    --csd-color-help: var(--gray-500);
+    --csd-color-help-hover: var(--gray-600);
+    --csd-color-help-active: var(--gray-500);
+    --csd-color-white: var(--white);
+    --csd-color-text: var(--text-color);
+
+    // Text
+    --text-color: var(--gray-900);
+    --text-color-secondary: var(--gray-500);
+    --text-color-disabled: var(--gray-500);
+
+    // Background
+    --bg-light: var(--white);
+    --bg-highlight: var(--gray-100);
+    --bg-input-disabled: var(--gray-200);
+    --bg-input: var(--white);
+
+    // Border
+    /* Border radius per campi */
+    --br-field: 4px;
+
+    // Size
+    /* Altezza campi */
+    --height-field: 20px;
+    /* Spazio tra elementi nei campi */
+    --gap-field: 8px;
+
+    // Animation
+    --transition: all 0.2s ease-in-out;
+
+    // Card
+    --bg-card: var(--white);
+    /* Padding interno */
+    --p-card: 16px;
+    /* Grigio chiaro per bordi */
+    --bc-card: var(--gray-200);
+    /* Angoli arrotondati */
+    --br-card: 20px;
+    --gap-card: 12px;
+
+    // Input
+    /* Padding verticale */
+    --py-input: 8px;
+    /* Padding orizzontale */
+    --px-input: 16px;
+    --p-input: var(--py-input) var(--px-input);
+    /* Sfondo per selezione */
+    --bg-select: var(--white);
+    /* Grigio chiaro per bordi */
+    --bc-input: var(--gray-300);
+    --br-input: 12px;
+    --pr-searchbar: calc(var(--py-input) + var(--px-input) * 1.5);
+    --position-icon: calc(var(--px-input) * 0.75);
+    --pr-clearbutton: calc(var(--pr-searchbar) * 2);
+
+
+    // Select
+    --p-select: var(--py-input) var(--px-input);
+    --p-select-visible: var(--py-input) calc(var(--px-input) * 2);
+    --p-select-group-label: calc(var(--py-input) / 2) calc(var(--px-input) / 2);
+    --p-select-group-options: 4px 12px;
+
+    // Form Field
+    --gap-form: 12px;
+    --gap-field: 8px;
+    --mb-field: 16px;
+
+    // Font
+    /* Dimensione base font */
+    --font-size: 14px;
+    /* Font */
+    --font-family: 'Roboto', sans-serif;
+    /* Altezza linea */
+    --line-height: 1.6;
+    /* Altezza linea */
+    --line-height-sm: 1;
+
+    --shadow: 0 4px 6px var(--gray-100);
+    --shadow-invert: 0 -4px 4px var(--gray-100);
+}
+
+/* Reset di base per rimuovere gli stili di default */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text-color);
+    line-height: var(--line-height);
+}
+
+html {
+    font-size: 14px;
+}
+
+/* Definizione dei tag HTML con stili neutri */
+body {
+    font-family: var(--font-family)!important;
+    font-size: var(--font-size)!important;
+    background-color: var(--bg)!important;
+    color: var(--text-color)!important;
+}
+
+/* Stili di base per i tag principali */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: bold;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: inherit;
+}
+
+a:focus-visible {
+    outline-offset: none;
+    outline: none;
+}
+
+// Typography
+.csd-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+// Typography
+
+// Utilites
+.row {
+    margin-left: 0!important;
+    margin-right: 0!important;
+}
+
+// Demo Components Styles
+.component-demo {
+    margin-bottom: 48px;
+
+    h2 {
+        color: var(--text-color);
+        margin-bottom: 8px;
+    }
+
+    p {
+        color: var(--text-color-secondary);
+        margin-bottom: 0;
+    }
+
+    .demo-container {
+        background-color: var(--bg-light);
+        border: 1px solid var(--bc-card);
+        border-radius: var(--br-card);
+        padding: 24px;
+
+        h3 {
+            color: var(--text-color);
+            font-size: 16px;
+            margin-bottom: 16px;
+            margin-top: 24px;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        .demo-content {
+            padding: 1rem 0.5rem;
+            border-radius: var(--br-field);
+        }
+
+        .demo-box {
+            padding: 1rem;
+            background-color: var(--bg-light);
+            border: 1px solid var(--bc-card);
+            border-radius: .5rem;
+            text-align: center;
+            color: var(--text-color)!important;
+        }
+    }
+
+
+    @media (max-width: 768px) {
+        margin-bottom: 24px;
+
+        .demo-container {
+            padding: 8px;
+        }
+    }
+}
+
+ion-icon {
+    --ionicon-stroke-width: 40px;
+}
+
+// Menu Button
+.csd-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    color: #64748b;
+    background-color: var(--bg-light);
+    border: 1px solid var(--bc-card);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: #edf1f5;
+        color: var(--text-color);
+    }
+
+    ion-icon {
+        font-size: 1.25rem;
+    }
+}
+
+

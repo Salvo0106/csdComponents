@@ -1,0 +1,195 @@
+// Toggle Component Variables
+:root {
+    // Base Toggle
+    --csd-toggle-width: 44px;
+    --csd-toggle-height: 24px;
+    --csd-toggle-margin: 0;
+    --csd-toggle-label-margin: 8px;
+    
+    // Toggle Control
+    --csd-toggle-control-radius: 12px;
+    --csd-toggle-control-bg: var(--bc-input);
+    --csd-toggle-control-checked-bg: var(--accent-color);
+    --csd-toggle-control-disabled-bg: var(--bg-input-disabled);
+    
+    // Toggle Knob (Thumb)
+    --csd-toggle-knob-size: 20px;
+    --csd-toggle-knob-offset: 2px;
+    --csd-toggle-knob-bg: white;
+    --csd-toggle-knob-disabled-bg: var(--text-color-disabled);
+    --csd-toggle-knob-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --csd-toggle-knob-translate: 20px;
+    
+    // Focus State
+    --csd-toggle-focus-shadow: 0 0 0 2px var(--secondary-color);
+    
+    // Toggle Group
+    --csd-toggle-group-gap: var(--gap-field);
+    
+    // Toggle Switch (Second Implementation)
+    --csd-toggle-switch-width: 2.5rem;
+    --csd-toggle-switch-height: 1.5rem;
+    --csd-toggle-switch-radius: 12px;
+    --csd-toggle-switch-bg: #cbd5e1;
+    --csd-toggle-switch-checked-bg: #020617;
+    
+    // Toggle Switch Knob
+    --csd-toggle-switch-knob-size: 1rem;
+    --csd-toggle-switch-knob-offset: 0.25rem;
+    --csd-toggle-switch-knob-bg: white;
+    --csd-toggle-switch-knob-translate: 1rem;
+    
+    // Toggle With Icons
+    --csd-toggle-icon-font-size: 0.75rem;
+    --csd-toggle-icon-left: 0.45rem;
+    --csd-toggle-icon-checked-left: 1.5rem;
+    --csd-toggle-icon-color: #000000;
+    
+    // Toggle With Text
+    --csd-toggle-text-width: 3.5rem;
+    --csd-toggle-text-font-size: 0.625rem;
+    --csd-toggle-text-font-weight: 500;
+    --csd-toggle-text-color: white;
+    --csd-toggle-text-right: 0.5rem;
+    --csd-toggle-text-left: 0.5rem;
+    --csd-toggle-text-knob-left: 2.25rem;
+    
+    // Focus and Disabled States
+    --csd-toggle-switch-focus-shadow: 0 0 0 2px rgba(2, 6, 23, 0.1);
+    --csd-toggle-switch-disabled-opacity: 0.5;
+    
+    // Toggle Group (Second Implementation)
+    --csd-toggle-group-alt-gap: 0.75rem;
+    --csd-toggle-label-font-size: 0.875rem;
+    --csd-toggle-label-color: #475569;
+}
+
+// Toggle Switch
+.csd-toggle-wrapper, .csd-toggle-group {
+    display: inline-block;
+    user-select: none;
+    
+    .csd-toggle {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .csd-toggle-switch {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: var(--csd-toggle-switch-width);
+        height: var(--csd-toggle-switch-height);
+        background-color: var(--csd-toggle-switch-bg);
+        border-radius: var(--csd-toggle-switch-radius);
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        @media (max-width: 768px) {
+            width: calc(var(--csd-toggle-switch-width) / 1.25);
+            height: calc(var(--csd-toggle-switch-height) / 1.25);
+        }
+        
+        &::after {
+            content: '';
+            position: absolute;
+            left: var(--csd-toggle-switch-knob-offset);
+            width: var(--csd-toggle-switch-knob-size);
+            height: var(--csd-toggle-switch-knob-size);
+            background-color: var(--csd-toggle-switch-knob-bg);
+            border-radius: 50%;
+            transition: all 0.2s;
+            z-index: 0;
+
+            @media (max-width: 768px) {
+                width: calc(var(--csd-toggle-switch-knob-size) / 1.25);
+                height: calc(var(--csd-toggle-switch-knob-size) / 1.25);
+                left: calc(var(--csd-toggle-switch-knob-offset) / 1.25);
+            }
+        }
+
+        &.checked {
+            background-color: var(--csd-toggle-switch-checked-bg);
+            
+            &::after {
+                left: calc(var(--csd-toggle-switch-knob-offset) + var(--csd-toggle-switch-knob-translate));
+
+                @media (max-width: 768px) {
+                    left: calc(var(--csd-toggle-switch-knob-offset) + var(--csd-toggle-switch-knob-translate) / 1.25);
+                }
+            }
+        }
+
+        // Con icone
+        &.with-icons {
+            &::before {
+                content: attr(data-icon-unchecked);
+                position: absolute;
+                left: var(--csd-toggle-icon-left);
+                color: var(--csd-toggle-icon-color);
+                z-index: 2;
+                font-size: var(--csd-toggle-icon-font-size);
+                line-height: 1;
+                transition: all .2s;
+            }
+
+            &.checked::before {
+                content: attr(data-icon-checked);
+                left: var(--csd-toggle-icon-checked-left);
+            }
+        }
+
+        // Con testo On/Off
+        &.with-text {
+            width: var(--csd-toggle-text-width);
+            
+            &::before {
+                content: attr(data-text-unchecked);
+                position: absolute;
+                right: var(--csd-toggle-text-right);
+                color: var(--csd-toggle-text-color);
+                font-size: var(--csd-toggle-text-font-size);
+                font-weight: var(--csd-toggle-text-font-weight);
+                text-transform: uppercase;
+            }
+
+            &.checked::before {
+                content: attr(data-text-checked);
+                left: var(--csd-toggle-text-left);
+            }
+
+            &.checked::after {
+                left: var(--csd-toggle-text-knob-left);
+            }
+        }
+    }
+    
+    // Focus state
+    .csd-toggle:focus + .csd-toggle-switch {
+        box-shadow: var(--csd-toggle-switch-focus-shadow);
+    }
+    
+    // Disabled state
+    .csd-toggle:disabled + .csd-toggle-switch {
+        opacity: var(--csd-toggle-switch-disabled-opacity);
+        cursor: not-allowed;
+    }
+}
+
+.csd-toggle-group {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--csd-toggle-group-alt-gap);
+
+    @media (max-width: 768px) {
+        gap: calc(var(--csd-toggle-group-alt-gap) / 1.25);
+    }
+    
+    .csd-toggle-label {
+        font-size: var(--csd-toggle-label-font-size);
+        color: var(--csd-toggle-label-color);
+        user-select: none;
+    }
+}

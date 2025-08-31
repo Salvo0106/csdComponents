@@ -1,0 +1,553 @@
+/* Custom Select Component */
+:root {
+    // Basic Container Variables
+    --csd-select-position: relative;
+    --csd-select-width: 100%;
+    --csd-select-disabled-opacity: 0.6;
+    
+    // Select Wrapper Variables
+    --csd-select-wrapper-position: relative;
+    --csd-select-wrapper-width: 100%;
+    --csd-select-padding: 4px 8px;
+    --csd-select-margin-bottom-option: 4px;
+    --csd-select-padding-y: 4px;
+    --csd-select-gap-float: 4px;
+    
+    // Custom Select Display
+    --csd-select-display-padding: var(--p-select, var(--csd-select-padding));
+    --csd-select-display-justify: space-between;
+    --csd-select-display-align: center;
+    --csd-select-display-box-shadow: var(--shadow);
+    --csd-select-display-border-radius: var(--br-input);
+    
+    // Select Label
+    --csd-select-label-max-width: 90%;
+    --csd-select-label-with-clear-max-width: 80%;
+    
+    // Trigger Variables
+    --csd-select-trigger-width: 100%;
+    --csd-select-trigger-min-height: var(--height-field);
+    --csd-select-trigger-padding: var(--py-input) var(--px-input);
+    --csd-select-trigger-bg: var(--bg-input);
+    --csd-select-trigger-border: 1px solid var(--bc-input);
+    --csd-select-trigger-border-radius: var(--br-field);
+    --csd-select-trigger-transition: var(--transition);
+    --csd-select-trigger-gap: var(--gap-field);
+    
+    // Trigger States
+    --csd-select-trigger-hover-border: var(--accent-color);
+    --csd-select-trigger-focus-border: var(--accent-color);
+    --csd-select-trigger-focus-shadow: 0 0 0 2px var(--secondary-color);
+    --csd-select-trigger-disabled-bg: var(--bg-input-disabled);
+    
+    // Custom Select
+    --csd-custom-select-bg: var(--bg-select, var(--bg-input));
+    --csd-custom-select-color: var(--text-color);
+    --csd-custom-select-border: 1px solid var(--bc-input);
+    --csd-custom-select-border-radius: var(--br-input);
+    --csd-custom-select-focus-border: var(--text-color);
+    
+    // Clear Button
+    --csd-select-clear-position: absolute;
+    --csd-select-clear-display: none;
+    --csd-select-clear-top: calc(50% + var(--py-input) / 2);
+    --csd-select-clear-transform: translateY(-50%);
+    --csd-select-clear-right: calc(var(--px-input) * 1.5);
+    --csd-select-clear-with-arrow-right: calc(var(--px-input) * 2 + 16px);
+    --csd-select-clear-opacity: 0.6;
+    --csd-select-clear-hover-opacity: 1;
+    --csd-select-clear-transition: var(--transition);
+    
+    // Arrow
+    --csd-select-arrow-position: absolute;
+    --csd-select-arrow-top: 50%;
+    --csd-select-arrow-right: var(--px-input);
+    --csd-select-arrow-transform: translateY(-50%);
+    --csd-select-arrow-transition: var(--transition);
+    --csd-select-arrow-open-transform: translateY(-50%) rotate(180deg);
+    
+    // Dropdown Variables
+    --csd-select-dropdown-position: absolute;
+    --csd-select-dropdown-top: calc(100% + 4px);
+    --csd-select-dropdown-left: 0;
+    --csd-select-dropdown-width: 100%;
+    --csd-select-dropdown-bg: var(--bg-input);
+    --csd-select-dropdown-border: 1px solid var(--bc-input);
+    --csd-select-dropdown-border-radius: var(--br-field);
+    --csd-select-dropdown-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --csd-select-dropdown-z-index: 1000;
+    --csd-select-dropdown-max-height: 200px;
+    --csd-select-dropdown-padding: var(--py-input);
+    
+    // Options Container
+    --csd-select-options-position: absolute;
+    --csd-select-options-top: calc(100% + var(--csd-select-gap-float));
+    --csd-select-options-left: 0;
+    --csd-select-options-width: 100%;
+    --csd-select-options-bg: var(--bg-select, var(--bg-input));
+    --csd-select-options-border: 1px solid var(--bc-input);
+    --csd-select-options-border-radius: var(--br-input);
+    --csd-select-options-padding: var(--py-input);
+    --csd-select-options-max-height: 200px;
+    --csd-select-options-shadow: var(--shadow);
+    --csd-select-options-shadow-above: var(--shadow-invert, var(--shadow));
+    
+    // Compact Dropdown Variables
+    --csd-select-compact-top-radius: var(--br-input) var(--br-input) 0 0;
+    --csd-select-compact-bottom-radius: 0 0 var(--br-input) var(--br-input);
+    --csd-select-compact-above-bottom: calc(100% + var(--csd-select-gap-float));
+    
+    // Option Variables
+    --csd-select-option-padding: var(--p-input, 8px var(--px-input));
+    --csd-select-option-transition: all .3s ease;
+    --csd-select-option-border-radius: 8px;
+    --csd-select-option-font-weight: 300;
+    
+    // Option States
+    --csd-select-option-selected-bg: rgba(59, 130, 246, 0.12);
+    --csd-select-option-selected-color: var(--accent-color-hover);
+    --csd-select-option-selected-font-weight: 400;
+    --csd-select-option-hover-bg: rgba(59, 130, 246, 0.12);
+    --csd-select-option-hover-color: var(--accent-color-hover);
+    --csd-select-option-hover-font-weight: 400;
+    --csd-select-option-focus-bg: #f1f5f9;
+    --csd-select-option-disabled-opacity: 0.6;
+    --csd-select-option-disabled-bg: var(--bg-input-disabled);
+    
+    // First Version Option
+    --csd-select-dropdown-option-padding: 8px var(--px-input);
+    --csd-select-dropdown-option-hover-bg: var(--secondary-color);
+    --csd-select-dropdown-option-selected-bg: var(--accent-color);
+    --csd-select-dropdown-option-selected-color: white;
+    
+    // Checkmark Option
+    --csd-select-checkmark-padding-left: 1rem;
+    --csd-select-checkmark-icon-color: var(--accent-color);
+    --csd-select-checkmark-icon-size: 16px;
+    --csd-select-checkmark-icon-margin: 4px;
+    --csd-select-checkmark-icon-top: 2px;
+    
+    // Editable Select
+    --csd-select-editable-padding: var(--p-select, var(--csd-select-padding));
+    --csd-select-editable-border: none;
+    --csd-select-editable-font-weight: normal;
+    --csd-select-editable-placeholder-max-width: 90%;
+    
+    // No Results
+    --csd-select-no-results-padding: var(--p-input);
+    
+    // Searchbar
+    --csd-select-searchbar-padding: var(--py-input);
+    --csd-select-searchbar-position: relative;
+    --csd-select-searchbar-icon-size: 16px;
+    --csd-select-searchbar-icon-right: 16px;
+    
+    // Searchbar Checkbox
+    --csd-select-searchbar-checkbox-gap: 5px;
+    --csd-select-searchbar-checkbox-size: 18px;
+    --csd-select-searchbar-checkbox-border: 1px solid var(--bc-input);
+    --csd-select-searchbar-checkbox-radius: var(--br-checkbox);
+    --csd-select-searchbar-checkbox-check-bg: var(--text-color);
+    --csd-select-searchbar-checkbox-check-color: var(--csd-color-white);
+    
+    // Chips
+    --csd-select-chips-max-width: 90%;
+    
+    // Single Chip
+    --csd-select-chip-gap: 2px;
+    --csd-select-chip-padding: 2px 4px;
+    --csd-select-chip-bg: #f1f5f9;
+    --csd-select-chip-radius: 8px;
+    --csd-select-chip-margin: 0 4px 0 0;
+    
+    // Group Options
+    --csd-select-group-gap: 4px;
+    --csd-select-group-options-padding: var(--p-select-group-options);
+    --csd-select-group-label-padding: var(--p-select-group-label);
+    --csd-select-group-label-font-weight: bold;
+}
+
+.csd-select {
+    position: var(--csd-select-position);
+    
+    &.disabled {
+        opacity: var(--csd-select-disabled-opacity);
+        pointer-events: none;
+    }
+}
+
+.csd-select-wrapper {
+    position: var(--csd-select-wrapper-position);
+    --p-input: var(--csd-select-padding);
+    --mb-option: var(--csd-select-margin-bottom-option);
+    --py-input: var(--csd-select-padding-y);
+    --gap-float: var(--csd-select-gap-float);
+    width: var(--csd-select-wrapper-width);
+}
+
+.csd-select-trigger {
+    width: var(--csd-select-trigger-width);
+    min-height: var(--csd-select-trigger-min-height);
+    padding: var(--csd-select-trigger-padding);
+    background-color: var(--csd-select-trigger-bg);
+    border: var(--csd-select-trigger-border);
+    border-radius: var(--csd-select-trigger-border-radius);
+    cursor: pointer;
+    transition: var(--csd-select-trigger-transition);
+    display: flex;
+    align-items: center;
+    gap: var(--csd-select-trigger-gap);
+
+    &:hover {
+        border-color: var(--csd-select-trigger-hover-border);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--csd-select-trigger-focus-border);
+        box-shadow: var(--csd-select-trigger-focus-shadow);
+    }
+
+    &.disabled {
+        background-color: var(--csd-select-trigger-disabled-bg);
+        cursor: not-allowed;
+    }
+}
+
+.csd-custom-select {
+    background-color: var(--csd-custom-select-bg) !important;
+    color: var(--csd-custom-select-color) !important;
+    border: var(--csd-custom-select-border) !important;
+    border-radius: var(--csd-custom-select-border-radius) !important;
+    cursor: pointer;
+    position: relative;
+    
+    &:has(+ .csd-select-options.visible).csd-select-compact {
+        border-radius: var(--csd-select-compact-top-radius) !important;
+        border-bottom: none !important;
+    }
+    
+    &:has(+ .csd-select-options.visible.position-above).csd-select-compact {
+        border-radius: var(--csd-select-compact-bottom-radius) !important;
+        border-bottom: 1px solid var(--bc-input) !important;
+        border-top: none !important;
+    }
+    
+    &:has(.csd-select-clearbutton.visible) .csd-label-select {
+        max-width: var(--csd-select-label-with-clear-max-width);
+    }
+    
+    &:has(.csd-select-editable:focus),
+    &:has(.csd-select-editable:focus) + .csd-select-options.csd-select-compact {
+        border-color: var(--csd-custom-select-focus-border) !important;
+    }
+}
+
+.csd-select-wrapper:has(.csd-select-options.visible.csd-select-compact:not(.position-above)) .csd-select-display,
+.csd-select-wrapper:has(.csd-select-options.visible.csd-select-compact:not(.position-above)) .csd-select-editable {
+    box-shadow: none;
+}
+
+.csd-select-display {
+    padding: var(--csd-select-display-padding) !important;
+    display: flex;
+    justify-content: var(--csd-select-display-justify);
+    align-items: var(--csd-select-display-align);
+    border-radius: var(--csd-select-display-border-radius) !important;
+
+    .csd-label-select {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: var(--csd-select-label-max-width);
+    }
+    
+    .csd-select-chips {
+        display: block;
+        max-width: var(--csd-select-chips-max-width);
+        white-space: nowrap;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.csd-select-clearbutton {
+    position: var(--csd-select-clear-position);
+    display: var(--csd-select-clear-display);
+    top: var(--csd-select-clear-top);
+    transform: var(--csd-select-clear-transform);
+    right: var(--csd-select-clear-right);
+    cursor: pointer;
+    opacity: var(--csd-select-clear-opacity);
+    transition: var(--csd-select-clear-transition);
+
+    &:hover {
+        opacity: var(--csd-select-clear-hover-opacity);
+    }
+    
+    &.visible {
+        display: block;
+    }
+}
+
+.csd-select-arrow {
+    position: var(--csd-select-arrow-position);
+    top: var(--csd-select-arrow-top);
+    transform: var(--csd-select-arrow-transform);
+    right: var(--csd-select-arrow-right);
+    transition: var(--csd-select-arrow-transition);
+}
+
+.csd-select.open .csd-select-arrow {
+    transform: var(--csd-select-arrow-open-transform);
+}
+
+// Original dropdown style
+.csd-select-dropdown {
+    position: var(--csd-select-dropdown-position);
+    top: var(--csd-select-dropdown-top);
+    left: var(--csd-select-dropdown-left);
+    width: var(--csd-select-dropdown-width);
+    background-color: var(--csd-select-dropdown-bg);
+    border: var(--csd-select-dropdown-border);
+    border-radius: var(--csd-select-dropdown-border-radius);
+    box-shadow: var(--csd-select-dropdown-box-shadow);
+    z-index: var(--csd-select-dropdown-z-index);
+    display: none;
+    max-height: var(--csd-select-dropdown-max-height);
+    overflow-y: auto;
+
+    &.show {
+        display: block;
+    }
+
+    .csd-select-option {
+        padding: var(--csd-select-dropdown-option-padding);
+        cursor: pointer;
+        transition: var(--csd-select-trigger-transition);
+
+        &:hover {
+            background-color: var(--csd-select-dropdown-option-hover-bg);
+        }
+
+        &.selected {
+            background-color: var(--csd-select-dropdown-option-selected-bg);
+            color: var(--csd-select-dropdown-option-selected-color);
+        }
+
+        &.disabled {
+            opacity: var(--csd-select-option-disabled-opacity);
+            cursor: not-allowed;
+            background-color: var(--csd-select-option-disabled-bg);
+        }
+    }
+}
+
+// New options style
+.csd-select-options {
+    display: none;
+    position: var(--csd-select-options-position);
+    top: var(--csd-select-options-top);
+    left: var(--csd-select-options-left);
+    width: var(--csd-select-options-width);
+    background-color: var(--csd-select-options-bg) !important;
+    border: var(--csd-select-options-border) !important;
+    border-radius: var(--csd-select-options-border-radius) !important;
+    padding: var(--csd-select-options-padding) !important;
+    z-index: var(--csd-select-dropdown-z-index);
+    max-height: var(--csd-select-options-max-height);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-color-secondary) var(--bg-select);
+    --br-option: var(--csd-select-option-border-radius);
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--text-color-secondary);
+        border-radius: 4px;
+        border: 2px solid var(--bg-select);
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--bg-select);
+    }
+    
+    &.csd-select-compact:not(.position-above) {
+        padding-top: 0 !important;
+    }
+    
+    &.visible {
+        display: flex;
+        flex-direction: column;
+        gap: var(--mb-option) !important;
+        
+        &.csd-select-compact {
+            border-top: none !important;
+            top: 100%;
+            border-radius: 0 0 var(--br-input) var(--br-input) !important;
+            
+            &.position-above {
+                top: auto;
+                bottom: 100%;
+                border-radius: var(--br-input) var(--br-input) 0 0 !important;
+                border-top: 1px solid var(--bc-input) !important;
+                border-bottom: none !important;
+                box-shadow: var(--csd-select-options-shadow-above) !important;
+            }
+        }
+        
+        &.position-above {
+            top: auto;
+            bottom: var(--csd-select-compact-above-bottom);
+        }
+    }
+    
+    .csd-no-results {
+        width: fit-content;
+        margin: auto;
+        padding: var(--csd-select-no-results-padding);
+        text-align: center;
+    }
+}
+
+.csd-select-option {
+    padding: var(--csd-select-option-padding) !important;
+    cursor: pointer;
+    transition: var(--csd-select-option-transition);
+    border-radius: var(--csd-select-option-border-radius) !important;
+    font-weight: var(--csd-select-option-font-weight) !important;
+
+    &.selected {
+        background-color: var(--csd-select-option-selected-bg) !important;
+        color: var(--csd-select-option-selected-color) !important;
+        transition: var(--csd-select-option-transition);
+        font-weight: var(--csd-select-option-selected-font-weight) !important;
+    }
+
+    &:hover {
+        background-color: var(--csd-select-option-hover-bg) !important;
+        color: var(--csd-select-option-hover-color) !important;
+        transition: var(--csd-select-option-transition);
+        font-weight: var(--csd-select-option-hover-font-weight) !important;
+    }
+    
+    &.option-focus:not(.selected) {
+        transition: var(--csd-select-option-transition);
+        font-weight: var(--csd-select-option-selected-font-weight) !important;
+        background-color: var(--csd-select-option-focus-bg) !important;
+    }
+    
+    &:not(.selected) ion-icon {
+        content-visibility: hidden;
+    }
+}
+
+.csd-select-checkmark .csd-select-option {
+    padding-left: var(--csd-select-checkmark-padding-left);
+
+    ion-icon {
+        color: var(--csd-select-checkmark-icon-color) !important;
+        font-size: var(--csd-select-checkmark-icon-size) !important;
+        margin-right: var(--csd-select-checkmark-icon-margin);
+        position: relative;
+        top: var(--csd-select-checkmark-icon-top);
+    }
+}
+
+.csd-select-editable {
+    border: var(--csd-select-editable-border) !important;
+    font-weight: var(--csd-select-editable-font-weight);
+    padding: var(--csd-select-editable-padding) !important;
+    box-shadow: none;
+    
+    &:focus::placeholder {
+        display: none;
+    }
+    
+    &::placeholder {
+        max-width: var(--csd-select-editable-placeholder-max-width);
+        font-weight: var(--csd-select-editable-font-weight);
+    }
+}
+
+/* Reset for the disabled state */
+.csd-select-input:disabled {
+    background-color: transparent !important;
+    border: none !important;
+    color: var(--text-color-secondary) !important;
+}
+
+.csd-select-searchbar {
+    position: var(--csd-select-searchbar-position);
+    padding: var(--csd-select-searchbar-padding);
+
+    input {
+        box-shadow: none;
+    }
+
+    .csd-searchbar-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: var(--csd-select-searchbar-icon-right);
+        font-size: var(--csd-select-searchbar-icon-size);
+    }
+    
+    &:has(>.csd-select-searchbar-checkbox) {
+        display: flex;
+        align-items: center;
+        gap: var(--csd-select-searchbar-checkbox-gap);
+
+        .csd-select-searchbar-checkbox {
+            min-width: var(--csd-select-searchbar-checkbox-size);
+            min-height: var(--csd-select-searchbar-checkbox-size);
+            display: grid;
+            place-content: center;
+            border: var(--csd-select-searchbar-checkbox-border) !important;
+            border-radius: var(--csd-select-searchbar-checkbox-radius);
+
+            &:has(>ion-icon[name="checkmark-outline"]) {
+                background-color: var(--csd-select-searchbar-checkbox-check-bg) !important;
+
+                ion-icon {
+                    color: var(--csd-select-searchbar-checkbox-check-color) !important;
+                }
+            }
+        }
+
+        ion-icon {
+            font-size: var(--csd-select-searchbar-icon-size);
+        }
+    }
+}
+
+.csd-select-chip {
+    max-width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--csd-select-chip-gap);
+    justify-content: space-between;
+    padding: var(--csd-select-chip-padding);
+    background: var(--csd-select-chip-bg);
+    border-radius: var(--csd-select-chip-radius);
+    margin-right: 4px;
+}
+
+.csd-select-group-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--csd-select-group-gap);
+
+    .csd-select-option {
+        padding: var(--csd-select-group-options-padding) !important;
+    }
+}
+
+.csd-select-group-label {
+    font-weight: var(--csd-select-group-label-font-weight);
+    padding: var(--csd-select-group-label-padding) !important;
+}

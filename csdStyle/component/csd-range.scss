@@ -1,0 +1,163 @@
+// Range Component Variables
+:root {
+    // Base Range
+    --csd-range-width: 100%;
+    --csd-range-padding: 10px 0;
+    
+    // Range Container
+    --csd-range-container-height: 20px;
+    --csd-range-container-vertical-height: 200px;
+    --csd-range-container-vertical-width: 20px;
+    --csd-range-container-margin: 10px 0;
+    
+    // Range Track
+    --csd-range-track-height: 4px;
+    --csd-range-track-bg: var(--bc-input);
+    --csd-range-track-border-radius: 2px;
+    
+    // Range Progress/Fill
+    --csd-range-progress-height: 4px;
+    --csd-range-progress-bg: var(--accent-color);
+    --csd-range-progress-border-radius: 2px;
+    
+    // Range Thumb/Handle
+    --csd-range-thumb-size: 20px;
+    --csd-range-thumb-bg: var(--accent-color);
+    --csd-range-thumb-border: 2px solid white;
+    --csd-range-thumb-border-radius: 50%;
+    --csd-range-thumb-hover-shadow: 0 0 0 8px var(--secondary-color);
+    --csd-range-thumb-active-shadow: 0 0 0 12px var(--secondary-color);
+    --csd-range-thumb-disabled-bg: var(--text-color-disabled);
+    
+    // Range Labels
+    --csd-range-labels-margin-top: 8px;
+    --csd-range-labels-font-size: 0.875rem;
+    --csd-range-labels-color: var(--text-color-secondary);
+    --csd-range-labels-vertical-right: -30px;
+    
+    // Range Value Tooltip
+    --csd-range-value-top: -30px;
+    --csd-range-value-padding: 4px 8px;
+    --csd-range-value-bg: var(--accent-color);
+    --csd-range-value-color: white;
+    --csd-range-value-border-radius: var(--br-field);
+    --csd-range-value-font-size: 0.875rem;
+    --csd-range-value-arrow-size: 5px;
+    --csd-range-value-vertical-right: -45px;
+    
+    // Second Implementation
+    --csd-range-track-alt-height: 3px;
+    --csd-range-track-alt-bg: #e2e8f0;
+    --csd-range-track-alt-border-radius: 3px;
+    --csd-range-fill-alt-bg: #020617;
+    --csd-range-handle-alt-bg: #ffffff;
+    --csd-range-handle-alt-border: 2px solid #e2e8f0;
+    
+    // Input Group
+    --csd-range-input-group-gap: 10px;
+    --csd-range-input-group-margin-top: 10px;
+    --csd-range-input-separator-color: #808080;
+    
+    // Icons
+    --csd-range-icon-color: #475569;
+    --csd-range-icon-font-size: 1.5rem;
+    --csd-range-icon-margin: 5px 0;
+    --csd-range-icon-margin-sides: 1rem;
+}
+
+// Range Slider - Second Implementation
+.csd-range-wrapper {
+    width: var(--csd-range-width);
+    padding: var(--csd-range-padding);
+
+    .csd-range-container {
+        position: relative;
+        height: var(--csd-range-track-alt-height);
+        margin: var(--csd-range-container-margin);
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .csd-range-track {
+        position: absolute;
+        width: 100%;
+        height: var(--csd-range-track-alt-height);
+        background-color: var(--csd-range-track-alt-bg);
+        border-radius: var(--csd-range-track-alt-border-radius);
+    }
+
+    .csd-range-fill {
+        position: absolute;
+        height: var(--csd-range-track-alt-height);
+        background-color: var(--csd-range-fill-alt-bg);
+        border-radius: var(--csd-range-track-alt-border-radius);
+    }
+
+    .csd-range-handle {
+        position: absolute;
+        top: 50%;
+        width: var(--csd-range-thumb-size);
+        height: var(--csd-range-thumb-size);
+        background: var(--csd-range-handle-alt-bg);
+        border: var(--csd-range-handle-alt-border);
+        border-radius: var(--csd-range-thumb-border-radius);
+        transform: translate(-50%, -50%);
+        cursor: grab;
+        z-index: 1;
+    }
+
+    .csd-range-input-group {
+        display: flex;
+        align-items: center;
+        gap: var(--csd-range-input-group-gap);
+        margin-top: var(--csd-range-input-group-margin-top);
+
+        .csd-range-input-separator {
+            color: var(--csd-range-input-separator-color);
+            font-weight: 500;
+        }
+    }
+
+    .csd-range-input {
+        text-align: center;
+        box-shadow: none;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+
+    &:has(.range-icon) {
+        display: inline-flex;
+        align-items: center;
+
+        .csd-range-container {
+            flex: 1;
+        }
+
+        // Icons
+        .range-icon {
+            color: var(--csd-range-icon-color);
+            font-size: var(--csd-range-icon-font-size);
+            margin: var(--csd-range-icon-margin);
+
+            &.down {
+                margin-right: var(--csd-range-icon-margin-sides);
+
+                @media (max-width: 768px) {
+                    margin-right: calc(var(--csd-range-icon-margin-sides) / 2);
+                }
+            }
+
+            &.up {
+                margin-left: var(--csd-range-icon-margin-sides);
+
+                @media (max-width: 768px) {
+                    margin-left: calc(var(--csd-range-icon-margin-sides) / 2);
+                }
+            }
+        }
+    }
+}

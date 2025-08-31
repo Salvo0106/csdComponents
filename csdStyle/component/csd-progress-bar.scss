@@ -1,0 +1,72 @@
+// Progress Bar component variables
+:root {
+    // Base progress bar variables
+    --csd-progress-bar-width: 100%;
+    
+    // Track variables
+    --csd-progress-track-height: 8px;
+    --csd-progress-track-bg: var(--bg-light);
+    --csd-progress-track-border-radius: 4px;
+    
+    // Fill variables
+    --csd-progress-fill-base-color: var(--primary-color);
+    --csd-progress-fill-border-radius: 4px;
+    --csd-progress-fill-transition: width 0.3s ease;
+    
+    // Animation variables
+    --csd-progress-animation-name: progress;
+    --csd-progress-animation-duration: 5s;
+    --csd-progress-animation-timing: ease-in-out;
+    --csd-progress-animation-iteration: infinite;
+    
+    // Color variants
+    --csd-progress-primary-color: var(--csd-color-primary);
+    --csd-progress-secondary-color: var(--csd-color-secondary);
+    --csd-progress-warning-color: var(--csd-color-warning);
+    --csd-progress-danger-color: var(--csd-color-danger);
+}
+
+// Progress Bar
+.csd-progress-bar {
+    width: var(--csd-progress-bar-width);
+    
+    .progress-track {
+        width: var(--csd-progress-bar-width);
+        height: var(--csd-progress-track-height);
+        background-color: var(--csd-progress-track-bg);
+        border-radius: var(--csd-progress-track-border-radius);
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 100%;
+        background-color: var(--csd-progress-fill-base-color);
+        border-radius: var(--csd-progress-fill-border-radius);
+        transform: translateX(-100%);
+        transition: var(--csd-progress-fill-transition);
+        animation: var(--csd-progress-animation-name) var(--csd-progress-animation-duration) var(--csd-progress-animation-timing) var(--csd-progress-animation-iteration);
+    }
+
+    &.primary .progress-fill {
+        background-color: var(--csd-progress-primary-color);
+    }
+
+    &.secondary .progress-fill {
+        background-color: var(--csd-progress-secondary-color);
+    }
+
+    &.warning .progress-fill {
+        background-color: var(--csd-progress-warning-color);
+    }
+
+    &.danger .progress-fill {
+        background-color: var(--csd-progress-danger-color);
+    }
+}
+
+@keyframes progress {
+    to {
+        transform: translateX(0%);
+    }
+}

@@ -1,0 +1,392 @@
+:root {
+    /* Spacing */
+    --csd-btn-padding-y: 0.5rem;
+    --csd-btn-padding-x: 1rem;
+    --csd-btn-padding: var(--csd-btn-padding-y) var(--csd-btn-padding-x);
+    --csd-btn-padding-sm-y: 0.25rem;
+    --csd-btn-padding-sm-x: 0.5rem;
+    --csd-btn-padding-sm: var(--csd-btn-padding-sm-y) var(--csd-btn-padding-sm-x);
+    --csd-btn-padding-lg-y: 0.75rem;
+    --csd-btn-padding-lg-x: 1.5rem;
+    --csd-btn-padding-lg: var(--csd-btn-padding-lg-y) var(--csd-btn-padding-lg-x);
+    --csd-btn-padding-icon: 0.5rem;
+    --csd-btn-gap: 0.5rem;
+
+    /* Typography */
+    --csd-btn-font-size: var(--font-size);
+    --csd-btn-font-size-sm: 0.875rem;
+    --csd-btn-font-size-lg: 1.125rem;
+    --csd-btn-font-weight: 500;
+    --csd-btn-line-height: var(--line-height);
+    --csd-btn-line-height-sm: var(--line-height-sm);
+    --csd-btn-icon-size: 16px;
+    --csd-btn-icon-stroke: 50px;
+
+    /* Colors */
+    --csd-btn-color: var(--white);
+    --csd-btn-bg: var(--csd-color-primary);
+    --csd-btn-bg-hover: var(--csd-color-primary-hover);
+    --csd-btn-bg-active: var(--csd-color-primary-active);
+    --csd-btn-disabled-opacity: 0.6;
+
+    /* Animation */
+    --csd-btn-transition: all 0.2s ease-in-out;
+    --csd-btn-loading-transition: transform 0.75s linear infinite;
+
+    /* Layout */
+    --csd-btn-border-radius: 12px;
+    --csd-btn-border: none;
+    --csd-btn-loading-size: 1rem;
+    --csd-btn-loading-offset: calc(var(--csd-btn-padding-x) * 2 + 5px);
+    --csd-btn-group-gap: 1px;
+    --csd-btn-group-border-separator: var(--primary-600);
+    --csd-btn-shadow: var(--shadow);
+    --csd-btn-shadow-active: var(--shadow-sm);
+}
+
+
+// Base button styles
+.csd-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--csd-btn-gap);
+    padding: var(--csd-btn-padding);
+    border-radius: var(--csd-btn-border-radius);
+    font-size: var(--csd-btn-font-size);
+    font-weight: var(--csd-btn-font-weight);
+    line-height: var(--csd-btn-line-height);
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: var(--csd-btn-transition);
+    border: var(--csd-btn-border);
+    outline: none;
+    position: relative;
+    width: fit-content;
+    background-color: var(--csd-btn-bg);
+    color: var(--csd-btn-color);
+
+    &:hover {
+        background-color: var(--csd-btn-bg-hover);
+    }
+
+    &:active {
+        background-color: var(--csd-btn-bg-active);
+    }
+
+    &:disabled {
+        opacity: var(--csd-btn-disabled-opacity);
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    // Icon styles
+    ion-icon,
+    i[class^="fa"] {
+        color: inherit;
+        font-size: var(--csd-btn-icon-size);
+    }
+
+    ion-icon {
+        --ionicon-stroke-width: var(--csd-btn-icon-stroke);
+    }
+
+    // Size variants
+    &.btn-sm {
+        padding: var(--csd-btn-padding-sm);
+        font-size: var(--csd-btn-font-size-sm);
+        line-height: var(--csd-btn-line-height-sm);
+    }
+
+    &.btn-lg {
+        padding: var(--csd-btn-padding-lg);
+        font-size: var(--csd-btn-font-size-lg);
+    }
+
+    // Color variants
+    $variants: (
+        'secondary': (
+            bg: var(--csd-color-secondary),
+            hover: var(--csd-color-secondary-hover),
+            active: var(--csd-color-secondary-active),
+            outlined-bg: var(--primary-50),
+            outlined-text: var(--text-color-secondary),
+            outlined-bc: var(--text-color-secondary),
+            text: var(--csd-color-text)
+        ),
+        'info': (
+            bg: var(--csd-color-info),
+            hover: var(--csd-color-info-hover),
+            active: var(--csd-color-info-active),
+            outlined-bg: var(--info-50),
+            outlined-text: var(--csd-color-info),
+            outlined-bc: var(--csd-color-info),
+            text: var(--csd-color-white)
+        ),
+        'success': (
+            bg: var(--csd-color-success),
+            hover: var(--csd-color-success-hover),
+            active: var(--csd-color-success-active),
+            outlined-bg: var(--success-50),
+            outlined-text: var(--csd-color-success),
+            outlined-bc: var(--csd-color-success),
+            text: var(--csd-color-white)
+        ),
+        'warning': (
+            bg: var(--csd-color-warning),
+            hover: var(--csd-color-warning-hover),
+            active: var(--csd-color-warning-active),
+            outlined-bg: var(--warning-50),
+            outlined-text: var(--csd-color-warning),
+            outlined-bc: var(--csd-color-warning),
+            text: var(--csd-color-text)
+        ),
+        'danger': (
+            bg: var(--csd-color-danger),
+            hover: var(--csd-color-danger-hover),
+            active: var(--csd-color-danger-active),
+            outlined-bg: var(--error-50),
+            outlined-text: var(--csd-color-danger),
+            outlined-bc: var(--csd-color-danger),
+            text: var(--csd-color-white)
+        ),
+        'help': (
+            bg: var(--csd-color-help),
+            hover: var(--csd-color-help-hover),
+            active: var(--csd-color-help-active),
+            outlined-bg: var(--help-50),
+            outlined-text: var(--csd-color-help),
+            outlined-bc: var(--csd-color-help),
+            text: var(--csd-color-white)
+        )
+    );
+
+    @each $name, $variant in $variants {
+        &.btn-#{$name} {
+            background-color: map-get($variant, 'bg');
+            color: map-get($variant, 'text') !important;
+
+            &:hover {
+                background-color: map-get($variant, 'hover');
+            }
+
+            @if map-has-key($variant, 'active') {
+                &:active {
+                    background-color: map-get($variant, 'active');
+                }
+            }
+        }
+    }
+
+    // Style variants
+    &.text-only {
+        background-color: transparent;
+        color: var(--csd-btn-bg);
+        padding: var(--csd-btn-padding-sm);
+
+        &:hover {
+            background-color: rgba(var(--csd-btn-bg), 0.1);
+        }
+
+        &:active {
+            background-color: rgba(var(--csd-btn-bg), 0.2);
+        }
+
+        &.btn-secondary {
+            color: var(--csd-color-secondary) !important;
+
+            &:hover {
+                background-color: rgba(var(--csd-color-secondary), 0.1);
+            }
+
+            &:active {
+                background-color: rgba(var(--csd-color-secondary), 0.2);
+            }
+        }
+    }
+
+    &.outlined {
+        background-color: transparent;
+        border: 1px solid currentColor;
+        color: var(--text-color) !important;
+
+        &:hover {
+            background-color: var(--primary-50) !important;
+        }
+
+        &:active {
+            background-color: var(--primary-50) !important;
+        }
+
+        @each $name, $variant in $variants {
+            &.btn-#{$name} {
+                border-color: map-get($variant, 'outlined-bc');
+                color: map-get($variant, 'outlined-text') !important;
+                
+                &:hover {
+                    background-color: map-get($variant, 'outlined-bg') !important;
+                }
+                
+                &:active {
+                    // color: map-get($variant, 'text') !important;
+                    // border-color: map-get($variant, 'text');
+                    background-color: map-get($variant, 'outlined-bg') !important;
+                }
+            }
+        }
+    }
+
+    &.link {
+        background-color: transparent !important;
+        color: var(--csd-btn-bg) !important;
+        padding: var(--csd-btn-padding-sm);
+
+        &:hover {
+            text-decoration: underline !important;
+        }
+
+        &.btn-secondary:hover {
+            color: var(--csd-color-text) !important;
+            background-color: var(--csd-color-secondary);
+        }
+    }
+
+    // Modifiers
+    &.rounded {
+        border-radius: 3rem !important;
+    }
+
+    &.raised {
+        box-shadow: var(--csd-btn-shadow) !important;
+
+        &:active {
+            box-shadow: var(--csd-btn-shadow-active) !important;
+        }
+    }
+
+    // Icon only buttons
+    &.btn-icon {
+        padding: var(--csd-btn-padding-icon);
+        aspect-ratio: 1;
+        justify-content: center;
+
+        ion-icon,
+        i[class^="fa"] {
+            margin: 0;
+        }
+
+        ion-icon {
+            --ionicon-stroke-width: var(--csd-btn-icon-stroke);
+        }
+    }
+
+    // Loading state
+    &.loading {
+        position: relative;
+        pointer-events: none;
+        padding-left: var(--csd-btn-loading-offset);
+        transition: none;
+        opacity: 0.6;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: calc(var(--csd-btn-padding-x) - 5px);
+            width: var(--csd-btn-loading-size);
+            height: var(--csd-btn-loading-size);
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            border-right-color: transparent;
+            animation: spin 0.75s linear infinite;
+        }
+
+        ion-icon,
+        i[class^="fa"] {
+            display: none;
+        }
+    }
+}
+
+// Button groups
+.csd-btn-group {
+    display: inline-flex;
+    align-items: stretch;
+    position: relative;
+    vertical-align: middle;
+
+    .csd-btn {
+        position: relative;
+        flex: 0 1 auto;
+
+        @media (max-width: 768px) {
+            flex: 1;
+            padding: calc(var(--csd-btn-padding-y) / 2) calc(var(--csd-btn-padding-x) / 2);
+            font-size: calc(var(--csd-btn-font-size) / 1.2);
+        }
+
+        &:not(:first-child):not(:last-child) {
+            border-radius: 0 !important;
+        }
+
+        &:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        // Border separators for each variant
+        &:not(:first-child) { border-left: 1px solid var(--primary-600) !important; }
+
+        &.btn-secondary {
+            &:not(:first-child) { border-left: 1px solid var(--primary-600) !important; }
+        }
+
+        &.btn-info {
+            &:not(:first-child) { border-left: 1px solid var(--info-700) !important; }
+        }
+
+        &.btn-success {
+            &:not(:first-child) { border-left: 1px solid var(--success-300) !important; }
+        }
+
+        &.btn-warning {
+            &:not(:first-child) { border-left: 1px solid var(--warning-500) !important; }
+        }
+
+        &.btn-danger {
+            &:not(:first-child) { border-left: 1px solid var(--error-700) !important; }
+        }
+
+        &.btn-help {
+            &:not(:first-child) { border-left: 1px solid var(--gray-600) !important; }
+        }
+
+        &:hover {
+            z-index: 2;
+        }
+    }
+
+    &.equal-width {
+        width: 100%;
+
+        .csd-btn {
+            flex: 1 1 0;
+            min-width: 0;
+            justify-content: center;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

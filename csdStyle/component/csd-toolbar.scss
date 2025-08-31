@@ -1,0 +1,293 @@
+/* Toolbar Component */
+:root {
+    // Base Container Variables
+    --csd-toolbar-display: flex;
+    --csd-toolbar-align: center;
+    --csd-toolbar-justify: space-between;
+    --csd-toolbar-padding: 0.75rem;
+    --csd-toolbar-bg: var(--bg-light);
+    --csd-toolbar-border: 1px solid var(--bc-card);
+    --csd-toolbar-border-radius: 0.25rem;
+    --csd-toolbar-min-height: 48px;
+    --csd-toolbar-gap: 0.5rem;
+    
+    // Section Variables
+    --csd-toolbar-section-display: flex;
+    --csd-toolbar-section-align: center;
+    --csd-toolbar-section-gap: 0.5rem;
+    --csd-toolbar-section-flex: 0 1 auto;
+    
+    // Center Section
+    --csd-toolbar-center-flex: 1 1 auto;
+    --csd-toolbar-center-justify: center;
+    --csd-toolbar-center-padding: 0 1rem;
+    
+    // Icon Field
+    --csd-toolbar-iconfield-width: 100%;
+    --csd-toolbar-iconfield-max-width: 240px;
+    --csd-toolbar-iconfield-position: relative;
+    --csd-toolbar-iconfield-icon-position: absolute;
+    --csd-toolbar-iconfield-icon-left: 8px;
+    --csd-toolbar-iconfield-icon-top: 50%;
+    --csd-toolbar-iconfield-icon-transform: translateY(-50%);
+    --csd-toolbar-iconfield-icon-color: var(--text-color-secondary);
+    --csd-toolbar-iconfield-icon-size: 1.2rem;
+    --csd-toolbar-iconfield-input-width: 100%;
+    --csd-toolbar-iconfield-input-padding-left: 2rem;
+    --csd-toolbar-iconfield-input-box-shadow: none;
+    
+    // Group Variables
+    --csd-toolbar-group-display: flex;
+    --csd-toolbar-group-align: center;
+    --csd-toolbar-group-gap: 0.25rem;
+    --csd-toolbar-group-border-right: 1px solid var(--bc-card);
+    --csd-toolbar-group-padding-right: 0.5rem;
+    --csd-toolbar-group-margin-right: 0.5rem;
+    
+    // Button Variables
+    --csd-toolbar-btn-display: inline-flex;
+    --csd-toolbar-btn-align: center;
+    --csd-toolbar-btn-justify: center;
+    --csd-toolbar-btn-padding: 0.5rem;
+    --csd-toolbar-btn-height: 36px;
+    --csd-toolbar-btn-min-width: 36px;
+    --csd-toolbar-btn-color: #64748b;
+    --csd-toolbar-btn-bg: transparent;
+    --csd-toolbar-btn-border: none;
+    --csd-toolbar-btn-border-radius: var(--br-field, 0.25rem);
+    --csd-toolbar-btn-cursor: pointer;
+    --csd-toolbar-btn-transition: var(--transition, all 0.2s);
+    
+    // Button States
+    --csd-toolbar-btn-hover-color: var(--text-color);
+    --csd-toolbar-btn-hover-bg: var(--bg-highlight, #edf1f5);
+    --csd-toolbar-btn-active-color: var(--accent-color);
+    --csd-toolbar-btn-active-bg: rgba(var(--csd-color-primary-rgb), 0.08);
+    --csd-toolbar-btn-disabled-opacity: 0.5;
+    
+    // Icon Variables
+    --csd-toolbar-icon-size: 1.25rem;
+    --csd-toolbar-icon-small-size: 1rem;
+    --csd-toolbar-icon-stroke-width: 40px;
+    
+    // Separator Variables
+    --csd-toolbar-separator-width: 1px;
+    --csd-toolbar-separator-height: 24px;
+    --csd-toolbar-separator-bg: var(--bc-card);
+    --csd-toolbar-separator-margin: 0 0.25rem;
+    --csd-toolbar-separator-vertical-width: 100%;
+    --csd-toolbar-separator-vertical-height: 1px;
+    --csd-toolbar-separator-vertical-margin: 0.25rem 0;
+    
+    // Spacer Variables
+    --csd-toolbar-spacer-flex: 1;
+    
+    // Compact Variables
+    --csd-toolbar-compact-padding: 0.25rem;
+    --csd-toolbar-btn-compact-padding: 0.25rem;
+    --csd-toolbar-icon-compact-size: 1rem;
+    
+    // Vertical Variables
+    --csd-toolbar-vertical-direction: column;
+    --csd-toolbar-vertical-align: stretch;
+    --csd-toolbar-vertical-width: fit-content;
+    --csd-toolbar-group-vertical-direction: column;
+    --csd-toolbar-group-vertical-border-bottom: 1px solid var(--bc-card);
+    --csd-toolbar-group-vertical-padding-bottom: 0.5rem;
+    --csd-toolbar-group-vertical-margin-bottom: 0.5rem;
+    
+    // Responsive Variables
+    --csd-toolbar-responsive-wrap: wrap;
+}
+
+.csd-toolbar {
+    display: var(--csd-toolbar-display);
+    align-items: var(--csd-toolbar-align);
+    justify-content: var(--csd-toolbar-justify);
+    padding: var(--csd-toolbar-padding);
+    background-color: var(--csd-toolbar-bg);
+    border: var(--csd-toolbar-border);
+    border-radius: var(--csd-toolbar-border-radius);
+    min-height: var(--csd-toolbar-min-height);
+    gap: var(--csd-toolbar-gap);
+    
+    // Sections
+    .csd-toolbar-start,
+    .csd-toolbar-end {
+        display: var(--csd-toolbar-section-display);
+        align-items: var(--csd-toolbar-section-align);
+        gap: var(--csd-toolbar-section-gap);
+        flex: var(--csd-toolbar-section-flex);
+    }
+    
+    .csd-toolbar-center {
+        display: var(--csd-toolbar-section-display);
+        align-items: var(--csd-toolbar-section-align);
+        flex: var(--csd-toolbar-center-flex);
+        justify-content: var(--csd-toolbar-center-justify);
+        padding: var(--csd-toolbar-center-padding);
+        
+        .csd-iconfield {
+            width: var(--csd-toolbar-iconfield-width);
+            max-width: var(--csd-toolbar-iconfield-max-width);
+            position: var(--csd-toolbar-iconfield-position);
+            
+            ion-icon {
+                position: var(--csd-toolbar-iconfield-icon-position);
+                left: var(--csd-toolbar-iconfield-icon-left);
+                top: var(--csd-toolbar-iconfield-icon-top);
+                transform: var(--csd-toolbar-iconfield-icon-transform);
+                color: var(--csd-toolbar-iconfield-icon-color);
+                font-size: var(--csd-toolbar-iconfield-icon-size);
+            }
+            
+            .csd-input {
+                width: var(--csd-toolbar-iconfield-input-width);
+                padding-left: var(--csd-toolbar-iconfield-input-padding-left);
+                box-shadow: var(--csd-toolbar-iconfield-input-box-shadow);
+            }
+        }
+    }
+    
+    // Group
+    .toolbar-group {
+        display: var(--csd-toolbar-group-display);
+        align-items: var(--csd-toolbar-group-align);
+        gap: var(--csd-toolbar-group-gap);
+        
+        &:not(:last-child) {
+            border-right: var(--csd-toolbar-group-border-right);
+            padding-right: var(--csd-toolbar-group-padding-right);
+            margin-right: var(--csd-toolbar-group-margin-right);
+        }
+    }
+    
+    // Button
+    .toolbar-button,
+    .csd-btn:not(.btn-primary) {
+        display: var(--csd-toolbar-btn-display);
+        align-items: var(--csd-toolbar-btn-align);
+        justify-content: var(--csd-toolbar-btn-justify);
+        padding: var(--csd-toolbar-btn-padding);
+        height: var(--csd-toolbar-btn-height);
+        min-width: var(--csd-toolbar-btn-min-width);
+        color: var(--csd-toolbar-btn-color);
+        background: var(--csd-toolbar-btn-bg);
+        border: var(--csd-toolbar-btn-border);
+        border-radius: var(--csd-toolbar-btn-border-radius);
+        cursor: var(--csd-toolbar-btn-cursor);
+        transition: var(--csd-toolbar-btn-transition);
+        
+        &:hover,
+        &.text-only:hover {
+            color: var(--csd-toolbar-btn-hover-color);
+            background-color: var(--csd-toolbar-btn-hover-bg);
+        }
+        
+        &.active {
+            color: var(--csd-toolbar-btn-active-color);
+            background-color: var(--csd-toolbar-btn-active-bg);
+        }
+        
+        &.disabled {
+            opacity: var(--csd-toolbar-btn-disabled-opacity);
+            cursor: not-allowed;
+            
+            &:hover {
+                background: none;
+                color: var(--csd-toolbar-btn-color);
+            }
+        }
+        
+        ion-icon {
+            color: inherit;
+            font-size: var(--csd-toolbar-icon-size);
+            --ionicon-stroke-width: var(--csd-toolbar-icon-stroke-width);
+            
+            &:last-child {
+                font-size: var(--csd-toolbar-icon-small-size);
+            }
+        }
+    }
+    
+    // Separator
+    .toolbar-separator {
+        width: var(--csd-toolbar-separator-width);
+        height: var(--csd-toolbar-separator-height);
+        background-color: var(--csd-toolbar-separator-bg);
+        margin: var(--csd-toolbar-separator-margin);
+    }
+    
+    // Spacer
+    .toolbar-spacer {
+        flex: var(--csd-toolbar-spacer-flex);
+    }
+    
+    // Variants
+    &.compact {
+        padding: var(--csd-toolbar-compact-padding);
+        
+        .toolbar-button,
+        .csd-btn:not(.btn-primary) {
+            padding: var(--csd-toolbar-btn-compact-padding);
+            
+            ion-icon {
+                font-size: var(--csd-toolbar-icon-compact-size);
+            }
+        }
+    }
+    
+    &.vertical {
+        flex-direction: var(--csd-toolbar-vertical-direction);
+        align-items: var(--csd-toolbar-vertical-align);
+        width: var(--csd-toolbar-vertical-width);
+        
+        .toolbar-group {
+            flex-direction: var(--csd-toolbar-group-vertical-direction);
+            border-right: none;
+            border-bottom: var(--csd-toolbar-group-vertical-border-bottom);
+            padding-right: 0;
+            padding-bottom: var(--csd-toolbar-group-vertical-padding-bottom);
+            margin-right: 0;
+            margin-bottom: var(--csd-toolbar-group-vertical-margin-bottom);
+            
+            &:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+        }
+        
+        .toolbar-separator {
+            width: var(--csd-toolbar-separator-vertical-width);
+            height: var(--csd-toolbar-separator-vertical-height);
+            margin: var(--csd-toolbar-separator-vertical-margin);
+        }
+    }
+    
+    // Responsive
+    &.responsive {
+        @media (max-width: 768px) {
+            flex-wrap: var(--csd-toolbar-responsive-wrap);
+            
+            .toolbar-group {
+                flex-wrap: var(--csd-toolbar-responsive-wrap);
+            }
+        }
+    }
+    
+    // Overflow handling
+    &.overflow {
+        .toolbar-group {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+}

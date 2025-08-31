@@ -1,0 +1,150 @@
+// Searchbar Component Variables
+:root {
+    // Base Searchbar
+    --csd-searchbar-width: 100%;
+    --csd-searchbar-padding-right: calc(var(--px-input) * 2 + 20px);
+    --csd-searchbar-padding-right-clear: calc(var(--px-input) * 3 + 40px);
+    
+    // Icon
+    --csd-searchbar-icon-size: 16px;
+    --csd-searchbar-icon-color: var(--text-color-secondary);
+    --csd-searchbar-icon-position: var(--px-input);
+    --csd-searchbar-icon-hover-color: var(--text-color);
+    
+    // Clear Button
+    --csd-clearbutton-padding: calc(var(--py-input) * 0.75);
+    --csd-clearbutton-position: calc(var(--px-input) * 2 + 20px);
+    --csd-clearbutton-icon-size: 16px;
+    --csd-clearbutton-icon-color: var(--text-color-secondary);
+    --csd-clearbutton-icon-hover-color: var(--text-color);
+    
+    // Filter Button
+    --csd-filter-button-padding: 4px 8px;
+    --csd-filter-button-position: calc(var(--px-input) * 2 + 20px);
+    --csd-filter-button-color: var(--text-color-secondary);
+    --csd-filter-button-hover-color: var(--text-color);
+    --csd-filter-button-active-color: var(--accent-color);
+    
+    // With Filter
+    --csd-searchbar-padding-right-filter: calc(var(--px-input) * 4 + 60px);
+    
+    // Disabled State
+    --csd-searchbar-disabled-color: var(--text-color-disabled);
+    --csd-searchbar-disabled-cursor: not-allowed;
+    
+    // Alternative Variables (from the second implementation)
+    --csd-searchbar-pr: var(--pr-searchbar, calc(var(--px-input) * 2 + 20px));
+    --csd-searchbar-pr-clearbutton: var(--pr-clearbutton, calc(var(--px-input) * 3 + 40px));
+    --csd-searchbar-position-icon: var(--position-icon, var(--px-input));
+    --csd-searchbar-contrast-color: var(--contrast-color, var(--text-color));
+}
+
+// Searchbar
+.csd-searchbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: var(--csd-searchbar-width);
+
+    .csd-searchbar-input {
+        width: var(--csd-searchbar-width);
+        padding-right: var(--csd-searchbar-pr, var(--csd-searchbar-padding-right));
+
+        &:not(.csd-select-editable) {
+            box-shadow: none !important;
+        }
+
+        &:focus:not(:placeholder-shown) + .csd-clearbutton {
+            display: flex;
+        }
+    }
+
+    .csd-searchbar-input.clearbutton {
+        width: var(--csd-searchbar-width);
+        padding-right: var(--csd-searchbar-pr-clearbutton, var(--csd-searchbar-padding-right-clear));
+
+        @media (max-width: 768px) {
+            padding-right:  calc(var(--csd-searchbar-padding-right-clear) / 2);
+        }
+    }
+
+    .csd-clearbutton {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: var(--csd-clearbutton-padding);
+        position: absolute;
+        right: var(--csd-clearbutton-position);
+        cursor: pointer;
+        transition: var(--transition);
+
+        @media (max-width: 768px) {
+            padding-right: calc(var(--csd-clearbutton-padding) / 2);
+            right: calc(var(--csd-clearbutton-position) / 2);
+        }
+
+        &:hover {
+            display: flex;
+
+            ion-icon {
+                color: var(--csd-searchbar-contrast-color, var(--csd-clearbutton-icon-hover-color)) !important;
+            }
+        }
+
+        ion-icon {
+            font-size: var(--csd-clearbutton-icon-size);
+            color: var(--csd-searchbar-icon-color) !important;
+            transition: var(--transition);
+        }
+    }
+
+    .csd-searchbar-icon {
+        position: absolute;
+        right: var(--csd-searchbar-position-icon, var(--csd-searchbar-icon-position)) !important;
+        font-size: var(--csd-searchbar-icon-size);
+        color: var(--csd-searchbar-icon-color) !important;
+
+        @media (max-width: 768px) {
+            right: calc(var(--csd-searchbar-position-icon) / 2);
+            font-size: calc(var(--csd-searchbar-icon-size) / 1.2);
+        }
+    }
+
+    &.with-filter {
+        .csd-searchbar-input {
+            padding-right: var(--csd-searchbar-padding-right-filter);
+        }
+
+        .csd-filter-button {
+            position: absolute;
+            right: var(--csd-filter-button-position);
+            padding: var(--csd-filter-button-padding);
+            background: none;
+            border: none;
+            color: var(--csd-filter-button-color);
+            cursor: pointer;
+            transition: var(--transition);
+
+            &:hover {
+                color: var(--csd-filter-button-hover-color);
+            }
+
+            &.active {
+                color: var(--csd-filter-button-active-color);
+            }
+        }
+    }
+
+    &.disabled {
+        .csd-searchbar-input,
+        .csd-clearbutton,
+        .csd-filter-button {
+            cursor: var(--csd-searchbar-disabled-cursor);
+        }
+
+        .csd-searchbar-icon,
+        .csd-clearbutton ion-icon {
+            color: var(--csd-searchbar-disabled-color) !important;
+        }
+    }
+}

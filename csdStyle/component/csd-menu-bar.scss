@@ -1,0 +1,121 @@
+/* Menu Bar Component */
+:root {
+    // Base Layout
+    --csd-menubar-display: flex;
+    --csd-menubar-align: center;
+    --csd-menubar-justify: space-between;
+    --csd-menubar-padding: 0.5rem;
+    --csd-menubar-bg: var(--bg-light);
+    --csd-menubar-border: 1px solid var(--bc-card);
+    --csd-menubar-border-radius: 0.5rem;
+    
+    // Sections Layout
+    --csd-menubar-section-display: flex;
+    --csd-menubar-section-align: center;
+    --csd-menubar-section-gap: 0.5rem;
+    
+    // Button Styling
+    --csd-menubar-btn-display: inline-flex;
+    --csd-menubar-btn-align: center;
+    --csd-menubar-btn-gap: 0.5rem;
+    --csd-menubar-btn-padding: 0.5rem 0.75rem;
+    --csd-menubar-btn-color: #64748b;
+    --csd-menubar-btn-bg: transparent;
+    --csd-menubar-btn-border: none;
+    --csd-menubar-btn-border-radius: 0.5rem;
+    --csd-menubar-btn-cursor: pointer;
+    --csd-menubar-btn-transition: all 0.2s;
+    
+    // Button States
+    --csd-menubar-btn-hover-bg: rgba(0, 0, 0, 0.04);
+    --csd-menubar-btn-active-color: var(--text-color);
+    --csd-menubar-btn-active-bg: rgba(var(--csd-color-primary-rgb), 0.08);
+    
+    // Icon Styling
+    --csd-menubar-icon-size: 1rem;
+    --csd-menubar-icon-margin: 0;
+    
+    // Responsive Layout
+    --csd-menubar-mobile-flex-wrap: wrap;
+    --csd-menubar-mobile-section-width: 100%;
+    --csd-menubar-mobile-section-justify: center;
+    --csd-menubar-mobile-end-margin-top: 0.5rem;
+}
+
+.csd-menubar {
+    display: var(--csd-menubar-display);
+    align-items: var(--csd-menubar-align);
+    justify-content: var(--csd-menubar-justify);
+    padding: var(--csd-menubar-padding);
+    background-color: var(--csd-menubar-bg);
+    border: var(--csd-menubar-border);
+    border-radius: var(--csd-menubar-border-radius);
+
+    .csd-menubar-start,
+    .csd-menubar-end {
+        display: var(--csd-menubar-section-display);
+        align-items: var(--csd-menubar-section-align);
+        gap: var(--csd-menubar-section-gap);
+    }
+
+    .csd-btn:not(.btn-primary) {
+        display: var(--csd-menubar-btn-display);
+        align-items: var(--csd-menubar-btn-align);
+        gap: var(--csd-menubar-btn-gap);
+        padding: var(--csd-menubar-btn-padding);
+        color: var(--csd-menubar-btn-color);
+        background-color: var(--csd-menubar-btn-bg);
+        border: var(--csd-menubar-btn-border);
+        border-radius: var(--csd-menubar-btn-border-radius);
+        cursor: var(--csd-menubar-btn-cursor);
+        transition: var(--csd-menubar-btn-transition);
+
+        &:hover {
+            background-color: var(--csd-menubar-btn-hover-bg);
+        }
+
+        &.active {
+            color: var(--csd-menubar-btn-active-color);
+            background-color: var(--csd-menubar-btn-active-bg);
+        }
+
+        ion-icon {
+            font-size: var(--csd-menubar-icon-size);
+            margin: var(--csd-menubar-icon-margin);
+        }
+    }
+
+    @media (max-width: 767px) {
+        flex-wrap: var(--csd-menubar-mobile-flex-wrap);
+
+        .csd-menubar-start,
+        .csd-menubar-end {
+            width: var(--csd-menubar-mobile-section-width);
+            justify-content: var(--csd-menubar-mobile-section-justify);
+        }
+
+        .csd-menubar-end {
+            margin-top: var(--csd-menubar-mobile-end-margin-top);
+        }
+    }
+}
+
+// Menu Bar improvements
+.csd-menubar {
+    .csd-btn.text-only {
+        font-size: 0.875rem;
+        font-weight: 500;
+
+        &.active, &:hover {
+            background-color: #edf1f5;
+        }
+
+        ion-icon {
+            color: #64748b;
+        }
+
+        &:hover ion-icon {
+            color: var(--text-color);
+        }
+    }
+}

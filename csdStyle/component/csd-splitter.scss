@@ -1,0 +1,273 @@
+/* Splitter Component */
+:root {
+    /* Base Splitter Variables */
+    --csd-splitter-display: flex;
+    --csd-splitter-width: 100%;
+    --csd-splitter-height: 100%;
+    --csd-splitter-min-height: 150px;
+    --csd-splitter-bg: var(--bg-light);
+    --csd-splitter-border: 1px solid var(--bc-card);
+    --csd-splitter-border-radius: 0.5rem;
+    --csd-splitter-overflow: hidden;
+    
+    /* Pane Variables */
+    --csd-split-pane-flex: 1;
+    --csd-split-pane-min-width: 0;
+    --csd-split-pane-overflow: auto;
+    
+    /* Handle/Gutter Variables */
+    --csd-split-handle-width: 4px;
+    --csd-split-handle-height: 100%;
+    --csd-split-handle-bg: var(--bc-card);
+    --csd-split-handle-cursor: col-resize;
+    --csd-split-handle-transition: background-color 0.2s;
+    --csd-split-handle-hover-bg: var(--accent-color);
+    --csd-split-handle-indicator-size: 24px;
+    --csd-split-handle-indicator-opacity: 0;
+    --csd-split-handle-indicator-hover-opacity: 0.1;
+    
+    /* Vertical Handle Variables */
+    --csd-split-handle-vertical-width: 100%;
+    --csd-split-handle-vertical-height: 4px;
+    --csd-split-handle-vertical-cursor: row-resize;
+    
+    /* Small Gutter Variables */
+    --csd-split-handle-sm-width: 2px;
+    --csd-split-handle-sm-height: 2px;
+    
+    /* Large Gutter Variables */
+    --csd-split-handle-lg-width: 8px;
+    --csd-split-handle-lg-height: 8px;
+    
+    /* Collapse Button Variables */
+    --csd-split-collapse-button-position: absolute;
+    --csd-split-collapse-button-top: 50%;
+    --csd-split-collapse-button-size: 24px;
+    --csd-split-collapse-button-bg: var(--bg-light);
+    --csd-split-collapse-button-border: 1px solid var(--bc-card);
+    --csd-split-collapse-button-border-radius: 50%;
+    --csd-split-collapse-button-hover-bg: var(--bg-highlight);
+    --csd-split-collapse-button-z-index: 1;
+}
+
+.csd-splitter {
+    display: var(--csd-splitter-display);
+    width: var(--csd-splitter-width);
+    height: var(--csd-splitter-height);
+    overflow: var(--csd-splitter-overflow);
+
+    .split-pane {
+        flex: var(--csd-split-pane-flex);
+        min-width: var(--csd-split-pane-min-width);
+        overflow: var(--csd-split-pane-overflow);
+        position: relative;
+    }
+
+    .split-handle {
+        width: var(--csd-split-handle-width);
+        background-color: var(--csd-split-handle-bg);
+        cursor: var(--csd-split-handle-cursor);
+        transition: var(--csd-split-handle-transition);
+        flex-shrink: 0;
+        position: relative;
+
+        &:hover,
+        &.dragging {
+            background-color: var(--csd-split-handle-hover-bg);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: var(--csd-split-handle-indicator-size);
+            height: var(--csd-split-handle-indicator-size);
+            background-color: inherit;
+            border-radius: 50%;
+            opacity: var(--csd-split-handle-indicator-opacity);
+            transition: var(--csd-split-handle-transition);
+        }
+
+        &:hover::after {
+            opacity: var(--csd-split-handle-indicator-hover-opacity);
+        }
+    }
+
+    // Vertical layout
+    &.vertical {
+        flex-direction: column;
+
+        .split-handle {
+            width: var(--csd-split-handle-vertical-width);
+            height: var(--csd-split-handle-vertical-height);
+            cursor: var(--csd-split-handle-vertical-cursor);
+        }
+    }
+
+    // Nested splitters
+    .split-pane {
+        .csd-splitter {
+            height: 100%;
+        }
+    }
+
+    // Gutter styles
+    &.gutter-sm {
+        .split-handle {
+            width: var(--csd-split-handle-sm-width);
+
+            &.vertical {
+                height: var(--csd-split-handle-sm-height);
+            }
+        }
+    }
+
+    &.gutter-lg {
+        .split-handle {
+            width: var(--csd-split-handle-lg-width);
+
+            &.vertical {
+                height: var(--csd-split-handle-lg-height);
+            }
+        }
+    }
+
+    // Collapse/Expand functionality
+    .split-collapse-button {
+        position: var(--csd-split-collapse-button-position);
+        top: var(--csd-split-collapse-button-top);
+        transform: translateY(-50%);
+        background: var(--csd-split-collapse-button-bg);
+        border: var(--csd-split-collapse-button-border);
+        border-radius: var(--csd-split-collapse-button-border-radius);
+        width: var(--csd-split-collapse-button-size);
+        height: var(--csd-split-collapse-button-size);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: var(--csd-split-collapse-button-z-index);
+        transition: var(--transition);
+
+        &:hover {
+            background-color: var(--csd-split-collapse-button-hover-bg);
+        }
+
+        &.left {
+            right: calc(-1 * var(--csd-split-collapse-button-size) / 2);
+        }
+
+        &.right {
+            left: calc(-1 * var(--csd-split-collapse-button-size) / 2);
+        }
+    }
+
+    // Collapsed state
+    .split-pane.collapsed {
+        flex: 0;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    // Responsive behavior
+    @media (max-width: 768px) {
+        &.responsive {
+            flex-direction: column;
+
+            .split-handle {
+                width: 100%;
+                height: 4px;
+                cursor: row-resize;
+            }
+
+            .split-collapse-button {
+                display: none;
+            }
+        }
+    }
+}
+
+
+
+// Splitter styles
+/* Second Splitter Implementation */
+.csd-splitter {
+    display: var(--csd-splitter-display);
+    width: var(--csd-splitter-width);
+    height: var(--csd-splitter-height);
+    min-height: var(--csd-splitter-min-height);
+    background: var(--csd-splitter-bg);
+    border: var(--csd-splitter-border);
+    border-radius: var(--csd-splitter-border-radius);
+    overflow: var(--csd-splitter-overflow);
+
+    &.horizontal {
+        flex-direction: row;
+
+        .csd-split-gutter {
+            width: var(--csd-split-handle-width);
+            height: 100%;
+            margin: 0 -3px;
+            background-color: var(--csd-split-handle-bg);
+            cursor: var(--csd-split-handle-cursor);
+        }
+    }
+
+    &.vertical {
+        flex-direction: column;
+
+        .csd-split-gutter {
+            width: 100%;
+            height: var(--csd-split-handle-vertical-height);
+            margin: -3px 0;
+            background-color: var(--csd-split-handle-bg);
+            cursor: var(--csd-split-handle-vertical-cursor);
+        }
+    }
+
+    .csd-split-panel {
+        flex: var(--csd-split-pane-flex);
+        min-width: var(--csd-split-pane-min-width);
+        min-height: 0;
+        overflow: var(--csd-split-pane-overflow);
+        position: relative;
+        display: flex;
+        justify-content: center;    
+
+        .csd-panel-content {
+            height: 100%;
+            overflow: var(--csd-split-pane-overflow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-color-secondary);
+        }
+    }
+
+    .csd-split-gutter {
+        background: var(--csd-splitter-bg);
+        z-index: var(--csd-split-collapse-button-z-index);
+        position: relative;
+
+        &.dragging {            
+            &::after {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: var(--csd-split-collapse-button-z-index);
+                cursor: inherit;
+            }
+        }
+    }
+
+    // Nested splitter styles
+    .csd-split-panel .csd-splitter {
+        border: none;
+        border-radius: 0;
+    }
+}

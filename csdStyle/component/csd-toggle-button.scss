@@ -1,0 +1,286 @@
+// Toggle Button Component Variables
+:root {
+    // Base Toggle Button Group
+    --csd-toggle-btn-group-bg: var(--bg-light);
+    --csd-toggle-btn-group-border: 1px solid var(--bc-input);
+    --csd-toggle-btn-group-radius: var(--br-field);
+    --csd-toggle-btn-group-padding: 4px;
+    --csd-toggle-btn-group-gap: 4px;
+    
+    // Toggle Button
+    --csd-toggle-btn-bg: none;
+    --csd-toggle-btn-border: none;
+    --csd-toggle-btn-padding: 8px 16px;
+    --csd-toggle-btn-color: var(--text-color-secondary);
+    --csd-toggle-btn-font-size: 0.875rem;
+    --csd-toggle-btn-radius: calc(var(--br-field) - 2px);
+    --csd-toggle-btn-gap: 8px;
+    
+    // Toggle Button Hover
+    --csd-toggle-btn-hover-color: var(--text-color);
+    --csd-toggle-btn-hover-bg: var(--bg-highlight);
+    
+    // Toggle Button Active
+    --csd-toggle-btn-active-color: var(--text-color);
+    --csd-toggle-btn-active-bg: var(--bg-input);
+    --csd-toggle-btn-active-shadow: var(--shadow-sm);
+    
+    // Toggle Button Disabled
+    --csd-toggle-btn-disabled-opacity: 0.5;
+    
+    // Toggle Button Icon
+    --csd-toggle-btn-icon-size: 16px;
+    
+    // Size Variants
+    --csd-toggle-btn-group-sm-padding: 2px;
+    --csd-toggle-btn-sm-padding: 4px 12px;
+    --csd-toggle-btn-sm-font-size: 0.75rem;
+    --csd-toggle-btn-sm-icon-size: 14px;
+    
+    --csd-toggle-btn-group-lg-padding: 6px;
+    --csd-toggle-btn-lg-padding: 12px 24px;
+    --csd-toggle-btn-lg-font-size: 1rem;
+    --csd-toggle-btn-lg-icon-size: 18px;
+    
+    // Primary Variant
+    --csd-toggle-btn-primary-active-bg: var(--accent-color);
+    --csd-toggle-btn-primary-active-color: white;
+    
+    // Outline Variant
+    --csd-toggle-btn-outline-border: 1px solid var(--bc-input);
+    --csd-toggle-btn-outline-active-border: 1px solid var(--accent-color);
+    --csd-toggle-btn-outline-active-color: var(--accent-color);
+    
+    // Second Implementation
+    --csd-toggle-button-gap: 0.5rem;
+    --csd-toggle-button-padding: 0.5rem 1rem;
+    --csd-toggle-button-bg: #e2e8f0;
+    --csd-toggle-button-radius: 0.5rem;
+    --csd-toggle-button-font-size: 14px;
+    --csd-toggle-button-font-weight: 500;
+    
+    // Toggle Button Indicator
+    --csd-toggle-button-indicator-offset: 0.25rem;
+    --csd-toggle-button-indicator-bg: #ffffff;
+    --csd-toggle-button-indicator-radius: 6px;
+    
+    // Toggle Button Icon
+    --csd-toggle-button-icon-size: 1.125rem;
+    --csd-toggle-button-icon-color: #64748b;
+    
+    // Toggle Button Text
+    --csd-toggle-button-text-color: #64748b;
+    
+    // Checked State
+    --csd-toggle-button-checked-text-color: #0f172a;
+    
+    // Disabled State
+    --csd-toggle-button-disabled-opacity: 0.5;
+    --csd-toggle-button-disabled-hover-bg: #f1f5f9;
+    --csd-toggle-button-disabled-hover-border: #e2e8f0;
+}
+
+.csd-toggle-button-group {
+    display: inline-flex;
+    background-color: var(--csd-toggle-btn-group-bg);
+    border: var(--csd-toggle-btn-group-border);
+    border-radius: var(--csd-toggle-btn-group-radius);
+    padding: var(--csd-toggle-btn-group-padding);
+    gap: var(--csd-toggle-btn-group-gap);
+
+    .csd-toggle-button {
+        position: relative;
+        background: var(--csd-toggle-btn-bg);
+        border: var(--csd-toggle-btn-border);
+        padding: var(--csd-toggle-btn-padding);
+        color: var(--csd-toggle-btn-color);
+        font-size: var(--csd-toggle-btn-font-size);
+        cursor: pointer;
+        transition: var(--transition);
+        border-radius: var(--csd-toggle-btn-radius);
+        display: flex;
+        align-items: center;
+        gap: var(--csd-toggle-btn-gap);
+
+        &:hover {
+            color: var(--csd-toggle-btn-hover-color);
+            background-color: var(--csd-toggle-btn-hover-bg);
+        }
+
+        &.active {
+            color: var(--csd-toggle-btn-active-color);
+            background-color: var(--csd-toggle-btn-active-bg);
+            box-shadow: var(--csd-toggle-btn-active-shadow);
+        }
+
+        &:disabled {
+            opacity: var(--csd-toggle-btn-disabled-opacity);
+            cursor: not-allowed;
+
+            &:hover {
+                background: none;
+                color: var(--csd-toggle-btn-color);
+            }
+        }
+
+        ion-icon {
+            font-size: var(--csd-toggle-btn-icon-size);
+            color: inherit;
+        }
+    }
+
+    // Size variants
+    &.sm {
+        padding: var(--csd-toggle-btn-group-sm-padding);
+        
+        .csd-toggle-button {
+            padding: var(--csd-toggle-btn-sm-padding);
+            font-size: var(--csd-toggle-btn-sm-font-size);
+
+            ion-icon {
+                font-size: var(--csd-toggle-btn-sm-icon-size);
+            }
+        }
+    }
+
+    &.lg {
+        padding: var(--csd-toggle-btn-group-lg-padding);
+        
+        .csd-toggle-button {
+            padding: var(--csd-toggle-btn-lg-padding);
+            font-size: var(--csd-toggle-btn-lg-font-size);
+
+            ion-icon {
+                font-size: var(--csd-toggle-btn-lg-icon-size);
+            }
+        }
+    }
+
+    // Variants
+    &.primary {
+        .csd-toggle-button.active {
+            background-color: var(--csd-toggle-btn-primary-active-bg);
+            color: var(--csd-toggle-btn-primary-active-color);
+        }
+    }
+
+    &.outline {
+        background: none;
+        border: none;
+        padding: 0;
+        gap: var(--csd-toggle-btn-gap);
+
+        .csd-toggle-button {
+            border: var(--csd-toggle-btn-outline-border);
+
+            &.active {
+                border-color: var(--accent-color);
+                color: var(--csd-toggle-btn-outline-active-color);
+                background: none;
+            }
+        }
+    }
+
+    // Vertical layout
+    &.vertical {
+        flex-direction: column;
+        width: fit-content;
+    }
+}
+
+
+
+
+// Toggle Button - Second Implementation
+.csd-toggle-button-wrapper {
+    display: inline-block;
+    user-select: none;
+    
+    .csd-toggle-button {
+        display: none;
+    }
+    
+    .csd-toggle-button-label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--csd-toggle-button-gap);
+        padding: var(--csd-toggle-button-padding);
+        background: var(--csd-toggle-button-bg);
+        border: none;
+        border-radius: var(--csd-toggle-button-radius);
+        font-size: var(--csd-toggle-button-font-size);
+        font-weight: var(--csd-toggle-button-font-weight);
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+        user-select: none;
+        text-align: center;
+        min-width: min-content; // Fallback if JS fails
+        
+        &::before {
+            content: '';
+            user-select: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - calc(var(--csd-toggle-button-indicator-offset) * 2));
+            height: calc(100% - calc(var(--csd-toggle-button-indicator-offset) * 2));
+            background-color: var(--csd-toggle-button-indicator-bg);
+            border-radius: var(--csd-toggle-button-indicator-radius);
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 0;
+        }
+
+        ion-icon {
+            user-select: none;
+            font-size: var(--csd-toggle-button-icon-size);
+            color: var(--csd-toggle-button-icon-color) !important;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        .csd-toggle-button-text {
+            padding: 0;
+            margin: 0;
+            border: none;
+            background: none;
+            color: var(--csd-toggle-button-text-color) !important;
+            font-size: inherit;
+            font-weight: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            z-index: 1;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+    }
+    
+    // Checked state
+    .csd-toggle-button:checked + .csd-toggle-button-label {
+        &::before {
+            opacity: 1;
+        }
+
+        ion-icon,
+        .csd-toggle-button-text {
+            color: var(--csd-toggle-button-checked-text-color) !important;
+        }
+    }
+
+    // Disabled state
+    .csd-toggle-button:disabled + .csd-toggle-button-label {
+        opacity: var(--csd-toggle-button-disabled-opacity);
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: var(--csd-toggle-button-disabled-hover-bg);
+            border-color: var(--csd-toggle-button-disabled-hover-border);
+            color: var(--csd-toggle-button-text-color) !important;
+        }
+    }
+}

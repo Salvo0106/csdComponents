@@ -1,0 +1,84 @@
+// Number Component Variables
+:root {
+    // Base Number
+    --csd-number-width: 100%;
+    --csd-number-padding-right: 2.5rem;
+    
+    // Number Buttons Container
+    --csd-number-buttons-width: 2.5rem;
+    --csd-number-buttons-border: 1px solid var(--bc-input);
+    --csd-number-buttons-margin: 1px;
+    
+    // Number Buttons
+    --csd-number-btn-bg: transparent;
+    --csd-number-btn-color: var(--text-color);
+    --csd-number-btn-hover-bg: var(--secondary-color);
+    --csd-number-btn-border-radius: var(--br-field);
+}
+
+.csd-number {
+    position: relative;
+    width: var(--csd-number-width);
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+        appearance: textfield; /* Standard */
+        padding-right: var(--csd-number-padding-right);
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+
+    .csd-number-buttons {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: none;
+        flex-direction: column;
+        width: var(--csd-number-buttons-width);
+        border-left: var(--csd-number-buttons-border);
+        margin-block: var(--csd-number-buttons-margin);
+
+        .number-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50%;
+            border: none;
+            background: var(--csd-number-btn-bg);
+            color: var(--csd-number-btn-color);
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            transition: var(--transition);
+
+            &:hover {
+                background-color: var(--csd-number-btn-hover-bg);
+            }
+
+            &:first-child {
+                border-bottom: var(--csd-number-buttons-border);
+                border-top-right-radius: var(--csd-number-btn-border-radius);
+            }
+
+            &:last-child {
+                border-bottom-right-radius: var(--csd-number-btn-border-radius);
+            }
+        }
+    }
+
+    &:hover .csd-number-buttons,
+    input:focus + .csd-number-buttons {
+        display: flex;
+    }
+
+    &.disabled {
+        .csd-number-buttons {
+            display: none;
+        }
+    }
+}

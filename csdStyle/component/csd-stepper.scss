@@ -1,0 +1,405 @@
+:root {
+    // Stepper Variables
+    --stepper-icon-size: 48px;
+    --stepper-indicator-size: 2.5rem;
+    --stepper-gap: 2rem;
+    --stepper-padding: 1rem;
+    --stepper-max-width: 800px;
+    --stepper-panel-margin: 1.5rem;
+    --stepper-panel-padding: 1.5rem;
+    --stepper-transition-duration: 0.3s;
+    --stepper-title-font-size: 0.875rem;
+    --stepper-desc-font-size: 0.75rem;
+    --stepper-indicator-font-size: 0.875rem;
+    --stepper-progress-stroke: 2px;
+}
+
+// Utility classes
+.d-flex {
+    display: flex;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.csd-stepper {
+    display: flex;
+    width: 100%;
+
+    .stepper-list {
+        display: flex;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        .stepper-item {
+            flex: 1;
+            position: relative;
+            padding: 0 1rem;
+
+            &:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 24px; /* Half of the icon height */
+                left: calc(50% + 24px);
+                right: calc(-50% + 24px);
+                height: 2px;
+                background-color: #ccc; /* More visible color */
+                transition: background-color var(--stepper-transition-duration) ease;
+                z-index: 0;
+                display: block;
+            }
+
+            &.completed::after {
+                background-color: var(--accent-color);
+            }
+
+            .stepper-content {
+                text-align: center;
+            }
+
+            .stepper-icon {
+                width: var(--stepper-icon-size);
+                height: var(--stepper-icon-size);
+                margin: 0 auto 0.5rem;
+                background-color: var(--bg-light);
+                border: 2px solid var(--bc-card);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--text-color-secondary);
+                font-size: 1.25rem;
+                transition: all 0.3s ease;
+            }
+
+            .stepper-label {
+                display: block;
+                margin-bottom: 0.25rem;
+                color: var(--text-color);
+                font-weight: 500;
+            }
+
+            .stepper-description {
+                color: var(--text-color-secondary);
+                font-size: var(--stepper-desc-font-size);
+            }
+
+            // States
+            &.active {
+                .stepper-icon {
+                    background-color: var(--accent-color);
+                    border-color: var(--accent-color);
+                    color: white;
+                }
+
+                .stepper-label {
+                    color: var(--accent-color);
+                }
+            }
+
+            &.completed {
+                .stepper-icon {
+                    background-color: var(--csd-color-success);
+                    border-color: var(--csd-color-success);
+                    color: white;
+                }
+            }
+
+            &.error {
+                .stepper-icon {
+                    background-color: var(--csd-color-danger);
+                    border-color: var(--csd-color-danger);
+                    color: white;
+                }
+
+                .stepper-label {
+                    color: var(--csd-color-danger);
+                }
+            }
+
+            &.disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    // Vertical layout
+    &.vertical {
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+
+        .stepper-list {
+            flex-direction: column;
+
+            .stepper-item {
+                padding: 1rem 0;
+                position: relative;
+
+                &:not(:last-child)::after {
+                    content: '';
+                    position: absolute;
+                    top: var(--stepper-icon-size);
+                    left: calc(var(--stepper-icon-size) / 2 - 1px);
+                    width: 2px;
+                    height: calc(100% - var(--stepper-icon-size) + 1rem);
+                    background-color: #ccc; /* Visible color for the vertical line */
+                    display: block;
+                }
+
+                .stepper-content {
+                    text-align: left;
+                    padding-left: calc(var(--stepper-icon-size) + 16px);
+                    margin-top: calc(-1 * var(--stepper-icon-size) + 0.5rem);
+                }
+            }
+        }
+    }
+
+    // Alternative styles
+    &.numbered {
+        .stepper-icon {
+            font-family: var(--font-family);
+        }
+    }
+
+    // Responsive
+    @media (max-width: 768px) {
+        .stepper-list {
+            flex-direction: column;
+
+            .stepper-item {
+                padding: 1rem 0;
+                position: relative;
+
+                &:not(:last-child)::after {
+                    top: var(--stepper-icon-size);
+                    left: calc(var(--stepper-icon-size) / 2 - 1px);
+                    width: 2px;
+                    height: calc(100% - var(--stepper-icon-size) + 1rem);
+                }
+
+                .stepper-content {
+                    text-align: left;
+                    padding-left: calc(var(--stepper-icon-size) + 16px);
+                    margin-top: calc(-1 * var(--stepper-icon-size) + 0.5rem);
+                }
+            }
+        }
+    }
+}
+
+// Stepper Container
+.csd-stepper-container {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+// Stepper
+.csd-stepper {
+    display: flex;
+    gap: var(--stepper-gap);
+    padding: var(--stepper-padding) 0;
+    margin: 0 auto;
+    position: relative;
+
+    &:not(.vertical) {
+        max-width: var(--stepper-max-width);
+        justify-content: center;
+    }
+
+    // Vertical Variant
+    &.vertical {
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        
+        // Support the flex structure
+        &.flex {
+            display: flex;
+        }
+        
+        // Target the specific elements used in the vertical structure
+        .csd-step {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 1rem;
+            width: 100%;
+            
+            .csd-step-content {
+                text-align: left;
+                padding-left: 0.5rem;
+            }
+        }
+    }
+}
+
+
+// Progress indicator
+.csd-step-progress {
+    position: absolute;
+    background-color: var(--bc-card);
+    transition: background-color var(--stepper-transition-duration) ease;
+    z-index: 0;
+    width: var(--stepper-progress-stroke);
+    height: var(--stepper-progress-stroke);
+    
+    &.completed {
+        background-color: var(--text-color);
+    }
+}
+
+// Step
+.csd-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+    &.completed {
+        .csd-step-indicator {
+            color: var(--text-color);
+            border-color: var(--text-color);
+            font-weight: bold;
+        }
+    }
+
+    &.active {
+        .csd-step-indicator {
+            color: var(--text-color);
+            border-color: var(--text-color);
+        }
+
+        .csd-step-title {
+            color: var(--text-color);
+        }
+    }
+}
+
+.csd-step-indicator {
+    width: var(--stepper-indicator-size);
+    height: var(--stepper-indicator-size);
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid var(--bc-card);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    transition: all calc(var(--stepper-transition-duration) - 0.1s) ease;
+    cursor: pointer;
+    user-select: none;
+    z-index: 1;
+
+    &:hover {
+        border-color: var(--text-color);
+        color: var(--text-color);
+    }
+}
+
+.csd-step-content {
+    padding: 0 0.5rem;
+    text-align: center;
+}
+
+.csd-step-title {
+    font-size: var(--stepper-title-font-size);
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.csd-step-description {
+    font-size: var(--stepper-desc-font-size);
+    color: var(--text-light);
+}
+
+// Stepper Panels
+.csd-step-panels {
+    position: relative;
+    margin-top: var(--stepper-panel-margin);
+    padding: var(--stepper-panel-padding);
+    background: white;
+    border: 1px solid var(--bc-card);
+    border-radius: 0.5rem;
+    width: 100%;
+
+    &.vertical {
+        margin-top: 0;
+    }
+    
+    &.flex-grow-1 {
+        flex-grow: 1;
+    }
+    
+    &.vertical.flex-grow-1 {
+        margin-left: 1rem;
+    }
+}
+
+.csd-step-panel {
+    display: none;
+    opacity: 0;
+    transition: opacity calc(var(--stepper-transition-duration) - 0.1s) ease;
+
+    &.active {
+        display: block;
+        opacity: 1;
+    }
+}
+
+// Navigation
+.prev-step,
+.next-step {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--stepper-gap) / 4);
+    padding: calc(var(--stepper-padding) / 2) var(--stepper-padding);
+    font-size: var(--stepper-title-font-size);
+    border-radius: 0.375rem;
+    transition: all calc(var(--stepper-transition-duration) - 0.1s);
+    user-select: none;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.prev-step {
+    background-color: var(--bg-light);
+    color: var(--text-muted);
+    border: 1px solid var(--bc-card);
+
+    &:not(:disabled):hover {
+        background-color: #edf1f5;
+        border-color: var(--bc-hover);
+    }
+}
+
+.next-step {
+    background-color: var(--text-color);
+    color: white;
+    border: 1px solid var(--text-color);
+
+    &:not(:disabled):hover {
+        background-color: var(--text-color);
+    }
+}

@@ -1,0 +1,190 @@
+// Input Component Variables
+:root {
+    // Input Variables
+    --csd-input-bg: var(--bg-input);
+    --csd-input-border: 1px solid var(--bc-input);
+    --csd-input-padding: var(--p-input);
+    --csd-input-border-radius: var(--br-input);
+    --csd-input-box-shadow: var(--shadow);
+    --csd-input-color: var(--text-color-csd);
+    
+    // Input Disabled State
+    --csd-input-disabled-bg: var(--bg-input-disabled);
+    --csd-input-disabled-border: var(--bc-input);
+    
+    // Input Focus State
+    --csd-input-focus-border: var(--text-color);
+    
+    // Form Variables
+    --csd-form-gap: var(--gap-form);
+    --csd-form-padding: 16px;
+    
+    // Field Variables
+    --csd-field-gap: var(--gap-field);
+    --csd-field-margin-bottom: var(--mb-field);
+    
+    // Label Variables
+    --csd-label-font-weight: bold;
+    --csd-label-line-height: calc(var(--line-height) * 0.8);
+    --csd-label-float-font-weight: 400;
+    
+    // Float Label Variables
+    --csd-float-label-top: 50%;
+    --csd-float-label-left: var(--px-input);
+    --csd-float-label-transition: all 0.3s ease;
+    --csd-float-label-active-top: -16px;
+    --csd-float-label-active-left: 0px;
+    --csd-float-label-active-font-weight: bold;
+    
+    // Inline Field Variables
+    --csd-field-inline-gap: var(--gap-field);
+    --csd-field-inline-label-width: 30%;
+    --csd-field-inline-input-width: 70%;
+    --csd-field-inline-margin-top: 16px;
+    --csd-field-inline-padding-left: 16px;
+}
+
+// Input
+input,
+textarea,
+select {
+    background-color: var(--csd-input-bg);
+    border: var(--csd-input-border);
+    padding: var(--csd-input-padding);
+    border-radius: var(--csd-input-border-radius);
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--csd-input-color);
+    box-shadow: var(--csd-input-box-shadow);
+}
+
+input[disabled],
+textarea[disabled] {
+    background-color: var(--csd-input-disabled-bg);
+    border-radius: none!important;
+    box-shadow: none;
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield; /* Standard */
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none!important;
+    border-color: var(--csd-input-focus-border)!important;
+}
+
+// Form
+.csd-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--csd-form-gap);
+    padding: var(--csd-form-padding);
+}
+
+.csd-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--csd-field-gap);
+    position: relative;
+    margin-bottom: var(--csd-field-margin-bottom);
+}
+
+.csd-label {
+    font-weight: var(--csd-label-font-weight);
+    line-height: var(--csd-label-line-height);
+}
+
+/* Float Label */
+.csd-float-label:not(.csd-field-inline) {
+    margin-top: calc(var(--font-size) * var(--line-height) + var(--csd-field-gap));
+}
+
+.csd-float-label:not(.csd-field-inline) .csd-label {
+    position: absolute;
+    top: var(--csd-float-label-top);
+    left: var(--csd-float-label-left);
+    transform: translateY(-50%);
+    transition: var(--csd-float-label-transition);
+    font-weight: var(--csd-label-float-font-weight);
+}
+
+// Se focus o non viene mostrato il placeholder allora mostra il label
+.csd-float-label:not(.csd-field-inline) .csd-input:focus+.csd-label,
+.csd-float-label:not(.csd-field-inline) .csd-input:not(:placeholder-shown)+.csd-label,
+.csd-float-label:not(.csd-field-inline) .csd-input:disabled+.csd-label {
+    top: var(--csd-float-label-active-top);
+    left: var(--csd-float-label-active-left);
+    font-weight: var(--csd-float-label-active-font-weight);
+}
+
+.csd-float-label .csd-input:placeholder-shown::placeholder {
+    color: transparent;
+}
+
+/* Inline Form Field - Fit Content Label */
+.csd-field-inline {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: var(--csd-field-inline-gap);
+    align-items: center;
+    margin-bottom: var(--csd-field-margin-bottom);
+
+    .csd-label {
+        max-width: var(--csd-field-inline-label-width);
+        width: 100%;
+    }
+
+    .csd-input {
+        min-width: var(--csd-field-inline-input-width);
+    }
+}
+
+/* Float Label Inline */
+.csd-field-inline.csd-float-label {
+    margin-top: var(--csd-field-inline-margin-top);
+}
+
+.csd-field-inline.csd-float-label .csd-label {
+    padding-left: var(--csd-field-inline-padding-left);
+    position: relative;
+    font-weight: var(--csd-label-float-font-weight);
+    transition: var(--csd-float-label-transition);
+}
+
+.csd-field-inline.csd-float-label .csd-input:focus,
+.csd-field-inline.csd-float-label .csd-input:not(:placeholder-shown) {
+    width: var(--csd-field-inline-input-width);
+}
+
+.csd-field-inline.csd-float-label .csd-input:focus+.csd-label,
+.csd-field-inline.csd-float-label .csd-input:not(:placeholder-shown)+.csd-label,
+.csd-field-inline.csd-float-label .csd-input:disabled+.csd-label {
+    padding-left: 0;
+    transition: var(--csd-float-label-transition);
+    font-weight: var(--csd-float-label-active-font-weight);
+}
+
+.csd-field-inline.csd-float-label .csd-input {
+    position: absolute;
+    right: 0;
+    transition: var(--csd-float-label-transition);
+    width: 100%;
+}
+
+// Input
+.csd-input {
+    padding: var(--csd-input-padding);
+    border: var(--csd-input-border);
+    border-radius: var(--csd-input-border-radius);
+    transition: var(--transition);
+}
+
+.csd-input::placeholder {
+    color: var(--csd-input-color);
+    font-weight: normal;
+}

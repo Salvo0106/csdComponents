@@ -1,0 +1,120 @@
+:root {
+    /* Chip Spacing */
+    --csd-chip-gap: 0.5rem;
+    --csd-chip-padding-x: 0.75rem;
+    --csd-chip-padding-y: 0.5rem;
+    --csd-chip-padding: var(--csd-chip-padding-y) var(--csd-chip-padding-x);
+    --csd-chip-padding-removable: 0.5rem;
+    
+    /* Chip Typography */
+    --csd-chip-font-size: 1rem;
+    --csd-chip-line-height: 1;
+    --csd-chip-icon-size: 1rem;
+    
+    /* Chip Layout */
+    --csd-chip-border-radius: 50rem;
+    --csd-chip-avatar-size: 2rem;
+    --csd-chip-remove-size: 1rem;
+
+    /* Colors */
+    --csd-chip-background: var(--primary-100);
+    --csd-chip-color: var(--primary-600);
+    
+    /* Animation */
+    --csd-chip-transition: all 0.2s ease-in-out;
+}
+
+// Chip
+.csd-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--csd-chip-gap);
+    padding: var(--csd-chip-padding);
+    font-size: var(--csd-chip-font-size);
+    line-height: var(--csd-chip-line-height);
+    background-color: var(--csd-chip-background);
+    border-radius: var(--csd-chip-border-radius);
+    cursor: default;
+    user-select: none;
+    color: var(--csd-chip-color);
+    transition: var(--csd-chip-transition);
+
+    // Variants
+    &.primary,
+    &.success,
+    &.danger,
+    &.warning,
+    &.info {
+        color: var(--csd-color-white);
+        .chip-remove { color: var(--csd-color-white); }
+    }
+
+    &.primary {
+        background-color: var(--csd-color-primary);
+    }
+
+    &.secondary {
+        background-color: var(--csd-color-secondary);
+    }
+
+    &.success {
+        background-color: var(--csd-color-success);
+    }
+
+    &.warning {
+        background-color: var(--csd-color-warning);
+    }
+
+    &.danger {
+        background-color: var(--csd-color-danger);
+    }
+
+    &.info {
+        background-color: var(--csd-color-info);
+    }
+
+    &.removable {
+        padding-right: var(--csd-chip-padding-removable);
+    }
+
+    // Elements
+    ion-icon {
+        color: inherit;
+        font-size: var(--csd-chip-icon-size);
+        --ionicon-stroke-width: 50px;
+    }
+
+    &:has(.chip-avatar) {
+        padding-block: calc(var(--csd-chip-padding-y) / 2);
+    }
+
+    .chip-avatar {
+        width: var(--csd-chip-avatar-size);
+        height: var(--csd-chip-avatar-size);
+        border-radius: 50%;
+        object-fit: cover;
+        margin-left: calc(-1 * var(--csd-chip-padding-y));
+    }
+
+    .chip-remove {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--csd-chip-remove-size);
+        height: var(--csd-chip-remove-size);
+        padding: 0;
+        margin-left: var(--csd-badge-gap);
+        font-size: var(--csd-chip-icon-size);
+        color: var(--text-color-secondary);
+        background: none;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: var(--csd-chip-transition);
+
+        ion-icon {
+            color: inherit;
+            font-size: var(--csd-chip-icon-size);
+        }
+    }
+}

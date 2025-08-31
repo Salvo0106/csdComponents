@@ -1,0 +1,325 @@
+// Toast component variables
+:root {
+    // Toast base variables
+    --csd-toast-display: flex;
+    --csd-toast-align: center;
+    --csd-toast-justify: space-between;
+    --csd-toast-gap: 1rem;
+    --csd-toast-padding: 1rem;
+    --csd-toast-margin-bottom: 1rem;
+    
+    // Toast style variables
+    --csd-toast-bg: var(--bg-light);
+    --csd-toast-border: 1px solid var(--bc-card);
+    --csd-toast-border-radius: var(--br-card);
+    --csd-toast-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    
+    // Toast content variables
+    --csd-toast-content-gap: 0.75rem;
+    --csd-toast-message-font-size: 0.9375rem;
+    
+    // Toast icon variables
+    --csd-toast-icon-size: 24px;
+    
+    // Toast accent border variables
+    --csd-toast-accent-width: 4px;
+    
+    // Toast close button variables
+    --csd-toast-close-size: 24px;
+    
+    // Toast container variables
+    --csd-toast-container-z-index: 1050;
+    --csd-toast-container-padding: 1rem;
+    
+    // Toast alternate version variables
+    --csd-toast-alt-padding: 0.75rem 1rem;
+    --csd-toast-alt-border-radius: 0.5rem;
+    --csd-toast-alt-min-width: 200px;
+    --csd-toast-alt-max-width: 400px;
+    --csd-toast-alt-content-gap: 0.5rem;
+    --csd-toast-alt-icon-size: 1.25rem;
+    --csd-toast-alt-close-padding: 4px;
+    --csd-toast-alt-close-opacity: 0.7;
+    --csd-toast-alt-close-border-radius: 4px;
+    --csd-toast-alt-hover-bg: rgba(0, 0, 0, 0.1);
+}
+
+.csd-toast {
+    display: var(--csd-toast-display);
+    align-items: var(--csd-toast-align);
+    justify-content: var(--csd-toast-justify);
+    gap: var(--csd-toast-gap);
+    padding: var(--csd-toast-padding);
+    background-color: var(--csd-toast-bg);
+    border: var(--csd-toast-border);
+    border-radius: var(--csd-toast-border-radius);
+    box-shadow: var(--csd-toast-box-shadow);
+    margin-bottom: var(--csd-toast-margin-bottom);
+    animation: slideIn 0.3s ease-out;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .toast-content {
+        display: var(--csd-toast-display);
+        align-items: var(--csd-toast-align);
+        gap: var(--csd-toast-content-gap);
+        flex: 1;
+
+        .toast-icon {
+            display: var(--csd-toast-display);
+            align-items: var(--csd-toast-align);
+            justify-content: center;
+            width: var(--csd-toast-icon-size);
+            height: var(--csd-toast-icon-size);
+            flex-shrink: 0;
+
+            &.success {
+                color: var(--csd-color-success);
+            }
+
+            &.error {
+                color: var(--csd-color-danger);
+            }
+
+            &.warning {
+                color: var(--csd-color-warning);
+            }
+
+            &.info {
+                color: var(--csd-color-info);
+            }
+        }
+
+        .toast-message {
+            flex: 1;
+            font-size: var(--csd-toast-message-font-size);
+            color: var(--text-color);
+            margin: 0;
+        }
+    }
+
+    .toast-close {
+        display: var(--csd-toast-display);
+        align-items: var(--csd-toast-align);
+        justify-content: center;
+        width: var(--csd-toast-close-size);
+        height: var(--csd-toast-close-size);
+        border: none;
+        background: none;
+        color: var(--text-color-secondary);
+        cursor: pointer;
+        padding: 0;
+        transition: var(--transition);
+
+        &:hover {
+            color: var(--text-color);
+        }
+    }
+
+    // Toast variants
+    &.success {
+        border-left: var(--csd-toast-accent-width) solid var(--csd-color-success);
+    }
+
+    &.error {
+        border-left: var(--csd-toast-accent-width) solid var(--csd-color-danger);
+    }
+
+    &.warning {
+        border-left: var(--csd-toast-accent-width) solid var(--csd-color-warning);
+    }
+
+    &.info {
+        border-left: var(--csd-toast-accent-width) solid var(--csd-color-info);
+    }
+
+    // Toast container positions
+    &-container {
+        position: fixed;
+        z-index: var(--csd-toast-container-z-index);
+        padding: var(--csd-toast-container-padding);
+        pointer-events: none;
+
+        .csd-toast {
+            pointer-events: auto;
+        }
+
+        &.top-right {
+            top: 0;
+            right: 0;
+        }
+
+        &.top-left {
+            top: 0;
+            left: 0;
+        }
+
+        &.bottom-right {
+            bottom: 0;
+            right: 0;
+        }
+
+        &.bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+
+        &.top-center {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &.bottom-center {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+// Animations
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+
+
+// Toast
+.csd-toast-container {
+    position: fixed;
+    bottom: var(--csd-toast-container-padding);
+    right: var(--csd-toast-container-padding);
+    z-index: var(--csd-toast-container-z-index);
+    display: var(--csd-toast-display);
+    flex-direction: column;
+    gap: var(--csd-toast-alt-content-gap);
+    pointer-events: none;
+}
+
+.csd-toast {
+    display: var(--csd-toast-display);
+    align-items: var(--csd-toast-align);
+    justify-content: var(--csd-toast-justify);
+    gap: var(--csd-toast-gap);
+    background: var(--csd-toast-bg);
+    color: var(--text-color);
+    padding: var(--csd-toast-alt-padding);
+    border-radius: var(--csd-toast-alt-border-radius);
+    box-shadow: var(--csd-toast-box-shadow);
+    min-width: var(--csd-toast-alt-min-width);
+    max-width: var(--csd-toast-alt-max-width);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: auto;
+
+    &.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .csd-toast-content {
+        display: var(--csd-toast-display);
+        align-items: var(--csd-toast-align);
+        gap: var(--csd-toast-alt-content-gap);
+        flex: 1;
+
+        ion-icon {
+            font-size: var(--csd-toast-alt-icon-size);
+            flex-shrink: 0;
+        }
+
+        span {
+            line-height: 1.2;
+        }
+    }
+
+    .csd-toast-close {
+        display: var(--csd-toast-display);
+        align-items: var(--csd-toast-align);
+        justify-content: center;
+        background: none;
+        border: none;
+        padding: var(--csd-toast-alt-close-padding);
+        cursor: pointer;
+        opacity: var(--csd-toast-alt-close-opacity);
+        transition: opacity 0.2s;
+        flex-shrink: 0;
+        border-radius: var(--csd-toast-alt-close-border-radius);
+
+        &:hover {
+            opacity: 1;
+            background-color: var(--csd-toast-alt-hover-bg);
+        }
+
+        ion-icon {
+            font-size: var(--csd-toast-alt-icon-size);
+        }
+    }
+
+    
+    &.csd-toast-success {
+        background-color: var(--csd-color-success);
+    }
+    
+    &.csd-toast-error {
+        background-color: var(--csd-color-danger);
+    }
+    
+    &.csd-toast-info {
+        background-color: var(--csd-color-info);
+    }
+    
+    &.csd-toast-warning {
+        background-color: var(--csd-color-warning);
+    }
+
+    &.csd-toast-success,
+    &.csd-toast-error,
+    &.csd-toast-info,
+    &.csd-toast-warning {
+        color: white;
+
+
+        .csd-toast-close {
+            color: inherit;
+
+            ion-icon {
+                color: inherit;
+            }
+        }
+
+        .csd-toast-content {
+            color: inherit;
+
+            span {
+                color: inherit;
+            }
+
+            ion-icon {
+                color: inherit;
+            }
+        }
+    }
+}

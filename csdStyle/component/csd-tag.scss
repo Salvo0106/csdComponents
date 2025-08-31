@@ -1,0 +1,144 @@
+:root {
+    /* Spacing */
+    --csd-tag-gap: 0.5rem;
+    --csd-tag-padding: 0.25rem 0.5rem;
+    
+    /* Typography */
+    --csd-tag-font-size: 0.875rem;
+    --csd-tag-font-weight: 700;
+    --csd-tag-line-height: 1.5;
+    --csd-tag-icon-size: 1rem;
+    
+    /* Layout */
+    --csd-tag-border-radius: 6px;
+    --csd-tag-pill-radius: 50rem;
+    --csd-tag-height: 1.75rem;
+    
+    /* Colors */
+    --csd-tag-bg: var(--gray-100);
+    --csd-tag-color: var(--gray-700);
+    --csd-tag-hover-bg: var(--gray-200);
+}
+
+.csd-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--csd-tag-gap);
+    height: var(--csd-tag-height);
+    padding: var(--csd-tag-padding);
+    font-size: var(--csd-tag-font-size);
+    font-weight: var(--csd-tag-font-weight);
+    line-height: var(--csd-tag-line-height);
+    color: var(--csd-tag-color);
+    background-color: var(--csd-tag-bg);
+    border-radius: var(--csd-tag-border-radius);
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+
+    /* Variants */
+    &.primary {
+        color: var(--primary-700);
+        background-color: var(--primary-100);
+
+        &:hover {
+            background-color: var(--primary-200);
+        }
+    }
+
+    &.success {
+        color: var(--success-700);
+        background-color: var(--success-100);
+
+        &:hover {
+            background-color: var(--success-200);
+        }
+    }
+
+    &.warning {
+        color: var(--warning-700);
+        background-color: var(--warning-100);
+
+        &:hover {
+            background-color: var(--warning-200);
+        }
+    }
+
+    &.danger {
+        color: var(--error-700);
+        background-color: var(--error-100);
+
+        &:hover {
+            background-color: var(--error-200);
+        }
+    }
+
+    &.info {
+        color: var(--info-700);
+        background-color: var(--info-100);
+
+        &:hover {
+            background-color: var(--info-200);
+        }
+    }
+
+    /* Shape Variants */
+    &.pill {
+        border-radius: var(--csd-tag-pill-radius);
+    }
+
+    /* Sizes */
+    &.sm {
+        height: 1.5rem;
+        padding: 0.125rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    &.lg {
+        height: 2rem;
+        padding: 0.375rem 1rem;
+        font-size: 1rem;
+    }
+
+    /* States */
+    &:hover {
+        background-color: var(--csd-tag-hover-bg);
+    }
+
+    &.clickable {
+        cursor: pointer;
+    }
+
+    &.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    /* Elements */
+    ion-icon {
+        font-size: var(--csd-tag-icon-size);
+        color: inherit;
+        --ionicon-stroke-width: 50px;
+    }
+
+    .csd-tag-remove {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: calc(var(--csd-tag-gap) * -0.5);
+        margin-right: calc(var(--csd-tag-gap) * -0.5);
+        padding: 0.25rem;
+        color: inherit;
+        opacity: 0.7;
+        cursor: pointer;
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        ion-icon {
+            font-size: calc(var(--csd-tag-icon-size) * 0.85);
+        }
+    }
+}

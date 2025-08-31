@@ -1,0 +1,143 @@
+:root {
+    // OTP Container
+    --csd-otp-container-gap: 8px;
+    --csd-otp-container-margin: 10px 0;
+    --csd-otp-container-justify: center;
+    
+    // OTP Input/Digit
+    --csd-otp-input-width: 40px;
+    --csd-otp-input-height: 40px;
+    --csd-otp-input-padding: 0;
+    --csd-otp-input-font-size: 24px;
+    --csd-otp-input-text-align: center;
+    --csd-otp-input-border: 1px solid var(--bc-input);
+    --csd-otp-input-radius: var(--br-field);
+    --csd-otp-input-bg: var(--bg-input);
+    --csd-otp-input-transition: var(--transition);
+    
+    // OTP Input States
+    --csd-otp-input-focus-border: var(--accent-color);
+    --csd-otp-input-focus-shadow: 0 0 0 2px var(--secondary-color);
+    --csd-otp-input-disabled-bg: var(--bg-input-disabled);
+    
+    // OTP Error States
+    --csd-otp-input-error-border: var(--csd-color-danger);
+    --csd-otp-input-error-shadow: 0 0 0 2px rgba(var(--csd-color-danger-rgb), 0.2);
+    
+    // OTP Digit (alternative style)
+    --csd-otp-digit-border: 1px solid #ddd;
+    --csd-otp-digit-radius: calc(var(--br-input)/2);
+    --csd-otp-digit-font-size: 18px;
+    --csd-otp-digit-font-weight: bold;
+    --csd-otp-digit-color: var(--text-color);
+    --csd-otp-digit-padding: calc(var(--px-input) / 2);
+    --csd-otp-digit-focus-border: var(--text-color);
+    --csd-otp-digit-focus-shadow: var(--shadow);
+    
+    // OTP Group
+    --csd-otp-group-gap: var(--gap-field);
+    
+    // OTP Message
+    --csd-otp-message-font-size: 0.875rem;
+    --csd-otp-message-color: var(--text-color-secondary);
+    --csd-otp-message-error-color: var(--csd-color-danger);
+    
+    // OTP Actions
+    --csd-otp-actions-gap: var(--gap-field);
+    --csd-otp-actions-margin-top: 8px;
+}
+
+.csd-otp-container {
+    display: flex;
+    gap: var(--csd-otp-container-gap);
+    justify-content: var(--csd-otp-container-justify);
+    margin: var(--csd-otp-container-margin);
+
+    @media (max-width: 768px) {
+        gap: calc(var(--csd-otp-container-gap) / 2);
+    }
+
+    .csd-otp-input {
+        width: var(--csd-otp-input-width);
+        height: var(--csd-otp-input-height);
+        padding: var(--csd-otp-input-padding);
+        font-size: var(--csd-otp-input-font-size);
+        text-align: var(--csd-otp-input-text-align);
+        border: var(--csd-otp-input-border);
+        border-radius: var(--csd-otp-input-radius);
+        background-color: var(--csd-otp-input-bg);
+        transition: var(--csd-otp-input-transition);
+
+        @media (max-width: 768px) {
+            width: calc(var(--csd-otp-input-width) / 1.4);
+            height: calc(var(--csd-otp-input-height) / 1.4);
+            font-size: calc(var(--csd-otp-input-font-size) / 1.4);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--csd-otp-input-focus-border);
+            box-shadow: var(--csd-otp-input-focus-shadow);
+        }
+
+        &:disabled {
+            background-color: var(--csd-otp-input-disabled-bg);
+            cursor: not-allowed;
+        }
+
+        &.error {
+            border-color: var(--csd-otp-input-error-border);
+            
+            &:focus {
+                box-shadow: var(--csd-otp-input-error-shadow);
+            }
+        }
+    }
+    
+    .csd-otp-digit {
+        width: var(--csd-otp-input-width);
+        height: var(--csd-otp-input-height);
+        border: var(--csd-otp-digit-border);
+        border-radius: var(--csd-otp-digit-radius);
+        text-align: var(--csd-otp-input-text-align);
+        font-size: var(--csd-otp-digit-font-size);
+        font-weight: var(--csd-otp-digit-font-weight);
+        color: var(--csd-otp-digit-color);
+        background: var(--csd-otp-input-bg);
+        transition: var(--csd-otp-input-transition);
+        padding: var(--csd-otp-digit-padding);
+
+        &:focus {
+            border-color: var(--csd-otp-digit-focus-border);
+            box-shadow: var(--csd-otp-digit-focus-shadow);
+        }
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}
+
+.csd-otp-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--csd-otp-group-gap);
+
+    .csd-otp-message {
+        font-size: var(--csd-otp-message-font-size);
+        color: var(--csd-otp-message-color);
+
+        &.error {
+            color: var(--csd-otp-message-error-color);
+        }
+    }
+
+    .csd-otp-actions {
+        display: flex;
+        gap: var(--csd-otp-actions-gap);
+        margin-top: var(--csd-otp-actions-margin-top);
+    }
+}

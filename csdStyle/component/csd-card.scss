@@ -1,0 +1,86 @@
+// Card Variables
+:root {
+    --csd-card-margin: 1rem;
+    --csd-card-padding: 1rem;
+    --csd-card-border-radius: 1rem;
+    --csd-card-border-color: var(--gray-200);
+    --csd-card-bg: var(--white);
+    --csd-card-shadow: var(--shadow);
+    
+    // Card header
+    --csd-card-header-padding: 1rem;
+    --csd-card-header-border: none;
+    --csd-card-header-bg: transparent;
+    
+    // Card body
+    --csd-card-body-padding: var(--csd-card-padding);
+    --csd-card-body-gap: 0.5rem;
+    
+    // Card footer
+    --csd-card-footer-border: none;
+    --csd-card-footer-bg: transparent;
+    --csd-card-footer-margin-top: calc(var(--csd-card-margin) / 2);
+    
+    // Card typography
+    --csd-card-title-size: 1.1rem;
+    --csd-card-title-weight: 600;
+    --csd-card-subtitle-size: 1rem;
+    --csd-card-subtitle-weight: 400;
+    --csd-card-content-size: 1rem;
+}
+
+// Card
+.csd-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--csd-card-bg);
+    border: 1px solid var(--csd-card-border-color);
+    border-radius: var(--csd-card-border-radius);
+    box-shadow: var(--csd-card-shadow);
+    --p-card-header: var(--csd-card-header-padding);
+}
+
+.csd-card-header img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: calc(var(--csd-card-border-radius) - 2px)!important;
+}
+
+.csd-card-header {
+    padding: var(--csd-card-header-padding)!important;
+    background-color: var(--csd-card-header-bg);
+    border-bottom: var(--csd-card-header-border);
+}
+
+.csd-card-body {
+    display: flex;
+    flex-direction: column;
+    padding: var(--csd-card-body-padding)!important;
+    font-size: 1rem;
+}
+
+.csd-card-title {
+    font-size: var(--csd-card-title-size);
+    font-weight: var(--csd-card-title-weight);
+    margin: 0;
+}
+
+.csd-card-subtitle {
+    font-size: var(--csd-card-subtitle-size);
+    font-weight: var(--csd-card-subtitle-weight);
+    margin: 0;
+    color: var(--text-color-secondary);
+}
+
+.csd-card-content {
+    margin-top: var(--csd-card-body-gap);
+    font-size: var(--csd-card-content-size);
+}
+
+.csd-card-footer {
+    background-color: var(--csd-card-footer-bg);
+    border-top: var(--csd-card-footer-border);
+    margin-top: var(--csd-card-footer-margin-top);
+}

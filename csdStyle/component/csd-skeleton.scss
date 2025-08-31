@@ -1,0 +1,108 @@
+
+// Skeleton component variables
+:root {
+    // Base skeleton variables
+    --csd-skeleton-bg: var(--bg-light);
+    --csd-skeleton-border-radius: 8px;
+    --csd-skeleton-container-gap: 2rem;
+    
+    // Animation variables
+    --csd-skeleton-animation-name: shine;
+    --csd-skeleton-animation-duration: 1.5s;
+    --csd-skeleton-animation-timing: linear;
+    --csd-skeleton-animation-iteration: infinite;
+    --csd-skeleton-gradient: linear-gradient(110deg, var(--bg-highlight) 8%, var(--bg-light) 18%, var(--bg-highlight) 33%);
+    --csd-skeleton-bg-size: 200% 100%;
+    
+    // Card skeleton variables
+    --csd-skeleton-card-max-width: 400px;
+    --csd-skeleton-card-header-height: 200px;
+    --csd-skeleton-card-content-padding: 1rem;
+    
+    // List skeleton variables
+    --csd-skeleton-list-max-width: 600px;
+    --csd-skeleton-list-item-gap: 1rem;
+    --csd-skeleton-list-item-padding: 1rem;
+    --csd-skeleton-list-item-border: 1px solid var(--bc-input);
+    
+    // Avatar skeleton variables
+    --csd-skeleton-avatar-size: 48px;
+    --csd-skeleton-avatar-border-radius: 50%;
+    
+    // Line skeleton variables
+    --csd-skeleton-line-height: 12px;
+    --csd-skeleton-line-margin: 0.5rem 0;
+    --csd-skeleton-line-border-radius: 4px;
+}
+
+// Skeleton Loading
+.csd-skeleton-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--csd-skeleton-container-gap);
+}
+
+.csd-skeleton {
+    background: var(--csd-skeleton-bg);
+    border-radius: var(--csd-skeleton-border-radius);
+    overflow: hidden;
+
+    &.card {
+        width: 100%;
+        max-width: var(--csd-skeleton-card-max-width);
+
+        .skeleton-header {
+            height: var(--csd-skeleton-card-header-height);
+            background: var(--csd-skeleton-gradient);
+            background-size: var(--csd-skeleton-bg-size);
+            animation: var(--csd-skeleton-animation-name) var(--csd-skeleton-animation-duration) var(--csd-skeleton-animation-timing) var(--csd-skeleton-animation-iteration);
+        }
+
+        .skeleton-content {
+            padding: var(--csd-skeleton-card-content-padding);
+        }
+    }
+
+    &.list {
+        width: 100%;
+        max-width: var(--csd-skeleton-list-max-width);
+
+        .skeleton-item {
+            display: flex;
+            align-items: center;
+            gap: var(--csd-skeleton-list-item-gap);
+            padding: var(--csd-skeleton-list-item-padding);
+            border-bottom: var(--csd-skeleton-list-item-border);
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .skeleton-avatar {
+                width: var(--csd-skeleton-avatar-size);
+                height: var(--csd-skeleton-avatar-size);
+                border-radius: var(--csd-skeleton-avatar-border-radius);
+                background: var(--csd-skeleton-gradient);
+                background-size: var(--csd-skeleton-bg-size);
+                animation: var(--csd-skeleton-animation-name) var(--csd-skeleton-animation-duration) var(--csd-skeleton-animation-timing) var(--csd-skeleton-animation-iteration);
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    .skeleton-line {
+        height: var(--csd-skeleton-line-height);
+        width: 100%;
+        margin: var(--csd-skeleton-line-margin);
+        background: var(--csd-skeleton-gradient);
+        background-size: var(--csd-skeleton-bg-size);
+        animation: var(--csd-skeleton-animation-name) var(--csd-skeleton-animation-duration) var(--csd-skeleton-animation-timing) var(--csd-skeleton-animation-iteration);
+        border-radius: var(--csd-skeleton-line-border-radius);
+    }
+}
+
+@keyframes shine {
+    to {
+        background-position-x: -200%;
+    }
+}

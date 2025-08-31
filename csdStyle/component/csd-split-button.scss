@@ -1,0 +1,216 @@
+/* Split Button Component */
+:root {
+    // Base Layout
+    --csd-split-button-position: relative;
+    --csd-split-button-display: inline-flex;
+    --csd-split-button-align: stretch;
+    --csd-split-button-vertical-align: middle;
+    --csd-split-button-disabled-opacity: 0.6;
+    
+    // Main Button
+    --csd-split-main-border-right: 1px solid rgba(255, 255, 255, 0.2);
+    --csd-split-main-border-top-right-radius: 0;
+    --csd-split-main-border-bottom-right-radius: 0;
+    
+    // Toggle Button
+    --csd-split-toggle-padding: 0 8px;
+    --csd-split-toggle-border-top-left-radius: 0;
+    --csd-split-toggle-border-bottom-left-radius: 0;
+    --csd-split-toggle-display: flex;
+    --csd-split-toggle-align: center;
+    --csd-split-toggle-justify: center;
+    --csd-split-toggle-icon-transition: transform 0.2s;
+    --csd-split-toggle-icon-active-transform: rotate(180deg);
+    --csd-split-toggle-icon-size: 12px;
+    
+    // Menu/Dropdown 
+    --csd-split-menu-position: absolute;
+    --csd-split-menu-top: 100%;
+    --csd-split-menu-right: 0;
+    --csd-split-menu-margin-top: 4px;
+    --csd-split-menu-min-width: 160px;
+    --csd-split-menu-bg: var(--bg-light, #fff);
+    --csd-split-menu-border: 1px solid var(--bc-card, rgba(0, 0, 0, 0.15));
+    --csd-split-menu-border-radius: var(--br-card, 0.5rem);
+    --csd-split-menu-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --csd-split-menu-z-index: 1000;
+    --csd-split-menu-padding: 0.125rem;
+    
+    // Menu Items
+    --csd-split-item-display: flex;
+    --csd-split-item-align: center;
+    --csd-split-item-gap: 8px;
+    --csd-split-item-padding: 6px 12px;
+    --csd-split-item-color: var(--text-color, #212529);
+    --csd-split-item-text-decoration: none;
+    --csd-split-item-transition: var(--transition, all 0.2s ease);
+    --csd-split-item-cursor: pointer;
+    --csd-split-item-width: 100%;
+    --csd-split-item-font-weight: 400;
+    --csd-split-item-white-space: nowrap;
+    --csd-split-item-border-radius: 0.5rem;
+    
+    // Item States
+    --csd-split-item-hover-bg: var(--secondary-color, #f8f9fa);
+    --csd-split-item-hover-color: var(--text-color, #16181b);
+    --csd-split-item-active-bg: var(--accent-color);
+    --csd-split-item-active-color: white;
+    --csd-split-item-disabled-color: var(--text-color-disabled);
+    
+    // Divider
+    --csd-split-divider-height: 1px;
+    --csd-split-divider-margin: 8px 0;
+    --csd-split-divider-bg: var(--bc-input);
+    
+    // Size Variants
+    --csd-split-button-sm-padding: 0.25rem 0.5rem;
+    --csd-split-button-sm-font-size: 0.875rem;
+    --csd-split-button-lg-padding: 0.75rem 1.5rem;
+    --csd-split-button-lg-font-size: 1.125rem;
+}
+
+.csd-split-button {
+    position: var(--csd-split-button-position);
+    display: var(--csd-split-button-display);
+    align-items: var(--csd-split-button-align);
+    vertical-align: var(--csd-split-button-vertical-align);
+
+    .split-main {
+        border-top-right-radius: var(--csd-split-main-border-top-right-radius);
+        border-bottom-right-radius: var(--csd-split-main-border-bottom-right-radius);
+        border-right: var(--csd-split-main-border-right);
+    }
+
+    .split-toggle {
+        padding: var(--csd-split-toggle-padding);
+        border-top-left-radius: var(--csd-split-toggle-border-top-left-radius);
+        border-bottom-left-radius: var(--csd-split-toggle-border-bottom-left-radius);
+        display: var(--csd-split-toggle-display);
+        align-items: var(--csd-split-toggle-align);
+        justify-content: var(--csd-split-toggle-justify);
+
+        .toggle-icon, i, ion-icon {
+            transition: var(--csd-split-toggle-icon-transition);
+            font-size: var(--csd-split-toggle-icon-size);
+        }
+
+        &.active .toggle-icon {
+            transform: var(--csd-split-toggle-icon-active-transform);
+        }
+    }
+
+    .split-menu, .split-dropdown {
+        position: var(--csd-split-menu-position);
+        top: var(--csd-split-menu-top);
+        right: var(--csd-split-menu-right);
+        margin-top: var(--csd-split-menu-margin-top);
+        min-width: var(--csd-split-menu-min-width);
+        background-color: var(--csd-split-menu-bg);
+        border: var(--csd-split-menu-border);
+        border-radius: var(--csd-split-menu-border-radius);
+        box-shadow: var(--csd-split-menu-box-shadow);
+        z-index: var(--csd-split-menu-z-index);
+        display: none;
+
+        &.show {
+            display: block;
+        }
+
+        .split-item {
+            display: var(--csd-split-item-display);
+            align-items: var(--csd-split-item-align);
+            gap: var(--csd-split-item-gap);
+            padding: var(--csd-split-item-padding);
+            color: var(--csd-split-item-color);
+            text-decoration: var(--csd-split-item-text-decoration);
+            transition: var(--csd-split-item-transition);
+            cursor: var(--csd-split-item-cursor);
+
+            &:hover {
+                background-color: var(--csd-split-item-hover-bg);
+            }
+
+            &.active {
+                background-color: var(--csd-split-item-active-bg);
+                color: var(--csd-split-item-active-color);
+            }
+
+            &.disabled {
+                color: var(--csd-split-item-disabled-color);
+                cursor: not-allowed;
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+
+        .split-divider {
+            height: var(--csd-split-divider-height);
+            margin: var(--csd-split-divider-margin);
+            background-color: var(--csd-split-divider-bg);
+        }
+    }
+
+    .split-dropdown {
+        left: 0;
+    }
+
+    // Variants inherit from button variants
+    &.primary {
+        .split-main, .split-toggle {
+            @extend .btn-primary;
+        }
+    }
+
+    &.secondary {
+        .split-main, .split-toggle {
+            @extend .btn-secondary;
+        }
+    }
+
+    &.success {
+        .split-main, .split-toggle {
+            @extend .btn-success;
+        }
+    }
+
+    &.danger {
+        .split-main, .split-toggle {
+            @extend .btn-danger;
+        }
+    }
+
+    &.warning {
+        .split-main, .split-toggle {
+            @extend .btn-warning;
+        }
+    }
+
+    &.info {
+        .split-main, .split-toggle {
+            @extend .btn-info;
+        }
+    }
+
+    // Size variants
+    &.sm {
+        .split-main, .split-toggle {
+            padding: var(--csd-split-button-sm-padding);
+            font-size: var(--csd-split-button-sm-font-size);
+        }
+    }
+
+    &.lg {
+        .split-main, .split-toggle {
+            padding: var(--csd-split-button-lg-padding);
+            font-size: var(--csd-split-button-lg-font-size);
+        }
+    }
+
+    // Disabled state
+    &.disabled {
+        opacity: var(--csd-split-button-disabled-opacity);
+        pointer-events: none;
+    }
+}

@@ -1,0 +1,87 @@
+// Tab Component variables in :root
+:root {
+    // csd-tabs implementation variables
+    --csd-tabs-border: 1px solid #e2e8f0;
+    --csd-tabs-item-padding: 0.5rem 1rem;
+    --csd-tabs-item-font-size: 1rem;
+    --csd-tabs-item-color: var(--text-color-secondary);
+    --csd-tabs-item-active-color: var(--text-color);
+    --csd-tabs-item-gap: 0.5rem;
+    --csd-tabs-icon-size: 16px;
+    --csd-tabs-icon-stroke-width: 48px;
+    --csd-tabs-transition: all 0.3s ease;
+}
+
+// Tab Component
+.csd-tabs {
+    .csd-tab-list {
+        position: relative;
+        display: flex;
+        border-bottom: var(--csd-tabs-border);
+        overflow-x: auto;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+        
+        &::-webkit-scrollbar {
+            display: none; /* WebKit */
+        }
+    }
+
+    .csd-tab {
+        position: relative;
+        padding: var(--csd-tabs-item-padding);
+        color: var(--csd-tabs-item-color);
+        background: none;
+        border: none;
+        font-size: var(--csd-tabs-item-font-size);
+        font-weight: var(--csd-tab-item-font-weight);
+        cursor: pointer;
+        transition: var(--csd-tabs-transition);
+        display: flex;
+        align-items: center;
+        gap: var(--csd-tabs-item-gap);
+        flex-shrink: 0;
+        white-space: nowrap;
+
+        ion-icon {
+            font-size: var(--csd-tabs-icon-size);
+            --ionicon-stroke-width: var(--csd-tabs-icon-stroke-width);
+        }
+
+        &:hover {
+            color: var(--csd-tabs-item-active-color)!important;
+        }
+
+        &.active {
+            color: var(--csd-tabs-item-active-color)!important;
+
+            ion-icon {
+                --ionicon-stroke-width: 32px;
+            }
+        }
+    }
+
+    .csd-tab-indicator {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #020617;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .csd-tab-panel {
+        display: none;
+        padding: 1rem;
+
+        &.active {
+            display: block;
+        }
+
+        p {
+            margin: 0;
+            color: var(--text-color);
+        }
+    }
+}

@@ -1,0 +1,89 @@
+:root {
+    /* Badge Spacing */
+    --csd-badge-gap: 0.25rem;
+    --csd-badge-padding: 0.5rem;
+    --csd-badge-counter-padding: 0.25rem;
+    
+    /* Badge Typography */
+    --csd-badge-font-size: 0.75rem;
+    --csd-badge-font-weight: 500;
+    --csd-badge-line-height: 1;
+    --csd-badge-counter-font-size: 0.65rem;
+    --csd-badge-icon-size: 1rem;
+    
+    /* Badge Layout */
+    --csd-badge-border-radius: 50%;
+    --csd-badge-pill-radius: 50rem;
+    --csd-badge-counter-size: 1rem;
+    --csd-badge-dot-size: 8px;
+    
+    /* Colors */
+    --csd-badge-background: var(--primary-500);
+}
+
+// Badge
+.csd-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--csd-badge-gap);
+    padding: var(--csd-badge-padding);
+    font-size: var(--csd-badge-font-size);
+    font-weight: var(--csd-badge-font-weight);
+    line-height: var(--csd-badge-line-height);
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: var(--csd-badge-border-radius);
+    background-color: var(--csd-badge-background);
+    color: var(--csd-color-white);
+    width: calc(var(--csd-badge-font-size) + var(--csd-badge-padding));
+    height: calc(var(--csd-badge-font-size) + var(--csd-badge-padding));
+
+    &.primary { background-color: var(--csd-color-primary); }
+    &.secondary {
+        background-color: var(--csd-color-secondary);
+        color: var(--text-color);
+    }
+    &.success { background-color: var(--csd-color-success); }
+    &.warning {
+        background-color: var(--csd-color-warning);
+        color: var(--text-color);
+    }
+    &.danger { background-color: var(--csd-color-danger); }
+    &.info { background-color: var(--csd-color-info); }
+
+    &.pill { border-radius: var(--csd-badge-pill-radius); }
+
+    &.counter {
+        position: absolute;
+        top: calc(-1 * var(--csd-badge-gap) * 2);
+        right: calc(-1 * var(--csd-badge-gap) * 2);
+        padding: var(--csd-badge-counter-padding);
+        border-radius: 50%;
+    }
+
+    &.dot {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: var(--csd-badge-dot-size);
+        height: var(--csd-badge-dot-size);
+        padding: 0;
+        border-radius: 50%;
+        transform: translate(25%, -25%);
+    }
+
+    ion-icon {
+        color: inherit;
+        font-size: var(--csd-badge-icon-size);
+    }
+}
+
+.csd-overlaybadge {
+    display: flex;
+    position: relative;
+    font-size: 2rem;
+    width: fit-content;
+    height: fit-content;
+}
