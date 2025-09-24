@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Preview csd-btn component</title>
+  <!-- FontAwesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <!-- Ionicons CDN -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- CSS compilato del componente -->
+  <link rel="stylesheet" href="./csdStyle/component/csd-button.css">
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f7f7fa; margin: 0; padding: 2rem; }
+    h2 { margin-top: 2rem; }
+    .preview-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .demo-block { background: #fff; padding: 1.5rem; border-radius: 1rem; box-shadow: 0 2px 8px #0001; }
+    .demo-block h3 { margin-top: 0; font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>csd-btn component preview</h1>
+
+  <div class="demo-block">
+    <h3>Base Buttons</h3>
+    <div class="preview-row">
+      <button class="csd-btn">Default</button>
+      <button class="csd-btn btn-secondary">Secondary</button>
+      <button class="csd-btn btn-success">Success</button>
+      <button class="csd-btn btn-warning">Warning</button>
+      <button class="csd-btn btn-danger">Danger</button>
+      <button class="csd-btn btn-help">Help</button>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h3>Outlined & Text Only</h3>
+    <div class="preview-row">
+      <button class="csd-btn outlined btn-secondary">Outlined</button>
+      <button class="csd-btn text-only btn-success">Text Only</button>
+      <button class="csd-btn outlined btn-danger">Outlined Danger</button>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h3>Con icona</h3>
+    <div class="preview-row">
+      <button class="csd-btn" icon="fa-solid-user" place-icon="left">User</button>
+      <button class="csd-btn btn-success" icon="ion-checkmark-outline">Check</button>
+      <button class="csd-btn btn-warning" icon="fa-solid-exclamation" place-icon="left">Attenzione</button>
+      <button class="csd-btn btn-icon" icon="ion-heart-outline"></button>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h3>Con badge</h3>
+    <div class="preview-row">
+      <button class="csd-btn btn-secondary" badge="9" icon="fa-solid-bell">Notifiche</button>
+      <button class="csd-btn btn-danger" badge="1">Messaggi</button>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h3>Dimensioni</h3>
+    <div class="preview-row">
+      <button class="csd-btn btn-sm">Small</button>
+      <button class="csd-btn">Normal</button>
+      <button class="csd-btn btn-lg">Large</button>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h3>Altri Modificatori</h3>
+    <div class="preview-row">
+      <button class="csd-btn rounded">Rounded</button>
+      <button class="csd-btn raised">Raised</button>
+      <button class="csd-btn btn-danger loading">Loading</button>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h3>Button Group</h3>
+    <div class="csd-btn-group">
+      <button class="csd-btn btn-secondary">Sx</button>
+      <button class="csd-btn btn-success">Centro</button>
+      <button class="csd-btn btn-danger">Dx</button>
+    </div>
+  </div>
+
+  <!-- JS CSD Button: importa la tua build JS -->
+  <script type="module">
+    import { initializeBtn } from './csdJs/component/csd-button.js';
+    document.querySelectorAll('.csd-btn').forEach(btn => initializeBtn(btn));
+  </script>
+</body>
+</html>
