@@ -102,15 +102,7 @@ Here's how to use CSD Components in your HTML:
 
 ## Resources
 
-- [Documentation](https://csdcomponents.com/docs)
-- [Examples](https://csdcomponents.com/docs/examples)
-- [Templates](https://csdcomponents.com/docs/templates)
-- [Support](https://csdcomponents.com/docs/support)
-
-## Community
-
-- [GitHub](https://github.com/csd-components/csd-components)
-- [Contributing](https://csdcomponents.com/docs/contributing)
+- [Documentation](https://csdcomponents.com/)
 
 ## License
 
